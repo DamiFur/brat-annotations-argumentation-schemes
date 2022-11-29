@@ -21,6 +21,7 @@ parser.add_argument('--modelname', type=str, default="roberta-base", help="Name 
 parser.add_argument('--lr', type=float, default=2e-05, help="Learning rate for training the model. Default value is 2e-05")
 parser.add_argument('--batch_size', type=int, default=16, help="Batch size for training and evaluation. Default size is 16")
 parser.add_argument('--add_annotator_info', type=bool, default=False, help="For Pivot and Collective add information about premises and Property respectively that an annotator would have when annotating these components")
+parser.add_argument('--type_of_premise', type=bool, default=False, help="If true, model will be trained to predict the type of premises. If true, only valid components are Justification and Conclusion")
 
 args = parser.parse_args()
 
@@ -35,29 +36,33 @@ REP=0
 components = args.components
 component = components[0]
 add_annotator_info = args.add_annotator_info
+type_of_premise = args.type_of_premise
 
 def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
     labels = p.label_ids
-    true_labels = [[str(l) for l in label if l != -100] for label in labels]
-    true_predictions = [
-        [str(p) for (p, l) in zip(prediction, label) if l != -100]
-        for prediction, label in zip(preds, labels)
-    ]
 
+    if not type_of_premise:
+        true_labels = [[str(l) for l in label if l != -100] for label in labels]
+        true_predictions = [
+            [str(p) for (p, l) in zip(prediction, label) if l != -100]
+            for prediction, label in zip(preds, labels)
+        ]
+        all_true_labels = [l for label in true_labels for l in label]
+        all_true_preds = [p for preed in true_predictions for p in preed]
+        avrge = "binary"
+    else:
+        all_true_labels = [str(label) for label in labels]
+        all_true_preds = [str(pred) for pred in preds]
+        avrge = "macro"
 
-    all_true_labels = [l for label in true_labels for l in label]
-    all_true_preds = [p for preed in true_predictions for p in preed]
-
-    f1 = metrics.f1_score(all_true_labels, all_true_preds, average="macro")
-
-    f1_binary = metrics.f1_score(all_true_labels, all_true_preds, average="binary", pos_label='1')
+    f1 = metrics.f1_score(all_true_labels, all_true_preds, average=avrge, pos_label='1')
 
     acc = metrics.accuracy_score(all_true_labels, all_true_preds)
 
-    recall = metrics.recall_score(all_true_labels, all_true_preds, average="binary", pos_label='1')
+    recall = metrics.recall_score(all_true_labels, all_true_preds, average=avrge, pos_label='1')
 
-    precision = metrics.precision_score(all_true_labels, all_true_preds, average="binary", pos_label='1')
+    precision = metrics.precision_score(all_true_labels, all_true_preds, average=avrge, pos_label='1')
 
     f1_micro = metrics.f1_score(all_true_labels, all_true_preds, average="micro")
 
@@ -70,7 +75,7 @@ def compute_metrics_f1(p: EvalPrediction):
 
     w = open("./results_{}_{}_{}_{}_{}-metrics".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, component, REP), "a")
 
-    w.write("{},{},{},{},{},{},{},{}\n".format(str(acc), str(f1), str(precision), str(recall), str(f1_micro), str(precision_micro), str(recall_micro), str(f1_binary)))
+    w.write("{},{},{},{},{},{},{},{}\n".format(str(acc), str(f1), str(precision), str(recall), str(f1_micro), str(precision_micro), str(recall_micro)))
     w.close()
 
     return {
@@ -79,7 +84,6 @@ def compute_metrics_f1(p: EvalPrediction):
         'precision': precision,
         'recall': recall,
         'confusion_matrix': confusion_matrix,
-        'f1_binary': f1_binary
     }
 
 
@@ -111,7 +115,7 @@ def getLabel(label):
         return 1
 
 
-def labelComponentsFromAllExamples(filePatterns, component, multidataset = False, add_annotator_info = False):
+def labelComponentsFromAllExamples(filePatterns, component, multidataset = False, add_annotator_info = False, isTypeOfPremise = False):
     all_tweets = []
     all_labels = []
     if multidataset:
@@ -123,7 +127,10 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
             print(f)
             conll_file = open(f, 'r')
             tweet = []
-            labels = []
+            if not isTypeOfPremise:
+                labels = []
+            else:
+                labels = ""
             if add_annotator_info:
                 if component == "Collective":
                     property_text = []
@@ -136,27 +143,45 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 if line_splitted[1] != "O":
                     is_argumentative = False
                     break
-                word = delete_unwanted_chars(line_splitted[0])
-                word = preprocessing.preprocess_tweet(word, lang="en", user_token="@user", hashtag_token="hashtag", preprocess_hashtags=True, demoji=True)
-                processed_words = word.split(" ")
-                l = len(processed_words)
-                tweet += processed_words
-                if component == "Premise2Justification":
-                    labels += [getLabel(line_splitted[2])] * l
-                elif component == "Premise1Conclusion":
-                    labels += [getLabel(line_splitted[3])] * l
-                elif component == "Collective":
-                    labels += [getLabel(line_splitted[4])] * l
-                    if add_annotator_info and getLabel(line_splitted[5]) == 1:
-                        property_text += processed_words
-                elif component == "Property":
-                    labels += [getLabel(line_splitted[5])] * l
-                elif component == "pivot":
-                    labels += [getLabel(line_splitted[6])] * l
-                    if add_annotator_info and getLabel(line_splitted[2]) == 1:
-                        justification_text += processed_words
-                    if add_annotator_info and getLabel(line_splitted[3]) == 1:
-                        conclusion_text += processed_words
+                word = line_splitted[0]
+                # word = preprocessing.preprocess_tweet(word, lang="en", user_token="@user", hashtag_token="hashtag", preprocess_hashtags=True, demoji=True)
+                # processed_words = word.split(" ")
+                # l = len(processed_words)
+                if not isTypeOfPremise:
+                    tweet.append(word)
+                else:
+                    if component == "Premise2Justification":
+                        if line_splitted[2] != "O":
+                            tweet.append(word)
+                    elif component == "Premise1Conclusion":
+                        if line_splitted[3] != "O":
+                            tweet.append(word)
+
+                if not isTypeOfPremise:
+                    if component == "Premise2Justification":
+                        labels.append(getLabel(line_splitted[2]))
+                    elif component == "Premise1Conclusion":
+                        labels.append(getLabel(line_splitted[3]))
+                    elif component == "Collective":
+                        labels.append(getLabel(line_splitted[4]))
+                        if add_annotator_info and getLabel(line_splitted[5]) == 1:
+                            property_text.append(word)
+                    elif component == "Property":
+                        labels.append(getLabel(line_splitted[5]))
+                    elif component == "pivot":
+                        labels.append(getLabel(line_splitted[6]))
+                        if add_annotator_info and getLabel(line_splitted[2]) == 1:
+                            justification_text.append(word)
+                        if add_annotator_info and getLabel(line_splitted[3]) == 1:
+                            conclusion_text.append(word)
+                else:
+                    if component == "Premise2Justification":
+                        if line_splitted[2] != "O":
+                            labels = line_splitted[7]
+                    elif component == "Premise1Conclusion":
+                        if line_splitted[3] != "O":
+                            labels = line_splitted[8]
+                    assert(labels == "Fact" or labels == "Policy" or labels == "Value")
 
             if add_annotator_info:
                 to_add = []
@@ -241,47 +266,46 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
         return [{"dataset": data[0].map(function_to_apply, batched=True), "text": data[1]} for data in dataset]
     return dataset.map(function_to_apply, batched=True)
 
-def normalize_text(tweet_text, arg_components_text):
-    parts_processed = []
-    splitted_text = [tweet_text]
-    for splitter in arg_components_text:
-        assert (splitter in tweet_text)
-        new_splitted_text = []
-        for segment in splitted_text:
-            if segment != "":
-                new_split = segment.split(splitter)
-                for idx, splitt in enumerate(new_split):
-                    new_splitted_text.append(splitt)
-        splitted_text = new_splitted_text
+# def normalize_text(tweet_text, arg_components_text):
+#     parts_processed = []
+#     splitted_text = [tweet_text]
+#     for splitter in arg_components_text:
+#         assert (splitter in tweet_text)
+#         new_splitted_text = []
+#         for segment in splitted_text:
+#             if segment != "":
+#                 new_split = segment.split(splitter)
+#                 for idx, splitt in enumerate(new_split):
+#                     new_splitted_text.append(splitt)
+#         splitted_text = new_splitted_text
 
-    reconstructed_text = []
-    current_text = tweet_text
-    for part in splitted_text:
-        if (part != ''):
-            spp = current_text.split(part)
-            for word in spp[0].split():
-                reconstructed_text.append(word)
-            for word in part.split():
-                reconstructed_text.append(word)
-            current_text = part.join(spp[1:])
-    return reconstructed_text
+#     reconstructed_text = []
+#     current_text = tweet_text
+#     for part in splitted_text:
+#         if (part != ''):
+#             spp = current_text.split(part)
+#             for word in spp[0].split():
+#                 reconstructed_text.append(word)
+#             for word in part.split():
+#                 reconstructed_text.append(word)
+#             current_text = part.join(spp[1:])
+#     return reconstructed_text
     
 
 
-    for idx, part in enumerate(splitted_text):
-        for word in part.strip().split():
-            parts_processed.append(word)
+#     for idx, part in enumerate(splitted_text):
+#         for word in part.strip().split():
+#             parts_processed.append(word)
 
-    return parts_processed
-
-
-def train(epochs, model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False):
+#     return parts_processed
 
 
-    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info), tokenizer, is_bertweet = is_bertweet)
-    dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info), tokenizer, is_bertweet = is_bertweet)
-    test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info), tokenizer, is_bertweet = is_bertweet)
-    test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info), tokenizer, is_multi = True, is_bertweet = is_bertweet)
+def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False):
+
+    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet)
+    dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet)
+    test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet)
+    test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_multi = True, is_bertweet = is_bertweet)
     
     training_args = TrainingArguments(
         output_dir="./results_eval_{}_{}".format(MODEL_NAME.replace("/", "-"), component),
@@ -294,7 +318,7 @@ def train(epochs, model, tokenizer, train_partition_patterns, dev_partition_patt
         num_train_epochs=EPOCHS,
         weight_decay=0.05,
         report_to="none",
-        metric_for_best_model='f1_binary',
+        metric_for_best_model='f1',
         load_best_model_at_end=True
     )
 
@@ -302,7 +326,7 @@ def train(epochs, model, tokenizer, train_partition_patterns, dev_partition_patt
         model=model,
         args=training_args,
         train_dataset=training_set,
-        eval_dataset=test_set,
+        eval_dataset=dev_set,
         tokenizer=tokenizer,
         data_collator=data_collator,
         compute_metrics= compute_metrics_f1,
@@ -314,7 +338,7 @@ def train(epochs, model, tokenizer, train_partition_patterns, dev_partition_patt
     results = trainer.predict(test_set)
     filename = "./results_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
     with open(filename, "w") as writer:
-        writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_binary"]))
+        writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))
 
     examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
@@ -343,8 +367,11 @@ for combination in dataset_combinations:
         component = cmpnent
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, add_prefix_space=True)
         data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
-        model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=2)
+        if not type_of_premise:
+            model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=2)
+        else:
+            model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=3)
         model.to(device)
-        train(0, model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info)
+        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, isTypeOfPremise = type_of_premise)
 
 

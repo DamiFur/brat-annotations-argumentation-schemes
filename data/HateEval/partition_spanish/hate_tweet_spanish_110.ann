@@ -1,6 +1,6 @@
 T1	Premise2Justification 113 260	si no tenemos control en los aeropuertos y puertos y frontera estamos jodidos invasión silenciosa vivir con tu enemigo sin contar con los apátridas
 A1	QuadrantType T1 fact
-T2	Premise1Conclusion 0 111;261 278	A pedirle papeles a todas las personas en la calle y pedir visa a todos el que quiera venir y deportar ilegales estamos en guerra
+T2	Premise1Conclusion 0 111	A pedirle papeles a todas las personas en la calle y pedir visa a todos el que quiera venir y deportar ilegales
 A2	QuadrantType T2 policy
 T3	Collective 103 111	ilegales
 T4	Property 191 210	invasión silenciosa
@@ -14,3 +14,5 @@ T9	CounterNarrativeB 297 298	R
 #2	AnnotatorNotes T9	Los ilegales no son ni una invasión silenciosa, ni son el enemigo. Son personas que quieren vivir aquí, pero que por algún motivo se les ha hecho dificil.
 T10	CounterNarrativeA 298 299	L
 #3	AnnotatorNotes T10	Es demasiado que les pidas papeles a todos. Nadie esta obligado a andar con sus papeles encima.
+T11	Premise1Conclusion 261 278	estamos en guerra
+A3	QuadrantType T11 policy

@@ -1,6 +1,6 @@
 T1	Premise2Justification 35 124	El partido antiinmigración ganaría las elecciones generales del próximo mes de septiembre
 A1	QuadrantType T1 fact
-T2	Premise1Conclusion 0 34;126 240	En Suecia están abriendo los ojos. Cada vez son más los países que se dan cuenta del errror de acoger a miles de indocumentados sin que aporten nada.
+T2	Premise1Conclusion 0 34	En Suecia están abriendo los ojos.
 A2	QuadrantType T2 fact
 T3	Collective 204 218	indocumentados
 T4	Property 219 239	sin que aporten nada
@@ -13,3 +13,4 @@ T8	CounterNarrativeB 263 264	S
 #2	AnnotatorNotes T8	Los indocumentados suelen aceptar los trabajos que nadie quiere hacer. No es cierto que no aporten nada.
 T9	CounterNarrativeA 261 262	s
 #3	AnnotatorNotes T9	Que en un país estén tomando una postura antiinmigración no significa que acogerlos sea un error, ni que los demás países estén de acuerdo con ello.
+T10	Premise1Conclusion 126 240	Cada vez son más los países que se dan cuenta del errror de acoger a miles de indocumentados sin que aporten nada.

@@ -1,4 +1,4 @@
-T1	Premise2Justification 0 47;78 98	Crece a 1.402 la entrada de inmigrantes a Ceuta en lo que va de 2018
+T1	Premise2Justification 0 48	Crece a 1.402 la entrada de inmigrantes a Ceuta,
 A1	QuadrantType T1 fact
 T2	Premise1Conclusion 49 76	la mitad de ellos al asalto
 A2	QuadrantType T2 fact
@@ -6,3 +6,5 @@ T3	CounterNarrativeC 120 121	6
 #1	AnnotatorNotes T3	¿De donde sacaste esos números? ¿Son confiables? Además, ¿sugieres que son muchos? ¿Por qué?
 T4	CounterNarrativeA 119 120	S
 #2	AnnotatorNotes T4	Que te parezcan muchos no significa que lleguen "al asalto" como tú dices.
+T5	Premise2Justification 78 98	en lo que va de 2018
+A3	QuadrantType T5 fact

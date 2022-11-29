@@ -1,0 +1,11 @@
+hey	O	Premise2Justification	O	O	O	O	fact	O
+jackass	O	Premise2Justification	O	O	Property	O	fact	O
+liberals	O	Premise2Justification	O	Collective	O	O	fact	O
+see	O	Premise2Justification	O	O	O	O	fact	O
+a	O	Premise2Justification	O	O	O	O	fact	O
+wall	O	Premise2Justification	O	O	O	pivot	fact	O
+does	O	Premise2Justification	O	O	O	O	fact	O
+work	O	Premise2Justification	O	O	O	O	fact	O
+hashtag	O	O	O	O	O	O	O	O
+buildthat	O	O	O	O	O	O	O	O
+wall	O	O	O	O	O	pivot	O	O

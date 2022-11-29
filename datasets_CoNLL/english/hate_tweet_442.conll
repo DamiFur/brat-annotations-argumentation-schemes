@@ -1,0 +1,13 @@
+another	O	Premise2Justification	O	O	O	O	fact	O
+german	O	Premise2Justification	O	O	O	pivot	fact	O
+killed	O	Premise2Justification	O	O	Property	O	fact	O
+and	O	Premise2Justification	O	O	Property	O	fact	O
+injuries	O	Premise2Justification	O	O	Property	O	fact	O
+now	O	O	O	O	O	O	O	O
+will	O	O	O	O	O	O	O	O
+german	O	O	O	O	O	pivot	O	O
+y	O	O	O	O	O	O	O	O
+act	O	O	O	O	O	O	O	O
+and	O	O	O	O	O	O	O	O
+stop	O	O	O	O	O	O	O	O
+immigration	O	O	O	Collective	O	O	O	O

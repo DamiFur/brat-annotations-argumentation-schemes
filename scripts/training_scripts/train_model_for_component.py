@@ -181,7 +181,11 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                     elif component == "Premise1Conclusion":
                         if line_splitted[3] != "O":
                             labels = line_splitted[8]
-                    assert(labels == "Fact" or labels == "Policy" or labels == "Value")
+            
+            if not is_argumentative:
+                continue
+            print(labels)
+            assert(labels == "Fact" or labels == "Policy" or labels == "Value")
 
             if add_annotator_info:
                 to_add = []
@@ -192,9 +196,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 tweet += to_add
                 labels += [0] * len(to_add)
 
-            if not is_argumentative:
-                continue
-            elif multidataset:
+            if multidataset:
                 dicc = {"tokens": [tweet], "labels": [labels]}
                 datasets.append([Dataset.from_dict(dicc), tweet])
             else:

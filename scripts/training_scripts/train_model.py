@@ -27,7 +27,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cuda:1")
+device = torch.device("cpu")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
@@ -84,11 +84,11 @@ def compute_metrics_f1(p: EvalPrediction):
         'f1': f1,
         'precision': precision,
         'recall': recall,
-        'confusion_matrix': confusion_matrix,
+        'confusion_matrix': str(confusion_matrix),
     }
 
     if type_of_premise:
-        ans['f1_all'] = f1_all
+        ans['f1_all'] = str(f1_all)
 
     return ans
 
@@ -190,8 +190,9 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
             
             if not is_argumentative:
                 continue
-            print(labels)
-            assert(labels == "Fact" or labels == "Policy" or labels == "Value")
+            if isTypeOfPremise:
+                print(labels)
+                assert(labels == "Fact" or labels == "Policy" or labels == "Value")
 
             if add_annotator_info:
                 to_add = []
@@ -369,9 +370,14 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
 
 filePatterns = ["./datasets_CoNLL/english/hate_tweet_*.conll"]
 
+allFiles = []
+for pattern in filePatterns:
+    for f in glob.glob(pattern):
+        allFiles.append(f)
+
 dataset_combinations = []
 for i in range(FOLDS):
-    allFilesCp = filePatterns.copy()    
+    allFilesCp = allFiles.copy()
     random.Random(41 + i).shuffle(allFilesCp)
     dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
 
@@ -379,7 +385,7 @@ for i in range(FOLDS):
 #dataset_combinations = [[filePatterns[2:], filePatterns[0:1], filePatterns[1:2]], [filePatterns[1:9], filePatterns[9:], filePatterns[:1]]]
 # dataset_combinations = [[[filePatterns[0]], [filePatterns[1]], [filePatterns[2]]]]
 for combination in dataset_combinations:
-    print(combination)
+    # print(combination)
     REP = REP + 1
     for cmpnent in components:
         component = cmpnent

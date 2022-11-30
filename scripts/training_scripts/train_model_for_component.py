@@ -28,7 +28,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cuda:0")
+device = torch.device("cuda:1")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
@@ -75,7 +75,7 @@ def compute_metrics_f1(p: EvalPrediction):
 
     w = open("./results_{}_{}_{}_{}_{}-metrics".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, component, REP), "a")
 
-    w.write("{},{},{},{},{},{},{},{}\n".format(str(acc), str(f1), str(precision), str(recall), str(f1_micro), str(precision_micro), str(recall_micro)))
+    w.write("{},{},{},{},{},{},{}\n".format(str(acc), str(f1), str(precision), str(recall), str(f1_micro), str(precision_micro), str(recall_micro)))
     w.close()
 
     return {
@@ -338,7 +338,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     results = trainer.predict(test_set)
     filename = "./results_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
     with open(filename, "w") as writer:
-        writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
+        writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))
 
     examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
@@ -372,6 +372,6 @@ for combination in dataset_combinations:
         else:
             model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=3)
         model.to(device)
-        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, isTypeOfPremise = type_of_premise)
+        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise)
 
 

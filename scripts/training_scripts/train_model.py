@@ -1,6 +1,4 @@
 import glob
-from sklearn.metrics import f1_score
-import sys
 from transformers import AutoTokenizer
 from datasets import Dataset
 from transformers import DataCollatorForTokenClassification
@@ -8,12 +6,13 @@ from transformers import AutoModelForTokenClassification
 from transformers import TrainingArguments
 from transformers import Trainer
 import torch
-from tqdm import tqdm
 from transformers import EvalPrediction
 from sklearn import metrics
 import argparse
 from transformers import EarlyStoppingCallback
 from pysentimiento import preprocessing
+import random
+
 
 parser = argparse.ArgumentParser(description="Train models for identifying argumentative components inside the ASFOCONG dataset")
 parser.add_argument('components', type=str, nargs='+', help="Name of the component that wants to be identified")
@@ -33,6 +32,7 @@ BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
 REP=0
+FOLDS=1
 components = args.components
 component = components[0]
 add_annotator_info = args.add_annotator_info
@@ -367,10 +367,17 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
 
 
 
-filePatterns = ["./datasets_CoNLL/{}_dataset/hate_tweet_*.conll".format(dataset) for dataset in ["train", "dev", "test"]]
+filePatterns = ["./datasets_CoNLL/english/hate_tweet_*.conll"]
+
+dataset_combinations = []
+for i in range(FOLDS):
+    allFilesCp = filePatterns.copy()    
+    random.Random(41 + i).shuffle(allFilesCp)
+    dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
+
 # dataset_combination is a list of lists with three combinations of possible partitions for the dataset, being the first one a list with 8 folders of tweets used for training and the second and third lists with one folder of tweets used for eval and test
 #dataset_combinations = [[filePatterns[2:], filePatterns[0:1], filePatterns[1:2]], [filePatterns[1:9], filePatterns[9:], filePatterns[:1]]]
-dataset_combinations = [[[filePatterns[0]], [filePatterns[1]], [filePatterns[2]]]]
+# dataset_combinations = [[[filePatterns[0]], [filePatterns[1]], [filePatterns[2]]]]
 for combination in dataset_combinations:
     print(combination)
     REP = REP + 1

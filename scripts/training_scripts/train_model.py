@@ -55,6 +55,7 @@ def compute_metrics_f1(p: EvalPrediction):
         all_true_labels = [str(label) for label in labels]
         all_true_preds = [str(pred) for pred in preds]
         avrge = "macro"
+        f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
 
     f1 = metrics.f1_score(all_true_labels, all_true_preds, average=avrge, pos_label='1')
 
@@ -78,13 +79,18 @@ def compute_metrics_f1(p: EvalPrediction):
     w.write("{},{},{},{},{},{},{}\n".format(str(acc), str(f1), str(precision), str(recall), str(f1_micro), str(precision_micro), str(recall_micro)))
     w.close()
 
-    return {
+    ans = {
         'accuracy': acc,
         'f1': f1,
         'precision': precision,
         'recall': recall,
         'confusion_matrix': confusion_matrix,
     }
+
+    if type_of_premise:
+        ans['f1_all'] = f1_all
+
+    return ans
 
 
 
@@ -340,7 +346,10 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     results = trainer.predict(test_set)
     filename = "./results_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
     with open(filename, "w") as writer:
-        writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
+        if type_of_premise:
+            writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"]))
+        else:
+            writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))
 
     examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)

@@ -371,7 +371,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
         for dtset in test_set_one_example:
             result = trainer.predict(dtset["dataset"])
             preds = result.predictions.argmax(-1)[0]
-            assert (len(preds) == len(result.label_ids[0]))
+            #assert (len(preds) == len(result.label_ids[0]))
             comparison = [(truth, pred) for truth, pred in zip(result.label_ids[0], preds) if truth != -100]
             writer.write("Tweet:\n")
             writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))

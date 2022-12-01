@@ -321,10 +321,10 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
 
 def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False):
 
-    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=is_type_of_premise)
-    dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=is_type_of_premise)
-    test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=is_type_of_premise)
-    test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=is_type_of_premise)
+    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
+    dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
+    test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
+    test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     
     training_args = TrainingArguments(
         output_dir="./results_eval_{}_{}".format(MODEL_NAME.replace("/", "-"), component),

@@ -408,7 +408,12 @@ for combination in dataset_combinations:
             model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=2)
         else:
             data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
-            model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=3)
+            if type_of_premise:
+                output_num = 3
+            else:
+                output_num = 2
+            model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
+
         model.to(device)
         train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise)
 

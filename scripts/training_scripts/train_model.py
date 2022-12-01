@@ -2,7 +2,7 @@ import glob
 from transformers import AutoTokenizer
 from datasets import Dataset
 from transformers import DataCollatorForTokenClassification
-from transformers import AutoModelForTokenClassification
+from transformers import AutoModelForTokenClassification, AutoModelForSequenceClassification
 from transformers import TrainingArguments
 from transformers import Trainer
 import torch
@@ -396,7 +396,7 @@ for combination in dataset_combinations:
         if not type_of_premise:
             model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=2)
         else:
-            model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=3)
+            model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=3)
         model.to(device)
         train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise)
 

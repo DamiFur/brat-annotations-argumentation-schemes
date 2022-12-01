@@ -192,7 +192,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 continue
             if isTypeOfPremise:
                 print(labels)
-                assert(labels == "Fact" or labels == "Policy" or labels == "Value")
+                assert(labels == "fact" or labels == "policy" or labels == "value")
 
             if add_annotator_info:
                 to_add = []

@@ -43,7 +43,7 @@ def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
     labels = p.label_ids
 
-    if not type_of_premise:
+    if not type_of_premise and component != "Argumentative":
         true_labels = [[str(l) for l in label if l != -100] for label in labels]
         true_predictions = [
             [str(p) for (p, l) in zip(prediction, label) if l != -100]
@@ -55,7 +55,10 @@ def compute_metrics_f1(p: EvalPrediction):
     else:
         all_true_labels = [str(label) for label in labels]
         all_true_preds = [str(pred) for pred in preds]
-        avrge = "macro"
+        if type_of_premise:
+            avrge = "macro"
+        else:
+            avrge = "binary"
         f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
 
     f1 = metrics.f1_score(all_true_labels, all_true_preds, average=avrge, pos_label='1')
@@ -127,7 +130,6 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
     all_labels = []
     if multidataset:
         datasets = []
-    print(filePatterns)
     for filePattern in filePatterns:
         for f in glob.glob(filePattern):
             print("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
@@ -188,8 +190,10 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                     elif component == "Premise1Conclusion":
                         if line_splitted[3] != "O":
                             labels = quadrant_types_to_label[line_splitted[8]]
-            
-            if not is_argumentative:
+
+            if component == "Argumentative":
+                labels = 1 if is_argumentative else 0
+            if not is_argumentative and component != "Argumentative":
                 continue
             if isTypeOfPremise:
                 assert(labels >= 0)
@@ -351,7 +355,10 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     trainer.train()
 
     results = trainer.predict(test_set)
-    filename = "./results_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
+    if not type_of_premise:
+        filename = "./results_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
+    else:
+        filename = "./results_test_{}_{}_{}_{}_{}_type-of-premise".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
     with open(filename, "w") as writer:
         if type_of_premise:
             writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"]))
@@ -396,7 +403,7 @@ for combination in dataset_combinations:
     for cmpnent in components:
         component = cmpnent
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, add_prefix_space=True)
-        if not type_of_premise:
+        if not type_of_premise and component != "Argumentative":
             data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
             model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=2)
         else:

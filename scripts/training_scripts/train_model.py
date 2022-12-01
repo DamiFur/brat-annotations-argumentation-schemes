@@ -204,12 +204,12 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 dicc = {"tokens": [tweet], "labels": [labels]}
                 datasets.append([Dataset.from_dict(dicc), tweet])
             else:
-                print("-----------------------------------")
-                print(len(tweet))
-                print(len(labels))
-                print(tweet)
-                print(labels)
-                print("===================================")
+                # print("-----------------------------------")
+                # print(len(tweet))
+                # print(len(labels))
+                # print(tweet)
+                # print(labels)
+                # print("===================================")
                 all_tweets.append(tweet)
                 all_labels.append(labels)
 

@@ -9,7 +9,7 @@ job	O	Premise2Justification	O	O	O	O	fact	O
 and	O	Premise2Justification	O	O	O	O	fact	O
 checks	O	Premise2Justification	O	O	O	O	fact	O
 lebanon	O	Premise2Justification	O	O	O	pivot	fact	O
-isn't	O	Premise2Justification	O	O	O	O	fact	O
+isnt	O	Premise2Justification	O	O	O	O	fact	O
 coercing	O	Premise2Justification	O	O	O	O	fact	O
 syrian	O	Premise2Justification	O	O	O	O	fact	O
 refugees	O	Premise2Justification	O	O	O	O	fact	O
@@ -24,7 +24,7 @@ residence	O	O	Premise1Conclusion	O	O	O	O	fact
 permits	O	O	Premise1Conclusion	O	O	O	O	fact
 to	O	O	Premise1Conclusion	O	O	O	O	fact
 the	O	O	Premise1Conclusion	O	O	O	O	fact
-agency's	O	O	Premise1Conclusion	O	O	O	O	fact
+agencys	O	O	Premise1Conclusion	O	O	O	O	fact
 international	O	O	Premise1Conclusion	O	O	O	O	fact
 staff	O	O	Premise1Conclusion	O	O	O	O	fact
 https://t	O	O	O	O	O	O	O	O

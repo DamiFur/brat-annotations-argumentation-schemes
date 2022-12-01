@@ -1,14 +1,14 @@
 @user	O	O	O	O	O	O	O	O
 in	O	O	O	O	O	O	O	O
 2018:	O	O	O	O	O	O	O	O
-it's	O	O	Premise1Conclusion	O	O	O	O	policy
+its	O	O	Premise1Conclusion	O	O	O	O	policy
 time	O	O	Premise1Conclusion	O	O	O	O	policy
 to	O	O	Premise1Conclusion	O	O	O	O	policy
 let	O	O	Premise1Conclusion	O	O	O	O	policy
 diversityâ„¢	O	O	Premise1Conclusion	O	O	O	O	policy
 be	O	O	Premise1Conclusion	O	O	O	O	policy
 someone	O	O	Premise1Conclusion	O	O	O	O	policy
-else's	O	O	Premise1Conclusion	O	O	O	O	policy
+elses	O	O	Premise1Conclusion	O	O	O	O	policy
 strength	O	O	Premise1Conclusion	O	O	O	O	policy
 remigration	O	O	Premise1Conclusion	O	O	O	O	policy
 2018:	O	O	Premise1Conclusion	O	O	O	O	policy
@@ -30,7 +30,7 @@ hotel	O	Premise2Justification	O	O	O	O	fact	O
 and	O	Premise2Justification	O	O	O	O	fact	O
 they	O	Premise2Justification	O	O	O	O	fact	O
 think	O	Premise2Justification	O	O	O	O	fact	O
-i'm	O	Premise2Justification	O	O	O	O	fact	O
+im	O	Premise2Justification	O	O	O	O	fact	O
 going	O	Premise2Justification	O	O	O	O	fact	O
 to	O	Premise2Justification	O	O	O	O	fact	O
 be	O	Premise2Justification	O	O	O	O	fact	O

@@ -3,9 +3,9 @@ w/phony	NoArgumentative	O	O	O	O	O	O	O
 lib	NoArgumentative	O	O	O	O	O	O	O
 argumentsvoter	NoArgumentative	O	O	O	O	O	O	O
 ids	NoArgumentative	O	O	O	O	O	O	O
-don't	NoArgumentative	O	O	O	O	O	O	O
+dont	NoArgumentative	O	O	O	O	O	O	O
 workwalls	NoArgumentative	O	O	O	O	O	O	O
-don't	NoArgumentative	O	O	O	O	O	O	O
+dont	NoArgumentative	O	O	O	O	O	O	O
 workillegals	NoArgumentative	O	O	O	O	O	O	O
 less	NoArgumentative	O	O	O	O	O	O	O
 crimeimmigration	NoArgumentative	O	O	O	O	O	O	O
@@ -21,7 +21,7 @@ notmore	NoArgumentative	O	O	O	O	O	O	O
 gun	NoArgumentative	O	O	O	O	O	O	O
 laws	NoArgumentative	O	O	O	O	O	O	O
 neededblacks	NoArgumentative	O	O	O	O	O	O	O
-can't	NoArgumentative	O	O	O	O	O	O	O
+cant	NoArgumentative	O	O	O	O	O	O	O
 be	NoArgumentative	O	O	O	O	O	O	O
 racist	NoArgumentative	O	O	O	O	O	O	O
 hashtag	NoArgumentative	O	O	O	O	O	O	O

@@ -19,6 +19,6 @@ walk	O	Premise2Justification	O	O	O	O	fact	O
 into	O	Premise2Justification	O	O	O	O	fact	O
 houses	O	Premise2Justification	O	O	O	O	fact	O
 violence	O	O	Premise1Conclusion	O	Property	O	O	fact
-isn't	O	O	Premise1Conclusion	O	O	O	O	fact
+isnt	O	O	Premise1Conclusion	O	O	O	O	fact
 just	O	O	Premise1Conclusion	O	O	O	O	fact
 migrant	O	O	Premise1Conclusion	O	O	pivot	O	fact

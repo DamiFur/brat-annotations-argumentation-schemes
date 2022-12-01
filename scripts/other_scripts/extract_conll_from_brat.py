@@ -10,68 +10,49 @@ def replaceSpace(string):
     string = re.sub(pattern, " ", string)
     return string
 
-def labelComponents(text, component_text, component):
+def labelComponents(text, component_text, component, assert_check=False):
+
+    if assert_check:
+        for cmpnt in component_text:
+            assert(cmpnt in text)
+
     if len(text.strip()) == 0:
         return []
     if len(component_text) == 0:
-        return ["O"] * len(text.strip().split())
+        return ["O"] * len(text.strip().split(" "))
 
     if component_text[0] != "" and component_text[0] in text:
         parts = text.split(component_text[0])
-        rec1 = labelComponents(parts[0], component_text[1:], component)
+        rec1 = labelComponents(parts[0].strip(), component_text[1:], component)
         rec2 = []
         if len(parts) > 2:
             rec2 = labelComponents(component_text[0].join(parts[1:]), component_text, component)
         else:
             rec2 = labelComponents(parts[1], component_text[1:], component)
-        return rec1 + ([component] * len(component_text[0].strip().split())) + rec2
+
+        return rec1 + ([component] * len(component_text[0].strip().split(" "))) + rec2
     return ["O"] * len(text.strip().split())
 
 def normalize_text(tweet_text, arg_components_text):
-    splitted_text = [tweet_text]
     for splitter in arg_components_text:
 
-        update_splitted_text = []
+        if splitter == tweet_text:
+            return tweet_text.split(" ")
         if len(splitter.replace(" ", "")) > 0 and splitter.replace(" ", "") in tweet_text:
-            tweet_text = tweet_text.replace(splitter.replace(" ", ""), splitter)
-        for text_part in splitted_text:
-            if len(splitter.replace(" ", "")) > 0 and splitter.replace(" ", "") in text_part:
-                new_tweet_text = text_part.replace(splitter.replace(" ", ""), splitter)    
-                update_splitted_text.append(new_tweet_text)
-            else:
-                update_splitted_text.append(text_part)
-        splitted_text = update_splitted_text
+            tweet_text = replaceSpace(tweet_text.replace(splitter.replace(" ", ""), " " + splitter + " "))
                 
         if splitter not in tweet_text and splitter.lower() in tweet_text:
             splitter = splitter.lower()
         assert (splitter in tweet_text)
-        new_splitted_text = []
-        for segment in splitted_text:
-            if segment != "":
-                new_split = segment.split(splitter)
-                for idx, splitt in enumerate(new_split):
-                    new_splitted_text.append(splitt)
-                    if idx != len(new_split) -1:
-                        new_splitted_text.append(splitter)
-        splitted_text = new_splitted_text
 
-    reconstructed_text = []
-    current_text = tweet_text
-    for part in splitted_text:
-        if (part != ''):
-            spp = current_text.split(part)
-            for word in spp[0].split():
-                reconstructed_text.append(word)
-            for word in part.split():
-                reconstructed_text.append(word)
-            current_text = part.join(spp[1:])
-    return reconstructed_text
+        tweet_text = replaceSpace((" " + splitter + " ").join(tweet_text.split(splitter))).strip()
+    return tweet_text.split(" ")
 
 def delete_unwanted_chars(text):
     if re.match("[a-zA-Z]+#", text):
         text = text.replace("#", " #")
     text = " #".join(text.split("#"))
-    return replaceSpace(text.lower().replace("\n", "").replace("\t", " ").replace(".", " ").replace(",", " ").replace("!", "").replace('“', '"').replace('”', '"').replace('…', '').replace("’", "").replace("–", " ").replace("‘", "").replace("—", " ").replace("·", " ").replace(";", " "))
+    return replaceSpace(text.lower().replace("\n", "").replace("\t", " ").replace(".", " ").replace(",", " ").replace("!", "").replace('“', '"').replace('”', '"').replace('…', '').replace("’", "").replace("–", " ").replace("‘", "").replace("—", " ").replace("·", " ").replace(";", " ").replace("'", ""))
 
 
 def labelComponentsFromAllExamples(filePatterns):
@@ -79,7 +60,7 @@ def labelComponentsFromAllExamples(filePatterns):
             annotations = open(f, 'r')
             tweet = open(f.replace(".ann", ".txt"), 'r')
             tweet_text = delete_unwanted_chars(tweet.read())
-            all_component_text = []
+            preprocessed_text = preprocessing.preprocess_tweet(tweet_text, lang='en', user_token="@user", url_token="link", hashtag_token="hashtag")
             component_texts = {}
             is_argumentative = True
             filesize = 0
@@ -99,28 +80,33 @@ def labelComponentsFromAllExamples(filePatterns):
                         info_splitted = current_component.split(" ")
                         type_of_premises[name_of_premises[info_splitted[1]]] = info_splitted[2]
 
-                    new_component_list_aux = []
                     if current_component.startswith("Property") or current_component.startswith("Collective") or current_component.startswith("pivot") or current_component.startswith("Premise1Conclusion") or current_component.startswith("Premise2Justification"):
-                        component_txt = preprocessing.preprocess_tweet(delete_unwanted_chars(ann[2].lstrip()), lang='en', user_token="@user", url_token="link", hashtag_token="hashtag")
-                        new_component = component_txt
+                        new_component = preprocessing.preprocess_tweet(delete_unwanted_chars(ann[2].lstrip()), lang='en', user_token="@user", url_token="link", hashtag_token="hashtag")
                         for cmpnt in COMPONENTS:
+                            new_component_list_aux = []
+                            if cmpnt not in component_texts:
+                                component_texts[cmpnt] = []
+                            for component in component_texts[cmpnt]:
+
+                                if new_component in preprocessed_text:
+                                    preprocessed_text = " ".join(normalize_text(preprocessed_text, [new_component]))
+
+                                if component in new_component or (component.replace(" ","") in new_component):
+                                    new_component = " ".join(normalize_text(new_component, [component]))
+                                if new_component in component or new_component.replace(" ", "") in component:
+                                    new_component_list_aux.append(" ".join(normalize_text(component, [new_component])))
+                                else:
+                                    new_component_list_aux.append(component)
+                            
+                            component_texts[cmpnt] = new_component_list_aux
+
                             if current_component.startswith(cmpnt):
-                                if cmpnt not in component_texts:
-                                    component_texts[cmpnt] = []
-                                component_texts[cmpnt].append(component_txt)
-                        for component in all_component_text:
-                            if component in new_component:
-                                new_component = " ".join(normalize_text(new_component, [component]))
-                            if new_component in component:
-                                new_component_list_aux.append(normalize_text(component, [new_component]))
-                            else:
-                                new_component_list_aux.append(component)
-                        all_component_text.append(new_component)
+                                component_texts[cmpnt].append(new_component)
 
 
-            preprocessed_text = preprocessing.preprocess_tweet(tweet_text, lang='en', user_token="@user", url_token="link", hashtag_token="hashtag")
-            all_component_text = [preprocessing.preprocess_tweet(comp, lang='en', user_token="@user", url_token="link", hashtag_token="hashtag") for comp in all_component_text]
-            normalized_text = normalize_text(preprocessed_text, all_component_text)
+
+            components_list = [compnent for key in component_texts for compnent in component_texts[key]]
+            normalized_text = normalize_text(preprocessed_text, components_list)
             assert(not (is_argumentative and ("Premise1Conclusion" not in type_of_premises or "Premise2Justification" not in type_of_premises)))
 
             component_labels = []
@@ -136,11 +122,12 @@ def labelComponentsFromAllExamples(filePatterns):
                     if not cmpnt in component_texts:
                         labels = ["O"] * len(normalized_text)
                     else:
-                        labels = labelComponents(" ".join(normalized_text), component_texts[cmpnt], cmpnt)
+                        labels = labelComponents(" ".join(normalized_text), component_texts[cmpnt], cmpnt, assert_check=True)
                     if cmpnt == "Premise2Justification":
                         type_of_justification = [type_of_premises[lbl] if lbl == "Premise2Justification" else "O" for lbl in labels]
                     elif cmpnt == "Premise1Conclusion":
                         type_of_conclusion = [type_of_premises[lbl] if lbl == "Premise1Conclusion" else "O" for lbl in labels]
+
                 assert(len(normalized_text) == len(labels))
                 component_labels.append(labels)
 

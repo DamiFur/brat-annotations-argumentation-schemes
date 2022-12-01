@@ -11,7 +11,7 @@ deal	O	O	Premise1Conclusion	O	O	O	O	policy
 with	O	O	Premise1Conclusion	O	O	O	O	policy
 it	O	O	Premise1Conclusion	O	O	O	O	policy
 we	O	Premise2Justification	O	O	O	O	value	O
-shouldn't	O	Premise2Justification	O	O	O	O	value	O
+shouldnt	O	Premise2Justification	O	O	O	O	value	O
 be	O	Premise2Justification	O	O	O	O	value	O
 paying	O	Premise2Justification	O	O	O	O	value	O
 for	O	Premise2Justification	O	O	O	O	value	O

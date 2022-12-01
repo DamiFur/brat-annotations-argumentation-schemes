@@ -16,12 +16,12 @@ money	O	Premise2Justification	O	O	O	O	fact	O
 of	O	Premise2Justification	O	O	O	O	fact	O
 their	O	Premise2Justification	O	O	O	O	fact	O
 own	O	Premise2Justification	O	O	O	O	fact	O
-can't	O	Premise2Justification	O	O	O	O	fact	O
+cant	O	Premise2Justification	O	O	O	O	fact	O
 come	O	Premise2Justification	O	O	O	O	fact	O
 to	O	Premise2Justification	O	O	O	O	fact	O
 america	O	Premise2Justification	O	O	O	O	fact	O
 -	O	O	O	O	O	O	O	O
-we're	O	O	Premise1Conclusion	O	O	O	O	fact
+were	O	O	Premise1Conclusion	O	O	O	O	fact
 busy	O	O	Premise1Conclusion	O	O	O	O	fact
 replacing	O	O	Premise1Conclusion	O	O	O	O	fact
 the	O	O	Premise1Conclusion	O	O	O	O	fact
@@ -42,7 +42,7 @@ white	O	O	Premise1Conclusion	O	O	pivot	O	fact
 people	O	O	Premise1Conclusion	O	O	O	O	fact
 in	O	O	Premise1Conclusion	O	O	O	O	fact
 u-s-a?	O	O	Premise1Conclusion	O	O	O	O	fact
-who's	O	O	Premise1Conclusion	O	O	O	O	fact
+whos	O	O	Premise1Conclusion	O	O	O	O	fact
 doing	O	O	Premise1Conclusion	O	O	O	O	fact
 this?	O	O	Premise1Conclusion	O	O	O	O	fact
 not	O	O	Premise1Conclusion	O	O	O	O	fact

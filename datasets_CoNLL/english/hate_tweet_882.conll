@@ -1,10 +1,10 @@
-hashtag	O	O	O	O	O	O	O	O
-saveeurope	O	O	O	O	O	O	O	O
-stop	O	O	O	O	O	O	O	O
-the	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-islamic	O	O	O	Collective	O	O	O	O
-invasion	O	O	O	O	Property	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+saveeurope	O	O	Premise1Conclusion	O	O	O	O	policy
+stop	O	O	Premise1Conclusion	O	O	O	O	policy
+the	O	O	Premise1Conclusion	O	O	O	O	policy
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+islamic	O	O	Premise1Conclusion	Collective	O	O	O	policy
+invasion	O	O	Premise1Conclusion	O	Property	O	O	policy
 to	O	Premise2Justification	O	O	O	O	fact	O
 prevent	O	Premise2Justification	O	O	O	O	fact	O
 hashtag	O	Premise2Justification	O	O	O	O	fact	O

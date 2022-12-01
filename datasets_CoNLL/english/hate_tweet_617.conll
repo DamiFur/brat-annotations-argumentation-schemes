@@ -19,8 +19,8 @@ living	O	Premise2Justification	O	O	O	O	fact	O
 on	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 edge	O	Premise2Justification	O	O	O	O	fact	O
-hashtag	O	O	O	O	O	O	O	O
-buildthat	O	O	O	O	O	O	O	O
-wall	O	O	O	O	O	pivot	O	O
-mr	O	O	O	O	O	O	O	O
-president	O	O	O	O	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+buildthat	O	O	Premise1Conclusion	O	O	O	O	policy
+wall	O	O	Premise1Conclusion	O	O	pivot	O	policy
+mr	O	O	Premise1Conclusion	O	O	O	O	policy
+president	O	O	Premise1Conclusion	O	O	O	O	policy

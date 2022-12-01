@@ -4,7 +4,7 @@ to	O	O	Premise1Conclusion	O	O	O	O	policy
 hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
 buildthatwall	O	O	Premise1Conclusion	O	O	O	O	policy
 :	O	O	O	O	O	O	O	O
-it's	O	Premise2Justification	O	O	O	O	fact	O
+its	O	Premise2Justification	O	O	O	O	fact	O
 just	O	Premise2Justification	O	O	O	O	fact	O
 as	O	Premise2Justification	O	O	O	O	fact	O
 easy	O	Premise2Justification	O	O	O	O	fact	O
@@ -35,7 +35,7 @@ a	O	O	O	O	O	O	O	O
 little	O	O	O	O	O	O	O	O
 i	O	O	O	O	O	O	O	O
 just	O	O	O	O	O	O	O	O
-don't	O	O	O	O	O	O	O	O
+dont	O	O	O	O	O	O	O	O
 want	O	O	O	O	O	O	O	O
 to	O	O	O	O	O	O	O	O
 see	O	O	O	O	O	O	O	O

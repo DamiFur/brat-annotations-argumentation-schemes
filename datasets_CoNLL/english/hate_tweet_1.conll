@@ -26,7 +26,7 @@ children	O	Premise2Justification	O	O	O	O	fact	O
 and	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 elderly?	O	Premise2Justification	O	O	O	O	fact	O
-it's	O	O	Premise1Conclusion	O	O	O	O	fact
+its	O	O	Premise1Conclusion	O	O	O	O	fact
 because	O	O	Premise1Conclusion	O	O	O	O	fact
 the	O	O	Premise1Conclusion	O	O	O	O	fact
 majority	O	O	Premise1Conclusion	O	O	O	O	fact

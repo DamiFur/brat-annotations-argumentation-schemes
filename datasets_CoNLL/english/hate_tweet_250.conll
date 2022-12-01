@@ -1,14 +1,14 @@
 if	O	Premise2Justification	O	O	O	O	fact	O
 saudi	O	Premise2Justification	O	O	Property	O	fact	O
 arabia	O	Premise2Justification	O	O	Property	O	fact	O
-doesn't	O	Premise2Justification	O	O	O	O	fact	O
+doesnt	O	Premise2Justification	O	O	O	O	fact	O
 back	O	Premise2Justification	O	O	O	O	fact	O
 off	O	Premise2Justification	O	O	O	O	fact	O
 @user	O	O	Premise1Conclusion	O	O	O	O	fact
 will	O	O	Premise1Conclusion	O	O	O	O	fact
 send	O	O	Premise1Conclusion	O	O	O	O	fact
 in	O	O	Premise1Conclusion	O	O	O	O	fact
-canada's	O	O	Premise1Conclusion	O	O	O	O	fact
+canadas	O	O	Premise1Conclusion	O	O	O	O	fact
 2	O	O	Premise1Conclusion	O	O	O	O	fact
 sea	O	O	Premise1Conclusion	O	O	O	O	fact
 kings	O	O	Premise1Conclusion	O	O	O	O	fact

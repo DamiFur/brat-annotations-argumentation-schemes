@@ -1,7 +1,7 @@
 "	O	O	O	O	O	O	O	O
 hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
 europe	O	O	Premise1Conclusion	O	O	O	O	policy
-you've	O	O	Premise1Conclusion	O	O	O	O	policy
+youve	O	O	Premise1Conclusion	O	O	O	O	policy
 got	O	O	Premise1Conclusion	O	O	O	O	policy
 a	O	O	Premise1Conclusion	O	O	O	O	policy
 problem	O	O	Premise1Conclusion	O	O	O	O	policy
@@ -27,7 +27,7 @@ border	O	Premise2Justification	O	O	O	O	fact	O
 by	O	Premise2Justification	O	O	O	O	fact	O
 hashtag	O	Premise2Justification	O	Collective	O	O	fact	O
 illegalimmigrants	O	Premise2Justification	O	Collective	O	O	fact	O
-it's	O	Premise2Justification	O	O	O	O	fact	O
+its	O	Premise2Justification	O	O	O	O	fact	O
 happening	O	Premise2Justification	O	O	O	O	fact	O
 while	O	Premise2Justification	O	O	O	O	fact	O
 we	O	Premise2Justification	O	O	O	O	fact	O

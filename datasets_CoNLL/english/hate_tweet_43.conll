@@ -15,7 +15,7 @@ in	O	Premise2Justification	Premise1Conclusion	O	O	O	fact	value
 the	O	Premise2Justification	Premise1Conclusion	O	O	O	fact	value
 housing	O	Premise2Justification	Premise1Conclusion	O	O	O	fact	value
 disaster	O	Premise2Justification	Premise1Conclusion	O	O	O	fact	value
-isn't	O	O	Premise1Conclusion	O	O	O	O	value
+isnt	O	O	Premise1Conclusion	O	O	O	O	value
 just	O	O	Premise1Conclusion	O	O	O	O	value
 irresponsible	O	O	Premise1Conclusion	O	O	O	O	value
 its	O	O	Premise1Conclusion	O	O	O	O	value

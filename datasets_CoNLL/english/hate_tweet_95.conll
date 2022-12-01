@@ -9,10 +9,10 @@ country	O	Premise2Justification	O	O	O	O	fact	O
 want	O	Premise2Justification	O	O	Property	O	fact	O
 open	O	Premise2Justification	O	O	Property	pivot	fact	O
 borders	O	Premise2Justification	O	O	Property	pivot	fact	O
-hashtag	O	O	O	O	O	O	O	O
-draintheswamp	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-stopthe	O	O	O	O	O	O	O	O
-invasion	O	O	O	O	O	pivot	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+draintheswamp	O	O	Premise1Conclusion	O	O	O	O	policy
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+stopthe	O	O	Premise1Conclusion	O	O	O	O	policy
+invasion	O	O	Premise1Conclusion	O	O	pivot	O	policy
 https://t	O	O	O	O	O	O	O	O
 co/vyuwzhiafp	O	O	O	O	O	O	O	O

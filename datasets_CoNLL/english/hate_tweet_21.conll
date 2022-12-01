@@ -17,7 +17,7 @@ no	O	O	Premise1Conclusion	O	O	O	O	fact
 the	O	O	Premise1Conclusion	O	O	pivot	O	fact
 german	O	O	Premise1Conclusion	O	O	pivot	O	fact
 government	O	O	Premise1Conclusion	O	O	pivot	O	fact
-isn't	O	O	Premise1Conclusion	O	O	O	O	fact
+isnt	O	O	Premise1Conclusion	O	O	O	O	fact
 paying	O	O	Premise1Conclusion	O	O	O	O	fact
 the	O	O	Premise1Conclusion	O	O	O	O	fact
 german	O	O	Premise1Conclusion	O	O	O	O	fact

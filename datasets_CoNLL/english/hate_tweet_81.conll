@@ -8,14 +8,14 @@ that	O	Premise2Justification	O	O	O	O	fact	O
 to	O	Premise2Justification	O	O	O	O	fact	O
 hollywood	O	Premise2Justification	O	O	O	O	fact	O
 they	O	Premise2Justification	O	O	O	O	fact	O
-wouldn't	O	Premise2Justification	O	O	O	O	fact	O
+wouldnt	O	Premise2Justification	O	O	O	O	fact	O
 house	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 immigrants	O	Premise2Justification	O	O	O	O	fact	O
 or	O	Premise2Justification	O	O	O	O	fact	O
 refugees	O	Premise2Justification	O	O	O	O	fact	O
 from	O	Premise2Justification	O	O	O	O	fact	O
-obama's	O	Premise2Justification	O	O	O	O	fact	O
+obamas	O	Premise2Justification	O	O	O	O	fact	O
 wars	O	Premise2Justification	O	O	O	O	fact	O
 n	O	Premise2Justification	O	O	O	O	fact	O
 dare	O	Premise2Justification	O	O	O	O	fact	O
@@ -35,7 +35,7 @@ paris	O	O	Premise1Conclusion	O	O	O	O	policy
 france	O	O	Premise1Conclusion	O	O	O	O	policy
 lately	O	O	Premise1Conclusion	O	O	O	O	policy
 poor	O	O	Premise1Conclusion	O	O	O	O	policy
-people's	O	O	Premise1Conclusion	O	O	O	O	policy
+peoples	O	O	Premise1Conclusion	O	O	O	O	policy
 campaign	O	O	Premise1Conclusion	O	O	O	O	policy
 should	O	O	Premise1Conclusion	O	O	O	O	policy
 get	O	O	Premise1Conclusion	O	O	O	O	policy

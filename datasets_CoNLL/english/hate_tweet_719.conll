@@ -18,10 +18,10 @@ to	O	Premise2Justification	O	O	O	O	fact	O
 iran	O	Premise2Justification	O	O	O	O	fact	O
 on	O	Premise2Justification	O	O	O	O	fact	O
 vacation	O	Premise2Justification	O	O	O	O	fact	O
-y'know	O	O	Premise1Conclusion	O	O	O	O	fact
+yknow	O	O	Premise1Conclusion	O	O	O	O	fact
 the	O	O	Premise1Conclusion	O	O	O	O	fact
 place	O	O	Premise1Conclusion	O	O	O	O	fact
-they're	O	O	Premise1Conclusion	O	O	O	O	fact
+theyre	O	O	Premise1Conclusion	O	O	O	O	fact
 fleeing	O	O	Premise1Conclusion	O	O	pivot	O	fact
 https://t	O	O	O	O	O	O	O	O
 co/qrytsookio	O	O	O	O	O	O	O	O

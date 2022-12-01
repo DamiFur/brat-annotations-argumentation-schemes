@@ -4,7 +4,7 @@ you	O	Premise2Justification	O	O	O	O	fact	O
 lock	O	Premise2Justification	O	O	O	O	fact	O
 your	O	Premise2Justification	O	O	O	O	fact	O
 door?	O	Premise2Justification	O	O	O	O	fact	O
-it's	O	O	Premise1Conclusion	O	O	O	O	policy
+its	O	O	Premise1Conclusion	O	O	O	O	policy
 the	O	O	Premise1Conclusion	O	O	O	O	policy
 same	O	O	Premise1Conclusion	O	O	O	O	policy
 reason	O	O	Premise1Conclusion	O	O	O	O	policy

@@ -1,9 +1,9 @@
 "if	O	O	O	O	O	O	O	O
-it's	O	O	O	O	O	O	O	O
+its	O	O	O	O	O	O	O	O
 not	O	O	O	O	O	O	O	O
 every	O	O	O	O	O	O	O	O
 day	O	O	O	O	O	O	O	O
-it's	O	O	O	O	O	O	O	O
+its	O	O	O	O	O	O	O	O
 every	O	O	O	O	O	O	O	O
 2nd	O	O	O	O	O	O	O	O
 day	O	O	O	O	O	O	O	O
@@ -29,7 +29,7 @@ stats	O	Premise2Justification	O	O	Property	O	fact	O
 here	O	Premise2Justification	O	O	Property	O	fact	O
 are	O	Premise2Justification	O	O	Property	O	fact	O
 disproportionate	O	Premise2Justification	O	O	Property	O	fact	O
-they've	O	Premise2Justification	O	O	O	O	fact	O
+theyve	O	Premise2Justification	O	O	O	O	fact	O
 had	O	Premise2Justification	O	O	O	O	fact	O
 more	O	Premise2Justification	O	O	O	O	fact	O
 than	O	Premise2Justification	O	O	O	O	fact	O
@@ -40,7 +40,7 @@ integrate	O	Premise2Justification	O	O	O	pivot	fact	O
 and	O	Premise2Justification	O	O	O	O	fact	O
 it	O	Premise2Justification	O	O	O	O	fact	O
 clearly	O	Premise2Justification	O	O	O	O	fact	O
-isn't	O	Premise2Justification	O	O	O	O	fact	O
+isnt	O	Premise2Justification	O	O	O	O	fact	O
 safe	O	Premise2Justification	O	O	O	O	fact	O
 for	O	Premise2Justification	O	O	O	O	fact	O
 australians	O	Premise2Justification	O	O	O	O	fact	O

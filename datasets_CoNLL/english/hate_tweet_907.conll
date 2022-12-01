@@ -37,6 +37,6 @@ it	O	Premise2Justification	O	O	O	O	fact	O
 they	O	Premise2Justification	O	O	O	O	fact	O
 never	O	Premise2Justification	O	O	O	O	fact	O
 return	O	Premise2Justification	O	O	O	O	fact	O
-hashtag	O	O	O	O	O	O	O	O
-stop	O	O	O	O	O	O	O	O
-immigration	O	O	O	Collective	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	value
+stop	O	O	Premise1Conclusion	O	O	O	O	value
+immigration	O	O	Premise1Conclusion	Collective	O	O	O	value

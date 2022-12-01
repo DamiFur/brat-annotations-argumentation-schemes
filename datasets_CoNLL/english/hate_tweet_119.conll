@@ -22,7 +22,7 @@ away	O	Premise2Justification	O	O	Property	O	fact	O
 to	O	Premise2Justification	O	O	Property	O	fact	O
 people	O	Premise2Justification	O	O	Property	O	fact	O
 who	O	Premise2Justification	O	O	Property	O	fact	O
-don't	O	Premise2Justification	O	O	Property	O	fact	O
+dont	O	Premise2Justification	O	O	Property	O	fact	O
 want	O	Premise2Justification	O	O	Property	O	fact	O
 it	O	Premise2Justification	O	O	Property	O	fact	O
 to	O	Premise2Justification	O	O	Property	O	fact	O
@@ -34,7 +34,7 @@ was	O	Premise2Justification	O	O	Property	O	fact	O
 by	O	Premise2Justification	O	O	O	O	fact	O
 people	O	Premise2Justification	O	O	O	O	fact	O
 who	O	Premise2Justification	O	O	O	O	fact	O
-didn't	O	Premise2Justification	O	O	O	O	fact	O
+didnt	O	Premise2Justification	O	O	O	O	fact	O
 help	O	Premise2Justification	O	O	O	O	fact	O
 to	O	Premise2Justification	O	O	O	O	fact	O
 make	O	Premise2Justification	O	O	O	O	fact	O

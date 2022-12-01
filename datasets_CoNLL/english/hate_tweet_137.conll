@@ -28,7 +28,7 @@ people	O	O	Premise1Conclusion	O	O	pivot	O	fact
 to	O	O	Premise1Conclusion	O	O	pivot	O	fact
 come	O	O	Premise1Conclusion	O	O	pivot	O	fact
 it	O	O	Premise1Conclusion	O	O	O	O	fact
-won't	O	O	Premise1Conclusion	O	O	O	O	fact
+wont	O	O	Premise1Conclusion	O	O	O	O	fact
 end	O	O	Premise1Conclusion	O	O	O	O	fact
 well	O	O	Premise1Conclusion	O	O	O	O	fact
 immigration	O	O	Premise1Conclusion	Collective	O	O	O	fact

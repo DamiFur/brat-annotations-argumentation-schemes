@@ -1,9 +1,9 @@
-hashtag	O	O	O	O	O	O	O	O
-stoptheinvasion	O	O	O	O	O	O	O	O
-gaming	O	O	O	O	O	O	O	O
-the	O	O	O	O	O	O	O	O
-system	O	O	O	O	O	pivot	O	O
-:	O	O	O	O	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+stoptheinvasion	O	O	Premise1Conclusion	O	O	O	O	policy
+gaming	O	O	Premise1Conclusion	O	O	O	O	policy
+the	O	O	Premise1Conclusion	O	O	O	O	policy
+system	O	O	Premise1Conclusion	O	O	pivot	O	policy
+:	O	O	Premise1Conclusion	O	O	O	O	policy
 late-term	O	Premise2Justification	O	O	O	O	fact	O
 pregant	O	Premise2Justification	O	O	O	O	fact	O
 women	O	Premise2Justification	O	O	O	O	fact	O

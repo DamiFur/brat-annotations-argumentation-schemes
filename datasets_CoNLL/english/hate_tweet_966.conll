@@ -35,7 +35,7 @@ hashtag	O	Premise2Justification	O	O	O	O	fact	O
 illegally	O	Premise2Justification	O	O	O	O	fact	O
 so	O	O	Premise1Conclusion	O	O	O	O	policy
 they	O	O	Premise1Conclusion	O	O	O	O	policy
-aren't	O	O	Premise1Conclusion	O	O	O	O	policy
+arent	O	O	Premise1Conclusion	O	O	O	O	policy
 eligible	O	O	Premise1Conclusion	O	O	O	O	policy
 to	O	O	Premise1Conclusion	O	O	pivot	O	policy
 stay	O	O	Premise1Conclusion	O	O	pivot	O	policy

@@ -1,10 +1,10 @@
-where's	O	O	Premise1Conclusion	O	O	O	O	fact
+wheres	O	O	Premise1Conclusion	O	O	O	O	fact
 us	O	O	Premise1Conclusion	O	O	O	O	fact
 taxpayer	O	O	Premise1Conclusion	O	O	O	O	fact
 $s	O	O	Premise1Conclusion	O	O	O	O	fact
 going	O	O	Premise1Conclusion	O	O	O	O	fact
 -	O	O	O	O	O	O	O	O
-here's	O	Premise2Justification	O	O	O	O	fact	O
+heres	O	Premise2Justification	O	O	O	O	fact	O
 one	O	Premise2Justification	O	O	O	O	fact	O
 place	O	Premise2Justification	O	O	O	O	fact	O
 cost	O	Premise2Justification	O	O	Property	O	fact	O

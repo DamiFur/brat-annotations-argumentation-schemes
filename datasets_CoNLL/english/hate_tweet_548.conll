@@ -7,7 +7,7 @@ for	O	O	Premise1Conclusion	O	O	O	O	policy
 sealing	O	O	Premise1Conclusion	O	O	O	O	policy
 borders	O	O	Premise1Conclusion	O	O	pivot	O	policy
 with	O	O	Premise1Conclusion	O	O	O	O	policy
-b'desh	O	O	Premise1Conclusion	O	O	O	O	policy
+bdesh	O	O	Premise1Conclusion	O	O	O	O	policy
 to	O	Premise2Justification	O	O	O	O	fact	O
 prevent	O	Premise2Justification	O	O	O	O	fact	O
 rampant	O	Premise2Justification	O	O	Property	O	fact	O

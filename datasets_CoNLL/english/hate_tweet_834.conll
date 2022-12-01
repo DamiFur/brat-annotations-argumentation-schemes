@@ -17,9 +17,9 @@ ancestors	O	Premise2Justification	O	O	O	O	fact	O
 but	O	Premise2Justification	O	O	O	O	fact	O
 if	O	Premise2Justification	O	O	O	O	fact	O
 they	O	Premise2Justification	O	O	Property	O	fact	O
-don't	O	Premise2Justification	O	O	Property	O	fact	O
+dont	O	Premise2Justification	O	O	Property	O	fact	O
 assimilate	O	Premise2Justification	O	O	Property	O	fact	O
-that's	O	Premise2Justification	O	O	O	O	fact	O
+thats	O	Premise2Justification	O	O	O	O	fact	O
 perfectly	O	Premise2Justification	O	O	O	O	fact	O
 fine	O	Premise2Justification	O	O	O	O	fact	O
 this	O	O	Premise1Conclusion	O	O	O	O	fact

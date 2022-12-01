@@ -1,6 +1,6 @@
 hashtag	O	O	O	O	O	O	O	O
 germany	O	O	Premise1Conclusion	O	O	O	O	fact
-can't	O	O	Premise1Conclusion	O	O	O	O	fact
+cant	O	O	Premise1Conclusion	O	O	O	O	fact
 even	O	O	Premise1Conclusion	O	O	O	O	fact
 afford	O	O	Premise1Conclusion	O	O	pivot	O	fact
 the	O	O	Premise1Conclusion	O	O	O	O	fact

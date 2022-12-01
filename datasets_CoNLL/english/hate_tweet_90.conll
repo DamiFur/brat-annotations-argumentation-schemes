@@ -24,11 +24,11 @@ left	O	Premise2Justification	O	O	O	O	fact	O
 all	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 time?	O	Premise2Justification	O	O	O	O	fact	O
-hashtag	O	O	O	O	O	O	O	O
-buildthewall	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-send	O	O	O	O	O	O	O	O
-them	O	O	O	O	O	pivot	O	O
-back	O	O	O	O	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+buildthewall	O	O	Premise1Conclusion	O	O	O	O	policy
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+send	O	O	Premise1Conclusion	O	O	O	O	policy
+them	O	O	Premise1Conclusion	O	O	pivot	O	policy
+back	O	O	Premise1Conclusion	O	O	O	O	policy
 https://t	O	O	O	O	O	O	O	O
 co/nwfabo87r8	O	O	O	O	O	O	O	O

@@ -24,9 +24,9 @@ hashtag	O	O	O	O	O	O	O	O
 cpc	O	O	O	O	O	O	O	O
 hashtag	O	O	O	O	O	O	O	O
 lpc	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-nomore	O	O	O	O	O	O	O	O
-refugees	O	O	O	O	O	pivot	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+nomore	O	O	Premise1Conclusion	O	O	O	O	policy
+refugees	O	O	Premise1Conclusion	O	O	pivot	O	policy
 hashtag	O	O	O	O	O	O	O	O
 refugees	O	O	O	O	O	pivot	O	O
 hashtag	O	O	O	O	O	O	O	O

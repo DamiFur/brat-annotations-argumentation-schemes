@@ -45,8 +45,8 @@ english	O	Premise2Justification	O	O	O	O	fact	O
 well	O	Premise2Justification	O	O	O	O	fact	O
 parents	O	Premise2Justification	O	O	O	O	fact	O
 job	O	Premise2Justification	O	O	O	O	fact	O
-hashtag	O	O	O	O	O	O	O	O
-stop	O	O	O	O	O	O	O	O
-immigration	O	O	O	Collective	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+stop	O	O	Premise1Conclusion	O	O	O	O	policy
+immigration	O	O	Premise1Conclusion	Collective	O	O	O	policy
 https://t	O	O	O	O	O	O	O	O
 co/vi6xxhik1b	O	O	O	O	O	O	O	O

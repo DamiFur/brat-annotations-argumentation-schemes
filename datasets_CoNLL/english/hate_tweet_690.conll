@@ -10,9 +10,9 @@ people	O	Premise2Justification	O	O	Property	O	fact	O
 over	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 border?	O	Premise2Justification	O	O	O	O	fact	O
-hashtag	O	O	O	O	O	O	O	O
-no	O	O	O	O	O	O	O	O
-daca	O	O	O	Collective	O	pivot	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+no	O	O	Premise1Conclusion	O	O	O	O	policy
+daca	O	O	Premise1Conclusion	Collective	O	pivot	O	policy
 hashtag	O	O	O	O	O	O	O	O
 nohr392	O	O	O	O	O	O	O	O
 hashtag	O	O	O	O	O	O	O	O

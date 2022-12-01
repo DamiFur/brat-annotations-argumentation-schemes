@@ -21,7 +21,7 @@ better	O	O	Premise1Conclusion	O	Property	O	O	fact
 life	O	O	Premise1Conclusion	O	Property	O	O	fact
 for	O	O	Premise1Conclusion	O	O	O	O	fact
 them	O	O	Premise1Conclusion	O	O	pivot	O	fact
-doesn't	O	O	Premise1Conclusion	O	O	O	O	fact
+doesnt	O	O	Premise1Conclusion	O	O	O	O	fact
 mean	O	O	Premise1Conclusion	O	O	O	O	fact
 1	O	O	Premise1Conclusion	O	O	O	O	fact
 4	O	O	Premise1Conclusion	O	O	O	O	fact

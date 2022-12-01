@@ -1,4 +1,4 @@
-'let	O	Premise2Justification	O	O	O	O	fact	O
+let	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 exodus	O	Premise2Justification	O	O	O	O	fact	O
 begin	O	Premise2Justification	O	O	O	O	fact	O
@@ -10,11 +10,11 @@ states	O	Premise2Justification	O	O	O	O	fact	O
 it	O	Premise2Justification	O	O	O	O	fact	O
 is	O	Premise2Justification	O	O	O	O	fact	O
 a	O	Premise2Justification	O	O	O	O	fact	O
-disaster'	O	Premise2Justification	O	O	O	O	fact	O
+disaster	O	Premise2Justification	O	O	O	O	fact	O
 (the	O	Premise2Justification	O	O	O	O	fact	O
-'blue	O	Premise2Justification	O	O	O	O	fact	O
+blue	O	Premise2Justification	O	O	O	O	fact	O
 state	O	Premise2Justification	O	O	O	O	fact	O
-refugee'	O	Premise2Justification	O	O	O	O	fact	O
+refugee	O	Premise2Justification	O	O	O	O	fact	O
 exodus	O	Premise2Justification	O	O	O	O	fact	O
 began	O	Premise2Justification	O	O	O	O	fact	O
 a	O	Premise2Justification	O	O	O	O	fact	O

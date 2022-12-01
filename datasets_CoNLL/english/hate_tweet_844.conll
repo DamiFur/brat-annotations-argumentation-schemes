@@ -19,7 +19,7 @@ get	O	Premise2Justification	O	O	O	O	fact	O
 third	O	Premise2Justification	O	Collective	O	O	fact	O
 world	O	Premise2Justification	O	Collective	O	O	fact	O
 problems	O	Premise2Justification	O	O	Property	O	fact	O
-it's	O	O	Premise1Conclusion	O	O	O	O	fact
+its	O	O	Premise1Conclusion	O	O	O	O	fact
 not	O	O	Premise1Conclusion	O	O	O	O	fact
 that	O	O	Premise1Conclusion	O	O	O	O	fact
 hard	O	O	Premise1Conclusion	O	O	O	O	fact

@@ -12,11 +12,11 @@ via	O	O	O	O	O	O	O	O
 @user	O	O	O	O	O	O	O	O
 hashtag	O	O	O	O	O	O	O	O
 noamnesty	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-deport	O	O	O	O	O	O	O	O
-illegals	O	O	O	O	Property	pivot	O	O
-hashtag	O	O	O	O	O	O	O	O
-buildthatwall	O	O	O	O	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+deport	O	O	Premise1Conclusion	O	O	O	O	policy
+illegals	O	O	Premise1Conclusion	O	Property	pivot	O	policy
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+buildthatwall	O	O	Premise1Conclusion	O	O	O	O	policy
 hashtag	O	O	O	O	O	O	O	O
 trump	O	O	O	O	O	O	O	O
 hashtag	O	O	O	O	O	O	O	O

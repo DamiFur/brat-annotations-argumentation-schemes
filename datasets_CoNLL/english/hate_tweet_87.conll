@@ -10,8 +10,8 @@ phucking	O	Premise2Justification	O	O	O	O	policy	O
 people	O	Premise2Justification	O	O	O	O	policy	O
 hashtag	O	O	O	O	O	O	O	O
 scum	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-nomore	O	O	O	O	O	O	O	O
-refugees	O	O	O	Collective	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+nomore	O	O	Premise1Conclusion	O	O	O	O	policy
+refugees	O	O	Premise1Conclusion	Collective	O	O	O	policy
 https://t	O	O	O	O	O	O	O	O
 co/xlitwtpmj5	O	O	O	O	O	O	O	O

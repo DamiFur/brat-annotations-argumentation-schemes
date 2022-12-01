@@ -1,7 +1,7 @@
 @user	O	O	O	O	O	O	O	O
 sir	O	O	Premise1Conclusion	O	O	O	O	policy
 pl	O	O	Premise1Conclusion	O	O	O	O	policy
-don't	O	O	Premise1Conclusion	O	O	O	O	policy
+dont	O	O	Premise1Conclusion	O	O	O	O	policy
 bow	O	O	Premise1Conclusion	O	O	O	O	policy
 to	O	O	Premise1Conclusion	O	O	O	O	policy
 mad	O	O	Premise1Conclusion	O	O	O	O	policy
@@ -31,7 +31,7 @@ muslim	O	Premise2Justification	O	O	O	O	fact	O
 illegal	O	Premise2Justification	O	O	O	O	fact	O
 migrants	O	Premise2Justification	O	O	O	O	fact	O
 pl	O	O	Premise1Conclusion	O	O	O	O	policy
-don't	O	O	Premise1Conclusion	O	O	O	O	policy
+dont	O	O	Premise1Conclusion	O	O	O	O	policy
 abt	O	O	Premise1Conclusion	O	O	O	O	policy
 consequences	O	O	Premise1Conclusion	O	O	O	O	policy
 entire	O	Premise2Justification	O	O	O	O	fact	O

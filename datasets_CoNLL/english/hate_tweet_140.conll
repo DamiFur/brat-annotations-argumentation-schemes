@@ -13,7 +13,7 @@ into	O	O	Premise1Conclusion	O	O	O	O	policy
 the	O	O	Premise1Conclusion	O	O	O	O	policy
 us	O	O	Premise1Conclusion	O	O	O	O	policy
 i	O	Premise2Justification	O	O	O	O	value	O
-don't	O	Premise2Justification	O	O	O	O	value	O
+dont	O	Premise2Justification	O	O	O	O	value	O
 mean	O	Premise2Justification	O	O	O	O	value	O
 to	O	Premise2Justification	O	O	O	O	value	O
 protect	O	Premise2Justification	O	O	O	O	value	O

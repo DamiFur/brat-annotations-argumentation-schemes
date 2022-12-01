@@ -4,7 +4,7 @@ decide	O	O	Premise1Conclusion	O	O	O	O	fact
 who	O	O	Premise1Conclusion	O	O	O	O	fact
 enters	O	O	Premise1Conclusion	O	O	O	O	fact
 our	O	O	Premise1Conclusion	O	O	O	O	fact
-countries'	O	O	Premise1Conclusion	O	O	O	O	fact
+countries	O	O	Premise1Conclusion	O	O	O	O	fact
 hungary	O	Premise2Justification	O	O	O	O	fact	O
 and	O	Premise2Justification	O	O	O	O	fact	O
 poland	O	Premise2Justification	O	O	O	O	fact	O

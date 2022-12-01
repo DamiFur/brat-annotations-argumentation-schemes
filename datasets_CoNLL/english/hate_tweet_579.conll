@@ -14,7 +14,7 @@ paid	O	O	Premise1Conclusion	O	O	O	O	fact
 for	O	O	Premise1Conclusion	O	O	O	O	fact
 it	O	O	Premise1Conclusion	O	O	O	O	fact
 priceless	O	O	Premise1Conclusion	O	O	O	O	fact
-o'puppet	O	Premise2Justification	O	O	O	O	fact	O
+opuppet	O	Premise2Justification	O	O	O	O	fact	O
 on	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 other	O	Premise2Justification	O	O	O	O	fact	O

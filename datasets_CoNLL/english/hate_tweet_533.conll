@@ -1,5 +1,5 @@
 @user	O	O	Premise1Conclusion	O	O	O	O	fact
-there's	O	O	Premise1Conclusion	O	O	O	O	fact
+theres	O	O	Premise1Conclusion	O	O	O	O	fact
 an	O	O	Premise1Conclusion	O	O	O	O	fact
 agenda	O	O	Premise1Conclusion	O	O	O	O	fact
 jprdan:	O	O	Premise1Conclusion	O	O	O	O	fact
@@ -8,7 +8,7 @@ genocide	O	O	Premise1Conclusion	O	Property	O	O	fact
 is	O	O	Premise1Conclusion	O	O	O	O	fact
 a	O	O	Premise1Conclusion	O	O	O	O	fact
 crime	O	O	Premise1Conclusion	O	O	O	O	fact
-'eu	O	Premise2Justification	O	O	O	O	fact	O
+eu	O	Premise2Justification	O	O	O	O	fact	O
 funded	O	Premise2Justification	O	O	O	O	fact	O
 report	O	Premise2Justification	O	O	O	O	fact	O
 tells	O	Premise2Justification	O	O	O	O	fact	O
@@ -20,7 +20,7 @@ negative	O	Premise2Justification	O	O	O	O	fact	O
 articles	O	Premise2Justification	O	O	O	O	fact	O
 on	O	Premise2Justification	O	O	O	O	fact	O
 migrant	O	Premise2Justification	O	Collective	O	O	fact	O
-crisis'	O	Premise2Justification	O	O	O	O	fact	O
+crisis	O	Premise2Justification	O	O	O	O	fact	O
 "it	O	Premise2Justification	O	O	O	O	fact	O
 even	O	Premise2Justification	O	O	O	O	fact	O
 urges	O	Premise2Justification	O	O	O	O	fact	O
@@ -32,7 +32,7 @@ to	O	Premise2Justification	O	O	O	O	fact	O
 the	O	Premise2Justification	O	O	O	O	fact	O
 authorities	O	Premise2Justification	O	O	O	O	fact	O
 for	O	Premise2Justification	O	O	O	O	fact	O
-'hate	O	Premise2Justification	O	O	O	O	fact	O
+hate	O	Premise2Justification	O	O	O	O	fact	O
 speech	O	Premise2Justification	O	O	O	O	fact	O
-crimes'	O	Premise2Justification	O	O	O	O	fact	O
+crimes	O	Premise2Justification	O	O	O	O	fact	O
 "https://t	O	O	O	O	O	O	O	O

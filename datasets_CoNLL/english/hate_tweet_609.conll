@@ -8,8 +8,8 @@ allow	O	Premise2Justification	O	O	O	O	fact	O
 employees	O	Premise2Justification	O	O	O	O	fact	O
 to	O	Premise2Justification	O	O	O	O	fact	O
 wear	O	Premise2Justification	O	O	O	O	fact	O
-'abolish	O	Premise2Justification	O	O	O	O	fact	O
-ice'	O	Premise2Justification	O	O	O	O	fact	O
+abolish	O	Premise2Justification	O	O	O	O	fact	O
+ice	O	Premise2Justification	O	O	O	O	fact	O
 pins	O	Premise2Justification	O	O	O	O	fact	O
 |	O	O	O	O	O	O	O	O
 breitbart	O	O	O	O	O	O	O	O

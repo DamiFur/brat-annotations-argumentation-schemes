@@ -7,7 +7,7 @@ of	O	O	Premise1Conclusion	O	O	O	O	policy
 there	O	O	Premise1Conclusion	O	O	O	O	policy
 if	O	Premise2Justification	O	O	O	O	fact	O
 we	O	Premise2Justification	O	O	O	O	fact	O
-can't	O	Premise2Justification	O	O	O	O	fact	O
+cant	O	Premise2Justification	O	O	O	O	fact	O
 due	O	Premise2Justification	O	O	O	O	fact	O
 to	O	Premise2Justification	O	O	O	O	fact	O
 current	O	Premise2Justification	O	O	O	O	fact	O

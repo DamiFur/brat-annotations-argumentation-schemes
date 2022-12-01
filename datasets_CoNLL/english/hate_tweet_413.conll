@@ -17,7 +17,7 @@ victims	O	Premise2Justification	O	O	O	O	fact	O
 over	O	Premise2Justification	O	O	O	O	fact	O
 there	O	Premise2Justification	O	O	O	O	fact	O
 political	O	O	Premise1Conclusion	O	O	O	O	fact
-islamist's	O	O	Premise1Conclusion	Collective	O	O	O	fact
+islamists	O	O	Premise1Conclusion	Collective	O	O	O	fact
 are	O	O	Premise1Conclusion	O	O	O	O	fact
 very	O	O	Premise1Conclusion	O	O	O	O	fact
 dangerous	O	O	Premise1Conclusion	O	O	pivot	O	fact

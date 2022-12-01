@@ -13,7 +13,7 @@ reputation	O	Premise2Justification	O	O	O	O	fact	O
 you	O	Premise2Justification	O	O	O	O	fact	O
 fools	O	Premise2Justification	O	O	O	O	fact	O
 it	O	Premise2Justification	O	O	O	O	fact	O
-wasn't	O	Premise2Justification	O	O	O	O	fact	O
+wasnt	O	Premise2Justification	O	O	O	O	fact	O
 mail	O	Premise2Justification	O	O	O	O	fact	O
 order	O	Premise2Justification	O	O	O	O	fact	O
 or	O	Premise2Justification	O	O	O	O	fact	O
@@ -41,5 +41,5 @@ accomplishments	O	O	Premise1Conclusion	O	O	O	O	fact
 speak	O	O	Premise1Conclusion	O	O	O	O	fact
 mega	O	O	Premise1Conclusion	O	O	O	O	fact
 he	O	O	Premise1Conclusion	O	O	O	O	fact
-doesn't	O	O	Premise1Conclusion	O	O	O	O	fact
+doesnt	O	O	Premise1Conclusion	O	O	O	O	fact
 blow	O	O	Premise1Conclusion	O	O	O	O	fact

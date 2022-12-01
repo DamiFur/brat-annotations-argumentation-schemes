@@ -29,11 +29,11 @@ the	O	Premise2Justification	O	O	O	O	fact	O
 trespassers	O	Premise2Justification	O	O	O	O	fact	O
 from	O	Premise2Justification	O	O	O	O	fact	O
 mexico	O	Premise2Justification	O	O	O	O	fact	O
-hashtag	O	O	O	O	O	O	O	O
-border	O	O	O	O	O	pivot	O	O
-patrol	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-buildthatwall	O	O	O	O	O	O	O	O
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+border	O	O	Premise1Conclusion	O	O	pivot	O	policy
+patrol	O	O	Premise1Conclusion	O	O	O	O	policy
+hashtag	O	O	Premise1Conclusion	O	O	O	O	policy
+buildthatwall	O	O	Premise1Conclusion	O	O	O	O	policy
 hashtag	O	O	O	O	O	O	O	O
 wwg1wga	O	O	O	O	O	O	O	O
 @user	O	O	O	O	O	O	O	O

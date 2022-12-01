@@ -22,10 +22,10 @@ hashtag	O	O	O	O	O	O	O	O
 trump	O	O	O	O	O	O	O	O
 hashtag	O	O	O	O	O	O	O	O
 maga	O	O	O	O	O	O	O	O
-hashtag	O	O	O	O	O	O	O	O
-send	O	O	O	O	O	O	O	O
-them	O	O	O	O	O	pivot	O	O
-home	O	O	O	O	O	O	O	O
+hashtag	O	Premise2Justification	O	O	O	O	policy	O
+send	O	Premise2Justification	O	O	O	O	policy	O
+them	O	Premise2Justification	O	O	O	pivot	policy	O
+home	O	Premise2Justification	O	O	O	O	policy	O
 https://t	O	O	O	O	O	O	O	O
 co/3u6tddw7nm	O	O	O	O	O	O	O	O
 via	O	O	O	O	O	O	O	O

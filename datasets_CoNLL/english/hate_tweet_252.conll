@@ -1,7 +1,7 @@
 excellent	O	Premise2Justification	O	O	O	pivot	policy	O
 since	O	Premise2Justification	O	O	O	O	policy	O
 we	O	Premise2Justification	O	O	O	O	policy	O
-can't	O	Premise2Justification	O	O	O	O	policy	O
+cant	O	Premise2Justification	O	O	O	O	policy	O
 separate	O	Premise2Justification	O	O	O	O	policy	O
 families	O	Premise2Justification	O	O	O	O	policy	O
 lock	O	Premise2Justification	O	O	O	O	policy	O
@@ -15,7 +15,7 @@ judge	O	Premise2Justification	O	O	O	O	policy	O
 can	O	Premise2Justification	O	O	O	O	policy	O
 deport	O	Premise2Justification	O	O	O	O	policy	O
 them	O	Premise2Justification	O	O	O	O	policy	O
-i'm	O	O	Premise1Conclusion	O	O	pivot	O	value
+im	O	O	Premise1Conclusion	O	O	pivot	O	value
 all	O	O	Premise1Conclusion	O	O	pivot	O	value
 in	O	O	Premise1Conclusion	O	O	pivot	O	value
 thank	O	O	Premise1Conclusion	O	O	O	O	value

@@ -220,6 +220,8 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
         return datasets
 
     ans = {"tokens": all_tweets, "labels": all_labels}
+    print("LABEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL")
+    print(all_labels)
     return Dataset.from_dict(ans)
 
 

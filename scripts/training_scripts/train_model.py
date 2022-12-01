@@ -1,7 +1,7 @@
 import glob
 from transformers import AutoTokenizer
 from datasets import Dataset
-from transformers import DataCollatorForTokenClassification
+from transformers import DataCollatorForTokenClassification, DataCollatorWithPadding
 from transformers import AutoModelForTokenClassification, AutoModelForSequenceClassification
 from transformers import TrainingArguments
 from transformers import Trainer
@@ -396,10 +396,11 @@ for combination in dataset_combinations:
     for cmpnent in components:
         component = cmpnent
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, add_prefix_space=True)
-        data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
         if not type_of_premise:
+            data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
             model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=2)
         else:
+            data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=3)
         model.to(device)
         train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise)

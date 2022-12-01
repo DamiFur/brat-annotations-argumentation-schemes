@@ -37,6 +37,7 @@ components = args.components
 component = components[0]
 add_annotator_info = args.add_annotator_info
 type_of_premise = args.type_of_premise
+quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
 
 def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
@@ -183,17 +184,13 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 else:
                     if component == "Premise2Justification":
                         if line_splitted[2] != "O":
-                            labels = line_splitted[7]
+                            labels = quadrant_types_to_label[line_splitted[7]]
                     elif component == "Premise1Conclusion":
                         if line_splitted[3] != "O":
-                            labels = line_splitted[8]
+                            labels = quadrant_types_to_label[line_splitted[8]]
             
             if not is_argumentative:
                 continue
-            if isTypeOfPremise:
-                print(labels)
-                assert(labels == "Fact" or labels == "Policy" or labels == "Value")
-
             if add_annotator_info:
                 to_add = []
                 if component == "Collective":

@@ -8,8 +8,8 @@ como	O	O	Premise1Conclusion	O	O	O	O	fact
 la	O	O	Premise1Conclusion	O	O	O	O	fact
 luz	O	O	Premise1Conclusion	O	O	O	O	fact
 de	O	O	Premise1Conclusion	O	O	O	O	fact
-'check	O	O	Premise1Conclusion	O	O	O	O	fact
-engine'	O	O	Premise1Conclusion	O	O	O	O	fact
+check	O	O	Premise1Conclusion	O	O	O	O	fact
+engine	O	O	Premise1Conclusion	O	O	O	O	fact
 no	O	Premise2Justification	O	O	O	O	fact	O
 tienes	O	Premise2Justification	O	O	O	O	fact	O
 ni	O	Premise2Justification	O	O	O	O	fact	O

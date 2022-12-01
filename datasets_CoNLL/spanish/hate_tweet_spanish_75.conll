@@ -13,9 +13,8 @@ las	O	O	Premise1Conclusion	O	O	O	O	fact
 hay	O	O	Premise1Conclusion	O	O	O	O	fact
 y	O	O	Premise1Conclusion	O	O	O	O	fact
 graves	O	O	Premise1Conclusion	O	O	O	O	fact
-""	O	O	O	O	O	O	O	O
-sin	O	Premise2Justification	O	O	O	O	fact	O
-papeles""	O	Premise2Justification	O	O	O	O	fact	O
+""sin	O	Premise2Justification	O	O	Property	O	fact	O
+papeles""	O	Premise2Justification	O	O	Property	O	fact	O
 una	O	Premise2Justification	O	O	O	O	fact	O
 joven	O	Premise2Justification	O	O	O	O	fact	O
 sufre	O	Premise2Justification	O	O	O	O	fact	O

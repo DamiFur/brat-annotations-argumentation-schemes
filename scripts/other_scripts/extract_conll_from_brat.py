@@ -81,7 +81,7 @@ def labelComponentsFromAllExamples(filePatterns):
                         type_of_premises[name_of_premises[info_splitted[1]]] = info_splitted[2]
 
                     if current_component.startswith("Property") or current_component.startswith("Collective") or current_component.startswith("pivot") or current_component.startswith("Premise1Conclusion") or current_component.startswith("Premise2Justification"):
-                        new_component = preprocessing.preprocess_tweet(delete_unwanted_chars(ann[2].lstrip()), lang='en', user_token="@user", url_token="link", hashtag_token="hashtag")
+                        new_component = replaceSpace(preprocessing.preprocess_tweet(delete_unwanted_chars(ann[2].lstrip()), lang='en', user_token="@user", url_token="link", hashtag_token="hashtag"))
                         for cmpnt in COMPONENTS:
                             new_component_list_aux = []
                             if cmpnt not in component_texts:
@@ -147,7 +147,7 @@ def labelComponentsFromAllExamples(filePatterns):
 
 
 
-filePatterns = ["./data/HateEval/partition_{}/hate_tweet_*.ann".format(partition_num) for partition_num in range(1, 11)]
+filePatterns = ["./data/HateEval/partition_spanish/hate_tweet_*.ann"]
 
 allFiles = []
 for pattern in filePatterns:

@@ -1,10 +1,10 @@
-por	O	O	O	O	O	O	O	O
-las	O	O	O	O	O	O	O	O
-mujeres	O	O	O	Collective	O	O	O	O
-tienen	O	O	O	O	Property	O	O	O
-cuatro	O	O	O	O	Property	O	O	O
-neuronas	O	O	O	O	Property	O	O	O
-???	O	O	O	O	O	O	O	O
+por	O	O	Premise1Conclusion	O	O	O	O	fact
+las	O	O	Premise1Conclusion	O	O	O	O	fact
+mujeres	O	O	Premise1Conclusion	Collective	O	O	O	fact
+tienen	O	O	Premise1Conclusion	O	Property	O	O	fact
+cuatro	O	O	Premise1Conclusion	O	Property	O	O	fact
+neuronas	O	O	Premise1Conclusion	O	Property	O	O	fact
+???	O	O	Premise1Conclusion	O	O	O	O	fact
 una	O	Premise2Justification	O	O	O	O	fact	O
 para	O	Premise2Justification	O	O	O	O	fact	O
 cada	O	Premise2Justification	O	O	O	O	fact	O

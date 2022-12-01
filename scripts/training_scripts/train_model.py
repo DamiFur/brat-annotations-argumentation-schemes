@@ -223,7 +223,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
 
 def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=False, one_label_per_example=False):
     def tokenize_and_align_labels_one_label(example):
-        return tokenizer(example["tokens"])
+        return tokenizer(example["tokens"], truncation=True, is_split_into_words=True)
 
     def tokenize_and_align_labels_per_example(example):
         tokenized_inputs = tokenizer(example["tokens"], truncation=True, is_split_into_words=True)

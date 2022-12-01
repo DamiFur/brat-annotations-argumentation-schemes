@@ -189,10 +189,10 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                         if line_splitted[3] != "O":
                             labels = quadrant_types_to_label[line_splitted[8]]
             
-            if isTypeOfPremise:
-                assert(labels >= 0)
             if not is_argumentative:
                 continue
+            if isTypeOfPremise:
+                assert(labels >= 0)
             if add_annotator_info:
                 to_add = []
                 if component == "Collective":

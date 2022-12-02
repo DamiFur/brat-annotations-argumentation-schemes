@@ -149,15 +149,15 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
             is_argumentative = True
             for idx, line in enumerate(conll_file):
                 line_splitted = line.split("\t")
-                if line_splitted[1] != "O":
-                    is_argumentative = False
-                    break
                 word = line_splitted[0]
                 # word = preprocessing.preprocess_tweet(word, lang="en", user_token="@user", hashtag_token="hashtag", preprocess_hashtags=True, demoji=True)
                 # processed_words = word.split(" ")
                 # l = len(processed_words)
                 if not isTypeOfPremise:
                     tweet.append(word)
+                if line_splitted[1] != "O":
+                    is_argumentative = False
+                    break
                 else:
                     if component == "Premise2Justification":
                         if line_splitted[2] != "O":
@@ -380,8 +380,11 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
             writer.write("Tweet:\n")
             writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
-            for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
-                writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
+            if component == "Argumentative":
+                writer.write("{} - {}".format(comparison[0][0], comparison[0][1]))
+            else:
+                for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
+                    writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
             writer.write("-------------------------------------------------------------------------------\n")
 
 

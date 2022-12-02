@@ -32,7 +32,7 @@ BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
 REP=0
-FOLDS=1
+FOLDS=3
 components = args.components
 component = components[0]
 add_annotator_info = args.add_annotator_info
@@ -132,8 +132,6 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
         datasets = []
     for filePattern in filePatterns:
         for f in glob.glob(filePattern):
-            print("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
-            print(f)
             conll_file = open(f, 'r')
             tweet = []
             if not isTypeOfPremise:
@@ -150,9 +148,6 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
             for idx, line in enumerate(conll_file):
                 line_splitted = line.split("\t")
                 word = line_splitted[0]
-                # word = preprocessing.preprocess_tweet(word, lang="en", user_token="@user", hashtag_token="hashtag", preprocess_hashtags=True, demoji=True)
-                # processed_words = word.split(" ")
-                # l = len(processed_words)
                 if not isTypeOfPremise:
                     tweet.append(word)
                 if line_splitted[1] != "O" or not is_argumentative:
@@ -210,12 +205,6 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 dicc = {"tokens": [tweet], "labels": [labels]}
                 datasets.append([Dataset.from_dict(dicc), tweet])
             else:
-                # print("-----------------------------------")
-                # print(len(tweet))
-                # print(len(labels))
-                # print(tweet)
-                # print(labels)
-                # print("===================================")
                 all_tweets.append(tweet)
                 all_labels.append(labels)
 
@@ -224,8 +213,6 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
         return datasets
 
     ans = {"tokens": all_tweets, "labels": all_labels}
-    print("LABEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL")
-    print(all_labels)
     return Dataset.from_dict(ans)
 
 
@@ -285,38 +272,6 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
         return [{"dataset": data[0].map(function_to_apply, batched=True), "text": data[1]} for data in dataset]
     return dataset.map(function_to_apply, batched=True)
 
-# def normalize_text(tweet_text, arg_components_text):
-#     parts_processed = []
-#     splitted_text = [tweet_text]
-#     for splitter in arg_components_text:
-#         assert (splitter in tweet_text)
-#         new_splitted_text = []
-#         for segment in splitted_text:
-#             if segment != "":
-#                 new_split = segment.split(splitter)
-#                 for idx, splitt in enumerate(new_split):
-#                     new_splitted_text.append(splitt)
-#         splitted_text = new_splitted_text
-
-#     reconstructed_text = []
-#     current_text = tweet_text
-#     for part in splitted_text:
-#         if (part != ''):
-#             spp = current_text.split(part)
-#             for word in spp[0].split():
-#                 reconstructed_text.append(word)
-#             for word in part.split():
-#                 reconstructed_text.append(word)
-#             current_text = part.join(spp[1:])
-#     return reconstructed_text
-    
-
-
-#     for idx, part in enumerate(splitted_text):
-#         for word in part.strip().split():
-#             parts_processed.append(word)
-
-#     return parts_processed
 
 
 def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False):
@@ -373,9 +328,6 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             preds = result.predictions.argmax(-1)[0]
             if component == "Argumentative":
                 preds = [preds]
-            print("LOOOOOOOOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLLLLLLL")
-            print(preds)
-            print(result.label_ids)
             assert (len(preds) == len(result.label_ids))
             comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
             writer.write("Tweet:\n")
@@ -402,11 +354,7 @@ for i in range(FOLDS):
     random.Random(41 + i).shuffle(allFilesCp)
     dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
 
-# dataset_combination is a list of lists with three combinations of possible partitions for the dataset, being the first one a list with 8 folders of tweets used for training and the second and third lists with one folder of tweets used for eval and test
-#dataset_combinations = [[filePatterns[2:], filePatterns[0:1], filePatterns[1:2]], [filePatterns[1:9], filePatterns[9:], filePatterns[:1]]]
-# dataset_combinations = [[[filePatterns[0]], [filePatterns[1]], [filePatterns[2]]]]
 for combination in dataset_combinations:
-    # print(combination)
     REP = REP + 1
     for cmpnent in components:
         component = cmpnent

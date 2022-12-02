@@ -27,7 +27,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cpu")
+device = torch.device("cuda:0")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
@@ -328,8 +328,10 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             preds = result.predictions.argmax(-1)[0]
             if component == "Argumentative":
                 preds = [preds]
-            assert (len(preds) == len(result.label_ids))
-            comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
+                comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
+            else:
+                comparison = [(truth, pred) for truth, pred in zip(result.label_ids[0], preds) if truth != -100]
+            #assert (len(preds) == len(result.label_ids))
             writer.write("Tweet:\n")
             writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
             if component == "Argumentative":
@@ -365,8 +367,8 @@ for combination in dataset_combinations:
         else:
             data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
             if type_of_premise:
-                output_num = 3
-            else:
+                 output_num = 3
+             else:
                 output_num = 2
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
 

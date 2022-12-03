@@ -27,7 +27,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cpu")
+device = torch.device("cuda:0")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
@@ -341,6 +341,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
 
 
 
+
 filePatterns = ["./datasets_CoNLL/english/hate_tweet_*.conll"]
 
 allFiles = []
@@ -365,8 +366,8 @@ for combination in dataset_combinations:
         else:
             data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
             if type_of_premise:
-                output_num = 3
-            else:
+                 output_num = 3
+             else:
                 output_num = 2
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
 

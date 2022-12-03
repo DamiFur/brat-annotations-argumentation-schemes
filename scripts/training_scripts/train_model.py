@@ -150,9 +150,6 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 word = line_splitted[0]
                 if not isTypeOfPremise:
                     tweet.append(word)
-                if line_splitted[1] != "O" or not is_argumentative:
-                    is_argumentative = False
-                    continue
                 else:
                     if component == "Premise2Justification":
                         if line_splitted[2] != "O":
@@ -160,6 +157,10 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                     elif component == "Premise1Conclusion":
                         if line_splitted[3] != "O":
                             tweet.append(word)
+                if line_splitted[1] != "O" or not is_argumentative:
+                    is_argumentative = False
+                    continue
+
 
                 if not isTypeOfPremise:
                     if component == "Premise2Justification":

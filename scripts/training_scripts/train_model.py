@@ -182,10 +182,10 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 else:
                     if component == "Premise2Justification":
                         if line_splitted[2] != "O":
-                            labels = quadrant_types_to_label[line_splitted[7]]
+                            labels = quadrant_types_to_label[line_splitted[7].replace("\n", "")]
                     elif component == "Premise1Conclusion":
                         if line_splitted[3] != "O":
-                            labels = quadrant_types_to_label[line_splitted[8]]
+                            labels = quadrant_types_to_label[line_splitted[8].replace("\n", "")]
 
             if component == "Argumentative":
                 labels = 1 if is_argumentative else 0

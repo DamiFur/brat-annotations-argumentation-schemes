@@ -368,8 +368,8 @@ for combination in dataset_combinations:
             data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
             if type_of_premise:
                  output_num = 3
-             else:
-                output_num = 2
+            else:
+                 output_num = 2
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
 
         model.to(device)

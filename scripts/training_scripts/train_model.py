@@ -44,7 +44,7 @@ def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
     labels = p.label_ids
 
-    if not type_of_premise and not simultaneous_components and component != "Argumentative":
+    if not type_of_premise and component != "Argumentative":
         true_labels = [[str(l) for l in label if l != -100] for label in labels]
         true_predictions = [
             [str(p) for (p, l) in zip(prediction, label) if l != -100]
@@ -52,11 +52,14 @@ def compute_metrics_f1(p: EvalPrediction):
         ]
         all_true_labels = [l for label in true_labels for l in label]
         all_true_preds = [p for preed in true_predictions for p in preed]
-        avrge = "binary"
+        if simultaneous_components:
+            avrge = "macro"
+        else:
+            avrge = "binary"
     else:
         all_true_labels = [str(label) for label in labels]
         all_true_preds = [str(pred) for pred in preds]
-        if type_of_premise or simultaneous_components:
+        if type_of_premise:
             avrge = "macro"
         else:
             avrge = "binary"
@@ -332,23 +335,23 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))
 
-    examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
-    with open(examples_filename, "w") as writer:
-        for dtset in test_set_one_example:
-            result = trainer.predict(dtset["dataset"])
-            preds = result.predictions.argmax(-1)[0]
-            if component == "Argumentative":
-                preds = [preds]
-            assert (len(preds) == len(result.label_ids))
-            comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
-            writer.write("Tweet:\n")
-            writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
-            if component == "Argumentative":
-                writer.write("{} - {}".format(comparison[0][0], comparison[0][1]))
-            else:
-                for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
-                    writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
-            writer.write("-------------------------------------------------------------------------------\n")
+    # examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
+    # with open(examples_filename, "w") as writer:
+    #     for dtset in test_set_one_example:
+    #         result = trainer.predict(dtset["dataset"])
+    #         preds = result.predictions.argmax(-1)[0]
+    #         if component == "Argumentative":
+    #             preds = [preds]
+    #         assert (len(preds) == len(result.label_ids))
+    #         comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
+    #         writer.write("Tweet:\n")
+    #         writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
+    #         if component == "Argumentative":
+    #             writer.write("{} - {}".format(comparison[0][0], comparison[0][1]))
+    #         else:
+    #             for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
+    #                 writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
+    #         writer.write("-------------------------------------------------------------------------------\n")
 
 
 

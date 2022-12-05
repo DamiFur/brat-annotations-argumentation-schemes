@@ -331,7 +331,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     else:
         filename = "./results_test_{}_{}_{}_{}_{}_type-of-premise".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
     with open(filename, "w") as writer:
-        if type_of_premise:
+        if type_of_premise or multiple_components:
             writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"]))
         else:
             writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))

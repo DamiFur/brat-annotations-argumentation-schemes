@@ -54,6 +54,7 @@ def compute_metrics_f1(p: EvalPrediction):
         all_true_preds = [p for preed in true_predictions for p in preed]
         if simultaneous_components:
             avrge = "macro"
+            f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
         else:
             avrge = "binary"
     else:
@@ -61,9 +62,10 @@ def compute_metrics_f1(p: EvalPrediction):
         all_true_preds = [str(pred) for pred in preds]
         if type_of_premise:
             avrge = "macro"
+            f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
         else:
             avrge = "binary"
-        f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
+
 
     f1 = metrics.f1_score(all_true_labels, all_true_preds, average=avrge, pos_label='1')
 

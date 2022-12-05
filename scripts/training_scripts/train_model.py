@@ -20,6 +20,7 @@ parser.add_argument('--lr', type=float, default=2e-05, help="Learning rate for t
 parser.add_argument('--batch_size', type=int, default=16, help="Batch size for training and evaluation. Default size is 16")
 parser.add_argument('--add_annotator_info', type=bool, default=False, help="For Pivot and Collective add information about premises and Property respectively that an annotator would have when annotating these components")
 parser.add_argument('--type_of_premise', type=bool, default=False, help="If true, model will be trained to predict the type of premises. If true, only valid components are Justification and Conclusion")
+parser.add_argument('--simultaneous_components', type=bool, default=False, help="Set to true if trying to do joint predictions")
 
 args = parser.parse_args()
 
@@ -36,13 +37,14 @@ components = args.components
 component = components[0]
 add_annotator_info = args.add_annotator_info
 type_of_premise = args.type_of_premise
+simultaneous_components = args.simultaneous_components
 quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
 
 def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
     labels = p.label_ids
 
-    if not type_of_premise and component != "Argumentative":
+    if not type_of_premise and not simultaneous_components and component != "Argumentative":
         true_labels = [[str(l) for l in label if l != -100] for label in labels]
         true_predictions = [
             [str(p) for (p, l) in zip(prediction, label) if l != -100]
@@ -54,7 +56,7 @@ def compute_metrics_f1(p: EvalPrediction):
     else:
         all_true_labels = [str(label) for label in labels]
         all_true_preds = [str(pred) for pred in preds]
-        if type_of_premise:
+        if type_of_premise or simultaneous_components:
             avrge = "macro"
         else:
             avrge = "binary"
@@ -90,7 +92,7 @@ def compute_metrics_f1(p: EvalPrediction):
         'confusion_matrix': str(confusion_matrix),
     }
 
-    if type_of_premise:
+    if type_of_premise or simultaneous_components:
         ans['f1_all'] = str(f1_all)
 
     return ans
@@ -124,7 +126,7 @@ def getLabel(label):
         return 1
 
 
-def labelComponentsFromAllExamples(filePatterns, component, multidataset = False, add_annotator_info = False, isTypeOfPremise = False):
+def labelComponentsFromAllExamples(filePatterns, component, multidataset = False, add_annotator_info = False, isTypeOfPremise = False, multiple_components = False):
     all_tweets = []
     all_labels = []
     if multidataset:
@@ -161,7 +163,23 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                     continue
 
 
-                if not isTypeOfPremise:
+                if isTypeOfPremise:
+                    if component == "Premise2Justification":
+                        if line_splitted[2] != "O":
+                            labels = quadrant_types_to_label[line_splitted[7].replace("\n", "")]
+                    elif component == "Premise1Conclusion":
+                        if line_splitted[3] != "O":
+                            labels = quadrant_types_to_label[line_splitted[8].replace("\n", "")]
+                elif multiple_components:
+                    if component == "Collective-Property":
+                        col = getLabel(line_splitted[4])
+                        prop = getLabel(line_splitted[5]) * 2
+                        labels.append(max(col, prop))
+                    if component == "Premises":
+                        just = getLabel(line_splitted[2])
+                        conc = getLabel(line_splitted[3]) * 2
+                        labels.append(max(just, conc))
+                else:
                     if component == "Premise2Justification":
                         labels.append(getLabel(line_splitted[2]))
                     elif component == "Premise1Conclusion":
@@ -178,13 +196,6 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                             justification_text.append(word)
                         if add_annotator_info and getLabel(line_splitted[3]) == 1:
                             conclusion_text.append(word)
-                else:
-                    if component == "Premise2Justification":
-                        if line_splitted[2] != "O":
-                            labels = quadrant_types_to_label[line_splitted[7].replace("\n", "")]
-                    elif component == "Premise1Conclusion":
-                        if line_splitted[3] != "O":
-                            labels = quadrant_types_to_label[line_splitted[8].replace("\n", "")]
 
             if component == "Argumentative":
                 labels = 1 if is_argumentative else 0
@@ -274,9 +285,9 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
 
 
 
-def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False):
+def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False, multiple_components = False):
 
-    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
+    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
@@ -362,7 +373,12 @@ for combination in dataset_combinations:
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, add_prefix_space=True)
         if not type_of_premise and component != "Argumentative":
             data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
-            model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=2)
+            if not simultaneous_components:
+                output_num = 2
+            else:
+                output_num = 3
+            model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
+            
         else:
             data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
             if type_of_premise:
@@ -372,6 +388,6 @@ for combination in dataset_combinations:
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
 
         model.to(device)
-        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise)
+        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise, multiple_components=simultaneous_components)
 
 

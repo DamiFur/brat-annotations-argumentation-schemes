@@ -11,6 +11,7 @@ from sklearn import metrics
 import argparse
 from transformers import EarlyStoppingCallback
 import random
+from typing import Optional
 
 
 parser = argparse.ArgumentParser(description="Train models for identifying argumentative components inside the ASFOCONG dataset")
@@ -20,7 +21,8 @@ parser.add_argument('--lr', type=float, default=2e-05, help="Learning rate for t
 parser.add_argument('--batch_size', type=int, default=16, help="Batch size for training and evaluation. Default size is 16")
 parser.add_argument('--add_annotator_info', type=bool, default=False, help="For Pivot and Collective add information about premises and Property respectively that an annotator would have when annotating these components")
 parser.add_argument('--type_of_premise', type=bool, default=False, help="If true, model will be trained to predict the type of premises. If true, only valid components are Justification and Conclusion")
-parser.add_argument('--simultaneous_components', type=bool, default=False, help="Set to true if trying to do joint predictions")
+parser.add_argument('--simultaneous_components', type=bool, default=False, help="Set to true if trying to do joint predictions. Possible values for components are Collective-Property or Premises")
+parser.add_argument('--all_components', type=bool, default=False, help="Set to true if trying to do multilabel classification predicting all components for each word simultaneously. Component value must be set to 'All'")
 
 args = parser.parse_args()
 
@@ -38,7 +40,32 @@ component = components[0]
 add_annotator_info = args.add_annotator_info
 type_of_premise = args.type_of_premise
 simultaneous_components = args.simultaneous_components
+all_components = args.all_components
 quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
+
+
+class MultiLabelTrainer(Trainer):
+    def __init__(self, *args, class_weights: Optional[torch.FloatTensor] = None, **kwargs):
+        super().__init__(*args, **kwargs)
+        if class_weights is not None:
+            class_weights = class_weights.to(self.args.device)
+            # logging.info(f"Using multi-label classification with class weights", class_weights)
+        self.loss_fct = torch.nn.BCEWithLogitsLoss(weight=class_weights)
+
+    def compute_loss(self, model, inputs, return_outputs=False):
+        """
+        How the loss is computed by Trainer. By default, all models return the loss in the first element.
+        Subclass and override for custom behavior.
+        """
+        labels = inputs.pop("labels")
+        outputs = model(**inputs)
+        try:
+            loss = self.loss_fct(outputs.logits.view(-1, model.num_labels), labels.view(-1))
+        except AttributeError:  # DataParallel
+            loss = self.loss_fct(outputs.logits.view(-1, model.module.num_labels), labels.view(-1))
+
+        return (loss, outputs) if return_outputs else loss
+
 
 def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
@@ -131,7 +158,7 @@ def getLabel(label):
         return 1
 
 
-def labelComponentsFromAllExamples(filePatterns, component, multidataset = False, add_annotator_info = False, isTypeOfPremise = False, multiple_components = False):
+def labelComponentsFromAllExamples(filePatterns, component, multidataset = False, add_annotator_info = False, isTypeOfPremise = False, multiple_components = False, all_components=False):
     all_tweets = []
     all_labels = []
     if multidataset:
@@ -184,6 +211,10 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                         just = getLabel(line_splitted[2])
                         conc = getLabel(line_splitted[3]) * 2
                         labels.append(max(just, conc))
+                
+                elif all_components:
+                    label = [getLabel(v) for v in line_splitted[1:7]]
+                    labels.append(label)
                 else:
                     if component == "Premise2Justification":
                         labels.append(getLabel(line_splitted[2]))
@@ -232,7 +263,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
     return Dataset.from_dict(ans)
 
 
-def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=False, one_label_per_example=False):
+def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=False, one_label_per_example=False, all_components=False):
     def tokenize_and_align_labels_one_label(example):
         return tokenizer(example["tokens"], truncation=True, is_split_into_words=True)
 
@@ -257,6 +288,25 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
         tokenized_inputs["labels"] = labels
         return tokenized_inputs
 
+    def tokenize_and_align_labels_per_example_multilabel(example):
+        tokenized_inputs = tokenizer(example["tokens"], truncation=True, is_split_into_words=True)
+        labels = []
+        for i, label in enumerate(example[f"labels"]):
+            word_ids = tokenized_inputs.word_ids(batch_index=i)
+            previous_word_idx = None
+            label_ids = []
+            for word_idx in word_ids:  # Set the special tokens to -100.
+                if word_idx is None:
+                    label_ids.append([-100]*6)
+                elif word_idx != previous_word_idx:  # Only label the first token of a given word.
+                    label_ids.append(label[word_idx])
+                else:
+                    label_ids.append([-100]*6)
+                previous_word_idx = word_idx
+            labels.append(label_ids)
+
+        tokenized_inputs["labels"] = labels
+        return tokenized_inputs
 
     def tokenize_and_align_labels_per_example_bertweet(example):
         tkns = example["tokens"]
@@ -277,6 +327,8 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
 
     if one_label_per_example:
         function_to_apply = tokenize_and_align_labels_one_label
+    elif all_components:
+        function_to_apply = tokenize_and_align_labels_per_example_multilabel
     else:
         function_to_apply = tokenize_and_align_labels_per_example
         if is_bertweet:
@@ -290,12 +342,12 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
 
 
 
-def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False, multiple_components = False):
+def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False, multiple_components = False, all_components=False):
 
-    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
-    dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
-    test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
-    test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
+    training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, all_components=all_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"), all_components=all_components)
+    dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, all_components=all_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"), all_components=all_components)
+    test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, all_components=all_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"), all_components=all_components)
+    test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, all_components=all_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"), all_components=all_components)
     
     training_args = TrainingArguments(
         output_dir="./results_eval_{}_{}".format(MODEL_NAME.replace("/", "-"), component),
@@ -312,16 +364,30 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
         load_best_model_at_end=True
     )
 
-    trainer = Trainer(
-        model=model,
-        args=training_args,
-        train_dataset=training_set,
-        eval_dataset=dev_set,
-        tokenizer=tokenizer,
-        data_collator=data_collator,
-        compute_metrics= compute_metrics_f1,
-        callbacks = [EarlyStoppingCallback(early_stopping_patience=4)]
-    ) 
+    if not all_components:
+
+        trainer = Trainer(
+            model=model,
+            args=training_args,
+            train_dataset=training_set,
+            eval_dataset=dev_set,
+            tokenizer=tokenizer,
+            data_collator=data_collator,
+            compute_metrics= compute_metrics_f1,
+            callbacks = [EarlyStoppingCallback(early_stopping_patience=4)]
+        )
+    
+    else:
+        trainer = MultiLabelTrainer(
+            model=model,
+            args=training_args,
+            train_dataset=training_set,
+            eval_dataset=dev_set,
+            tokenizer=tokenizer,
+            data_collator=data_collator,
+            compute_metrics= compute_metrics_f1,
+            callbacks = [EarlyStoppingCallback(early_stopping_patience=4)]
+        )
 
     trainer.train()
 
@@ -393,6 +459,6 @@ for combination in dataset_combinations:
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
 
         model.to(device)
-        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise, multiple_components=simultaneous_components)
+        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise, multiple_components=simultaneous_components, all_components=all_components)
 
 

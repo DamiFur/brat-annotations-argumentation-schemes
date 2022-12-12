@@ -2,11 +2,11 @@ T1	Premise1Conclusion 136 228	That is likely a contributor to Dems not being abl
 A1	QuadrantType T1 fact
 T2	Premise2Justification 46 135	59 % of Hispanics surveyed here think most immigrants are in the United States illegally.
 A2	QuadrantType T2 fact
+T5	Property 100 134	are in the United States illegally
+T7	pivot 54 63	Hispanics
+T6	pivot 195 209	Hispanic votes
 T3	Premise2Justification 0 45	Democrats need to change that Hispanic split:
 A3	QuadrantType T3 policy
-T5	Property 100 134	are in the United States illegally
-T6	pivot 195 203	Hispanic
-T7	pivot 54 63	Hispanics
 R1	related Arg1:T7 Arg2:T6	
 T8	CounterNarrativeA 241 242	/
 #1	AnnotatorNotes T8	If immigrants turn against those who defend them, then they have more freedom than those who oppose them would have us believe. I just hope it doesn't end up hurting them.

@@ -2,3 +2,7 @@ T1	Premise1Conclusion 171 273	Have they looked at Paris France lately.Poor Peopl
 T2	Premise2Justification 0 170	Skinny is not always healthy, tell that to Hollywood.They wouldn't house the immigrants or refugees from Obama's wars n dare to say they hate Trump bc globalist democracy
 A1	QuadrantType T2 fact
 A2	QuadrantType T1 policy
+T3	CounterNarrativeA 274 275	h
+#1	AnnotatorNotes T3	I don't see the relation between your statements. What has Poor People's Campaign to do with hollywood people housing or not immigrants?
+T4	CounterNarrativeC 291 292	P
+#2	AnnotatorNotes T4	So according to you, you can only hate Trump if you house immigrants at your own home... That seems too much to ask to be able to have a political opinion

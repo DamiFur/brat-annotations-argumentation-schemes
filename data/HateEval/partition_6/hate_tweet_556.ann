@@ -5,3 +5,7 @@ T3	pivot 80 84	Wall
 T4	pivot 154 158	Wall
 R1	related Arg1:T3 Arg2:T4	
 A2	QuadrantType T1 policy
+T5	CounterNarrativeA 0 1	@
+#1	AnnotatorNotes T5	I though one of the reasons to stop immigration was to pay less taxes but you don't even care about that. This only prooves that your only motivation is hate and xenophobia and you'll keep hating with or without wall
+T6	CounterNarrativeC 19 20	e
+#2	AnnotatorNotes T6	Why do you claim that immigration or the wall is more important than taxes? I though one of the problems of immigration was to pay less taxes, how are you going to pay for the wall?

@@ -12,3 +12,9 @@ T11	pivot 21 28	Refugee
 R1	related Arg1:T11 Arg2:T10	
 A1	QuadrantType T1 fact
 A2	QuadrantType T2 fact
+T12	CounterNarrativeA 243 244	e
+#1	AnnotatorNotes T12	You seem to measure everything according to refugees and immigrants. Your xenophobia blocks you from addressing real society problems and you blame immigrants for anything and everything                                      
+T13	CounterNarrativeB 75 76	m
+#2	AnnotatorNotes T13	Suggesting that crime rates go up and resources are lower because immigration is just not true. Immigrants paytaxes and most of them are not criminals but hard working people trying to improve their familie's lives
+T14	CounterNarrativeC 205 206	2
+#3	AnnotatorNotes T14	Do you have any proof that Sweeden crime rate increased because of immigration? or that UK is spending too much resources on them? Or that France is cracking down on immigration? I think it's just xenophobic lies

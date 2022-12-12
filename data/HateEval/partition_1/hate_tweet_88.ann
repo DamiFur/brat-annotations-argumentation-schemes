@@ -6,3 +6,9 @@ A1	QuadrantType T1 fact
 A2	QuadrantType T2 fact
 T5	pivot 41 46	Obama
 T6	pivot 214 219	Obama
+T7	CounterNarrativeB 15 16	p
+#1	AnnotatorNotes T7	Most immigrants want to improve their quality of life through hard work. That seems to be the opposite of defrauding the american dream
+T8	CounterNarrativeC 15 16	p
+#2	AnnotatorNotes T8	I don't really see how Clint Eastwood speech could confirm that Obama is an empty chair. You are just coarsingly adapting reality to your convinience
+T9	CounterNarrativeA 3 4	a
+#3	AnnotatorNotes T9	What you are saying makes no sense. If Obama is an empty chair he should be powerless to defraud anyone

@@ -4,3 +4,9 @@ T3	Collective 80 88	Refugees
 T4	Property 32 47	Act like normal
 A1	QuadrantType T1 policy
 A2	QuadrantType T2 policy
+T5	CounterNarrativeA 69 70	c
+#1	AnnotatorNotes T5	So because they don't act "normal" according to you you want to kick them out? Let me tell you what is not "normal": xenophobia and racism
+T6	CounterNarrativeB 69 70	c
+#2	AnnotatorNotes T6	Refugees are normal people from a different country. They are here because they are escaping war or social disasters, but besides that they are like anyone else
+T7	CounterNarrativeC 71 72	m
+#3	AnnotatorNotes T7	The only one that should act "normal" is you, and that means keeping your xenophobous tweets to yourself

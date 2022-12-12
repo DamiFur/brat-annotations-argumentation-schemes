@@ -8,3 +8,7 @@ R1	related Arg1:T3 Arg2:T4
 T5	pivot 22 26	flee
 T6	pivot 197 205	refugees
 R2	related Arg1:T5 Arg2:T6	
+T7	CounterNarrativeA 207 208	h
+#1	AnnotatorNotes T7	You seem to be worried about where are the people escaping war are going instead of worring about how to end war and how to help the people that lost everything because of it.
+T8	CounterNarrativeC 234 235	p
+#2	AnnotatorNotes T8	So what are you implying? That it is Jordan's problem and not ours? You are talking about thousands of people dying in a war, you really have no compassion

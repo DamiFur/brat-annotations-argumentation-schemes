@@ -4,3 +4,9 @@ T2	Premise1Conclusion 91 279	Italy #Salvini must ignore international social eng
 A2	QuadrantType T2 policy
 T3	Collective 229 238	migration
 T4	Property 17 51	rganized crime/returning jihadists
+T5	CounterNarrativeB 302 303	a
+#1	AnnotatorNotes T5	Immigrants are not jihadists or criminals, that's just predjudice and xenophobia. You should inform better and try to let your hate go
+T6	CounterNarrativeA 300 301	C
+#2	AnnotatorNotes T6	So what you are saying is that all the rest of the world are cultural marxists and migration pimps and we are being invaded by foreign criminals and terrorists? That sounds like xenophobic paranoia
+T7	CounterNarrativeC 290 291	c
+#3	AnnotatorNotes T7	What proof do you have that organized crime and jihadists are related to immigrants? Like if there is no local organized crime and no native jihadists?

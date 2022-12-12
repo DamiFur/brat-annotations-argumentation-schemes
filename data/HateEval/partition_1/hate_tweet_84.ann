@@ -4,3 +4,9 @@ T3	Property 39 129	wages, but for other nice things in our country - like univer
 T4	Collective 145 163	illegal immigrants
 A1	QuadrantType T2 fact
 A2	QuadrantType T1 fact
+T5	CounterNarrativeA 302 303	E
+#1	AnnotatorNotes T5	Consensus won't happen because racism and xenophobia should not and will not be tolerated
+T6	CounterNarrativeB 298 299	R
+#2	AnnotatorNotes T6	Bad wages and lack of universal healthcare are because cheap employers and austerity policies. Immigrants have the worst wages and most of them don't have access to health care so don't try to blame them for any pronblem societies might have
+T7	CounterNarrativeC 285 286	s
+#3	AnnotatorNotes T7	How do you know that wages and health care are not possible with migrants? Maybe if you stop spending so much money on enforcing borders and building walls you could have better wages and healthcare for all

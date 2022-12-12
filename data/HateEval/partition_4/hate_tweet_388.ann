@@ -5,3 +5,7 @@ T4	pivot 100 130	No #IllegalAliens are released
 T5	pivot 132 150	#NoAmnesty 4 #DACA
 R1	related Arg1:T4 Arg2:T5	
 A2	QuadrantType T3 policy
+T1	CounterNarrativeA 57 58	M
+#1	AnnotatorNotes T1	Immigrants are not criminals, they are just trying to get ahead finding better job oportunities. Many of them have had a rough life. Amnesty is a good thing
+T6	CounterNarrativeC 62 63	r
+#2	AnnotatorNotes T6	Build Hospitals Not Walls! Zero Tolerance with Xenophobia!

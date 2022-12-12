@@ -7,3 +7,7 @@ T4	pivot 231 277	the mess that is most of the African continent
 R1	related Arg1:T3 Arg2:T4	
 T5	Collective 82 103	migrants and refugees
 T6	Property 206 284	guilt in the creation of the mess that is most of the African continent today.
+T7	CounterNarrativeA 0 1	M
+#1	AnnotatorNotes T7	Though the responsability of the former colonial powers in the refugee crisis is true, it is not true that refugees and migrants can not be taken into the Euro Zone. If there are resources for war, there must be resources for aid
+T8	CounterNarrativeB 16 17	o
+#2	AnnotatorNotes T8	Migrants and refugees are without guilt in the creation of the mess that is most of the African continent so they shouldn't pay for other's crimes                                  

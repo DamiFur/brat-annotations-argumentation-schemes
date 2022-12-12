@@ -2,3 +2,7 @@ T1	Premise1Conclusion 84 127	who ever promises this will win the uk vote
 T2	Premise2Justification 11 83	there is only one true question the Uk wants will immigration be stopped
 A1	QuadrantType T2 fact
 A2	QuadrantType T1 fact
+T3	CounterNarrativeA 5 6	y
+#1	AnnotatorNotes T3	You are claiming to speak on behalf of the people but are just another xenophobic autoritarian. The UK vote will be won by whoever can offer a solution to peoples problems. Stoping immigration won't solve anything
+T4	CounterNarrativeC 6 7	M
+#2	AnnotatorNotes T4	I don't think that's the question that most people is worried about. Maybe it's just you and your xenophobic friends?

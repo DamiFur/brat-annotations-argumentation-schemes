@@ -6,3 +6,9 @@ T5	pivot 0 8	The wall
 T6	pivot 124 126	it
 A1	QuadrantType T1 policy
 A2	QuadrantType T2 fact
+T7	CounterNarrativeA 144 145	e
+#1	AnnotatorNotes T7	If you want a reminder of why are you building the wall then you should write "xenophobia" on it
+T8	CounterNarrativeB 137 138	s
+#2	AnnotatorNotes T8	Immigrants are not a threat to Americans more than Americans are a threat to themselves. Most murders are committed by American citizens. You are just spreading hate and predjudice
+T9	CounterNarrativeC 140 141	p
+#3	AnnotatorNotes T9	If you want to remember, then you should try to remember that most American families come from past generation immigrants

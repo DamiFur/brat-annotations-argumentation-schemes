@@ -4,3 +4,9 @@ A1	QuadrantType T1 fact
 A2	QuadrantType T2 policy
 T3	Collective 72 80	Illegals
 T4	Property 54 66	Taxpayer $$$
+T5	CounterNarrativeA 87 88	u
+#1	AnnotatorNotes T5	You are complaining about immigrants being an excesive expense for the state and you want to build a wall that is going to cost dozens times more? That doesn't make any sense
+T6	CounterNarrativeB 5 8	rtI
+#2	AnnotatorNotes T6	Illegals are taxpayers too. They pay taxes on everything they buy and their spend a bigger percentage of their income on taxable stuff
+T7	CounterNarrativeC 10 11	e
+#3	AnnotatorNotes T7	Really? How much money do Sanctuary Cities cost to the taxpayers? I think you are exagerating just because you are xenophobous

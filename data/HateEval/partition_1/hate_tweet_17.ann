@@ -1,6 +1,5 @@
 T1	Premise1Conclusion 111 137	Stop immigration to Europe
 T2	Premise2Justification 0 109	After IS is soon finished (US+Turkey secretserv. action), IS fighter have 11000 open Syrian passports for use
-R4	secondOrder Arg1:T1 Arg2:T2	
 A1	QuadrantType T1 policy
 A2	QuadrantType T2 fact
 #1	AnnotatorNotes R4	Gamma quadrant

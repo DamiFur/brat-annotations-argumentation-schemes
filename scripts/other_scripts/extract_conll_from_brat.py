@@ -2,6 +2,16 @@ from glob import glob
 from pysentimiento import preprocessing
 import glob
 import re
+import random
+import argparse
+import os
+
+parser = argparse.ArgumentParser(description="Train models for identifying argumentative components inside the ASFOCONG dataset")
+parser.add_argument('--create_train_test_partitions', type=bool, default=False, help="Separate tweets in train dev and test partitions")
+
+
+args = parser.parse_args()
+create_train_test_partitions = args.create_train_test_partitions
 
 COMPONENTS = ["Property", "Collective", "Premise1Conclusion", "Premise2Justification", "pivot"]
 
@@ -55,7 +65,9 @@ def delete_unwanted_chars(text):
     return replaceSpace(text.lower().replace("\n", "").replace("\t", " ").replace(".", " ").replace(",", " ").replace("!", "").replace('“', '"').replace('”', '"').replace('…', '').replace("’", "").replace("–", " ").replace("‘", "").replace("—", " ").replace("·", " ").replace(";", " ").replace("'", ""))
 
 
-def labelComponentsFromAllExamples(filePatterns):
+def labelComponentsFromAllExamples(filePatterns, prefix=""):
+    count_cn = {}
+    count_argumentative = 0
     for f in filePatterns:
             annotations = open(f, 'r')
             tweet = open(f.replace(".ann", ".txt"), 'r')
@@ -66,6 +78,8 @@ def labelComponentsFromAllExamples(filePatterns):
             filesize = 0
             name_of_premises = {}
             type_of_premises = {}
+            cn_references = {}
+            counter_narratives = {}
             for idx, word in enumerate(annotations):
                 filesize += 1
                 ann = word.replace("\n", "").split("\t")
@@ -73,6 +87,7 @@ def labelComponentsFromAllExamples(filePatterns):
                     current_component = ann[1].lstrip()
                     if current_component.startswith("NonArgumentative"):
                         is_argumentative = False
+                        count_argumentative += 1
                         break
                     if current_component.startswith("Premise"):
                         name_of_premises[ann[0]] = current_component.split(" ")[0]
@@ -103,7 +118,15 @@ def labelComponentsFromAllExamples(filePatterns):
                             if current_component.startswith(cmpnt):
                                 component_texts[cmpnt].append(new_component)
 
-
+                    if current_component.startswith("CounterNarrative"):
+                        cn_references[ann[0]] = current_component.split(" ")[0]
+                    if current_component.startswith("AnnotatorNotes"):
+                        code = current_component.split(" ")[1]
+                        print(f)
+                        counter_narratives[cn_references[code]] = ann[2]
+                        if cn_references[code] not in count_cn:
+                            count_cn[cn_references[code]] = []
+                        count_cn[cn_references[code]].append(ann[2])
 
             components_list = [compnent for key in component_texts for compnent in component_texts[key]]
             normalized_text = normalize_text(preprocessed_text, components_list)
@@ -135,7 +158,7 @@ def labelComponentsFromAllExamples(filePatterns):
             component_labels.append(type_of_justification)
             component_labels.append(type_of_conclusion)
 
-            conll = open(f.split("/")[-1].replace(".ann", ".conll"), "w")
+            conll = open(prefix + f.split("/")[-1].replace(".ann", ".conll"), "w")
             for idx, wrd in enumerate(normalized_text):
                 line = [wrd]
                 for i in range(len(component_labels)):
@@ -144,14 +167,32 @@ def labelComponentsFromAllExamples(filePatterns):
                 conll.write("{}\n".format(jointed))
             conll.close()
 
+            cn = open(prefix + f.split("/")[-1].replace(".ann", ".cn"), "w")
+            for type_of_cn in sorted(counter_narratives.keys()):
+                cn.write("{}\n".format(counter_narratives[type_of_cn]))
+            cn.close()
+    print("CN STATISTICS")
+    for cn_typ in count_cn:
+        print("{}: {}".format(cn_typ, len(count_cn[cn_typ])))
+    print("Non Argumentative:")
+    print(count_argumentative)
 
 
-
-filePatterns = ["./data/HateEval/partition_spanish/hate_tweet_*.ann"]
+filePatterns = ["./data/HateEval/partition_{}/hate_tweet_*.ann".format(num) for num in range(1,11)]
 
 allFiles = []
 for pattern in filePatterns:
     for f in glob.glob(pattern):
         allFiles.append(f)
 
-labelComponentsFromAllExamples(allFiles)
+if not create_train_test_partitions:
+    labelComponentsFromAllExamples(allFiles)
+else:
+    allFilesCp = allFiles.copy()
+    random.Random(41).shuffle(allFilesCp)
+    os.mkdir("train")
+    os.mkdir("test")
+    os.mkdir("dev")
+    labelComponentsFromAllExamples(allFilesCp[:770], prefix="train/")
+    labelComponentsFromAllExamples(allFilesCp[770:870], prefix="dev/")
+    labelComponentsFromAllExamples(allFilesCp[870:], prefix="test/")

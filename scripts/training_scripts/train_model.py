@@ -21,6 +21,7 @@ parser.add_argument('--batch_size', type=int, default=16, help="Batch size for t
 parser.add_argument('--add_annotator_info', type=bool, default=False, help="For Pivot and Collective add information about premises and Property respectively that an annotator would have when annotating these components")
 parser.add_argument('--type_of_premise', type=bool, default=False, help="If true, model will be trained to predict the type of premises. If true, only valid components are Justification and Conclusion")
 parser.add_argument('--simultaneous_components', type=bool, default=False, help="Set to true if trying to do joint predictions")
+parser.add_argument('--multilingual', type=bool, default=False, help="Set to true if using both english and spanish datasets. For good results, use a multilingual model")
 
 args = parser.parse_args()
 
@@ -38,6 +39,7 @@ component = components[0]
 add_annotator_info = args.add_annotator_info
 type_of_premise = args.type_of_premise
 simultaneous_components = args.simultaneous_components
+multilingual = args.multilingual
 quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
 
 def compute_metrics_f1(p: EvalPrediction):
@@ -356,9 +358,10 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     #         writer.write("-------------------------------------------------------------------------------\n")
 
 
-
-
-filePatterns = ["./datasets_CoNLL/english/hate_tweet_*.conll"]
+if multilingual:
+    filePatterns = ["./datasets_CoNLL/english/hate_tweet_*.conll", "./datasets_CoNLL/spanish/hate_tweet_*.conll"]
+else:
+    filePatterns = ["./datasets_CoNLL/english/hate_tweet_*.conll"]
 
 allFiles = []
 for pattern in filePatterns:
@@ -369,7 +372,10 @@ dataset_combinations = []
 for i in range(FOLDS):
     allFilesCp = allFiles.copy()
     random.Random(41 + i).shuffle(allFilesCp)
-    dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
+    if multilingual:
+        dataset_combinations.append([allFilesCp[:890], allFilesCp[890:1016], allFilesCp[1016:]])
+    else:
+        dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
 
 for combination in dataset_combinations:
     REP = REP + 1

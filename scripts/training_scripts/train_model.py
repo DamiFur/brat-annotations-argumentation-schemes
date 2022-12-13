@@ -297,7 +297,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
-    test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
+    # test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     
     training_args = TrainingArguments(
         output_dir="./results_eval_{}_{}".format(MODEL_NAME.replace("/", "-"), component),
@@ -399,6 +399,6 @@ for combination in dataset_combinations:
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
 
         model.to(device)
-        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise, multiple_components=simultaneous_components)
+        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "vinai/bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise, multiple_components=simultaneous_components)
 
 

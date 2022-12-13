@@ -213,9 +213,9 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
             if add_annotator_info:
                 to_add = []
                 if component == "Collective":
-                    to_add = ["Property:"] + property_text
+                    to_add = ["[SEP] Property:"] + property_text
                 if component == "pivot":
-                    to_add = ["Justification:"] + justification_text + ["Conclusion:"] + conclusion_text
+                    to_add = ["[SEP] Justification:"] + justification_text + ["[SEP] Conclusion:"] + conclusion_text
                 tweet += to_add
                 labels += [0] * len(to_add)
 

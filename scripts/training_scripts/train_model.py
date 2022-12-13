@@ -12,6 +12,7 @@ import argparse
 from transformers import EarlyStoppingCallback
 import random
 from typing import Optional
+import torch.nn.functional as F
 
 
 parser = argparse.ArgumentParser(description="Train models for identifying argumentative components inside the ASFOCONG dataset")
@@ -29,7 +30,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cuda:0")
+device = torch.device("cpu")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
@@ -59,8 +60,12 @@ class MultiLabelTrainer(Trainer):
         """
         labels = inputs.pop("labels")
         outputs = model(**inputs)
+        outputs = F.sigmoid(outputs.logits)
         try:
-            loss = self.loss_fct(outputs.logits.view(-1, model.num_labels), labels.view(-1))
+            print(outputs)
+            print("================================================")
+            print(labels)
+            loss = self.loss_fct(outputs.view(-1), labels.view(-1))
         except AttributeError:  # DataParallel
             loss = self.loss_fct(outputs.logits.view(-1, model.module.num_labels), labels.view(-1))
 
@@ -146,16 +151,16 @@ def labelComponents(text, component_text):
         else:
             rec2 = labelComponents(parts[1], component_text[1:])
         return rec1 + [1] * len(component_text[0].strip().split()) + rec2
-    return [0] * len(text.strip().split())
+    return [0.0] * len(text.strip().split())
 
 def delete_unwanted_chars(text):
     return text.replace("\n", "").replace("\t", "").replace(".", "").replace(",", "").replace("!", "").replace("#", "").replace('“', '"').replace('”', '"').replace('…', '').replace("’", "").replace("–", " ").replace("‘", "").replace("—", "").replace("·", "")
 
 def getLabel(label):
     if label == "O":
-        return 0
+        return 0.0
     else:
-        return 1
+        return 1.0
 
 
 def labelComponentsFromAllExamples(filePatterns, component, multidataset = False, add_annotator_info = False, isTypeOfPremise = False, multiple_components = False, all_components=False):
@@ -234,7 +239,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                             conclusion_text.append(word)
 
             if component == "Argumentative":
-                labels = 1 if is_argumentative else 0
+                labels = 1.0 if is_argumentative else 0.0
             if not is_argumentative and component != "Argumentative":
                 continue
             if isTypeOfPremise:
@@ -277,11 +282,11 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
             label_ids = []
             for word_idx in word_ids:  # Set the special tokens to -100.
                 if word_idx is None:
-                    label_ids.append(-100)
+                    label_ids.append(-100.0)
                 elif word_idx != previous_word_idx:  # Only label the first token of a given word.
                     label_ids.append(label[word_idx])
                 else:
-                    label_ids.append(-100)
+                    label_ids.append(-100.0)
                 previous_word_idx = word_idx
             labels.append(label_ids)
 
@@ -289,7 +294,7 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
         return tokenized_inputs
 
     def tokenize_and_align_labels_per_example_multilabel(example):
-        tokenized_inputs = tokenizer(example["tokens"], truncation=True, is_split_into_words=True)
+        tokenized_inputs = tokenizer(example["tokens"], truncation=True, padding=True, is_split_into_words=True)
         labels = []
         for i, label in enumerate(example[f"labels"]):
             word_ids = tokenized_inputs.word_ids(batch_index=i)
@@ -297,11 +302,11 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
             label_ids = []
             for word_idx in word_ids:  # Set the special tokens to -100.
                 if word_idx is None:
-                    label_ids.append([-100]*6)
+                    label_ids.append([-100.0]*6)
                 elif word_idx != previous_word_idx:  # Only label the first token of a given word.
                     label_ids.append(label[word_idx])
                 else:
-                    label_ids.append([-100]*6)
+                    label_ids.append([-100.0]*6)
                 previous_word_idx = word_idx
             labels.append(label_ids)
 
@@ -319,7 +324,7 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
             tokens = tokenizer(word).input_ids
             label_ids.append(label)
             for i in range(len(tokens)-3):
-                label_ids.append(-100)
+                label_ids.append(-100.0)
         label_ids.append(-100)
         assert(len(tokenized_input.input_ids) == len(label_ids))
         assert(len(tokenized_input.input_ids) == len(tokenized_input.attention_mask))
@@ -384,7 +389,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             train_dataset=training_set,
             eval_dataset=dev_set,
             tokenizer=tokenizer,
-            data_collator=data_collator,
+            # data_collator=data_collator,
             compute_metrics= compute_metrics_f1,
             callbacks = [EarlyStoppingCallback(early_stopping_patience=4)]
         )
@@ -444,10 +449,12 @@ for combination in dataset_combinations:
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, add_prefix_space=True)
         if not type_of_premise and component != "Argumentative":
             data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
-            if not simultaneous_components:
-                output_num = 2
-            else:
+            if simultaneous_components:
                 output_num = 3
+            elif all_components:
+                output_num = 6
+            else:
+                output_num = 2
             model = AutoModelForTokenClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
             
         else:

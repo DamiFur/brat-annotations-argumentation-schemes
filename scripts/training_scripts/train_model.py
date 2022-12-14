@@ -273,7 +273,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 labels = 1.0 if is_argumentative else 0.0
             if not is_argumentative and component != "Argumentative":
                 if all_components:
-                    labels = [0.0] * 6
+                    labels = [[0.0] * 6] * len(tweet)
                 else:
                     continue
             if isTypeOfPremise:

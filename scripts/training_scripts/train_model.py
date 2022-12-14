@@ -30,7 +30,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cpu")
+device = torch.device("cuda:0")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
@@ -62,9 +62,6 @@ class MultiLabelTrainer(Trainer):
         outputs = model(**inputs)
         outputs = F.sigmoid(outputs.logits)
         try:
-            print(outputs)
-            print("================================================")
-            print(labels)
             loss = self.loss_fct(outputs.view(-1), labels.view(-1))
         except AttributeError:  # DataParallel
             loss = self.loss_fct(outputs.logits.view(-1, model.module.num_labels), labels.view(-1))

@@ -384,7 +384,8 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     # test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, all_components=all_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"), all_components=all_components)
     
     print("BUILDING DATASET")
-    print(len(dev_set))
+    print(len(dev_set["tokens"]))
+    print(len(dev_set["labels"]))
 
     training_args = TrainingArguments(
         output_dir="./results_eval_{}_{}".format(MODEL_NAME.replace("/", "-"), component),

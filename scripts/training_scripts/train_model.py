@@ -206,7 +206,9 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
 
             if component == "Argumentative":
                 labels = 1 if is_argumentative else 0
-            if not is_argumentative and component != "Argumentative":
+            elif component == "Premises" and not is_argumentative and simultaneous_components:
+                labels = [0.0] * len(tweet)
+            if not is_argumentative and component != "Argumentative" and component != "Premises":
                 continue
             if isTypeOfPremise:
                 assert(labels >= 0)

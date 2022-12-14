@@ -64,7 +64,7 @@ class MultiLabelTrainer(Trainer):
         try:
             loss = self.loss_fct(outputs.view(-1), labels.view(-1))
         except AttributeError:  # DataParallel
-            loss = self.loss_fct(outputs.logits.view(-1, model.module.num_labels), labels.view(-1))
+            loss = self.loss_fct(outputs.view(-1, model.module.num_labels), labels.view(-1))
 
         return (loss, outputs) if return_outputs else loss
 

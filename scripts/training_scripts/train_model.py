@@ -88,6 +88,8 @@ def compute_metrics_f1(p: EvalPrediction):
         print(true_predictions)
         print(len(true_labels))
         print(len(true_predictions))
+        print(len(preds))
+        print(len(labels))
         all_true_labels = [l for label in true_labels for l in label]
         all_true_preds = [p for preed in true_predictions for p in preed]
         if simultaneous_components:

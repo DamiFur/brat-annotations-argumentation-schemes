@@ -272,7 +272,10 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
             if component == "Argumentative":
                 labels = 1.0 if is_argumentative else 0.0
             if not is_argumentative and component != "Argumentative":
-                continue
+                if all_components:
+                    labels = [0.0] * 6
+                else:
+                    continue
             if isTypeOfPremise:
                 assert(labels >= 0)
             if add_annotator_info:
@@ -282,7 +285,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
                 if component == "pivot":
                     to_add = ["Justification:"] + justification_text + ["Conclusion:"] + conclusion_text
                 tweet += to_add
-                labels += [0] * len(to_add)
+                labels += [0.0] * len(to_add)
 
             if multidataset:
                 dicc = {"tokens": [tweet], "labels": [labels]}

@@ -70,18 +70,19 @@ class MultiLabelTrainer(Trainer):
 
 
 def compute_metrics_f1(p: EvalPrediction):
-    preds = p.predictions.argmax(-1)
-    labels = p.label_ids
 
-    print("========================================================================")
-    print("EVALUATION")
-    print(p.predictions)
-    print(labels)
+    if all_components:
+        preds = p.predictions
+        labels = p.label_ids
 
-    if not type_of_premise and component != "Argumentative":
+        print("========================================================================")
+        print("EVALUATION")
+        print(preds)
+        print(labels)
+
         true_labels = [[str(l[0]) for l in label if l[0] != -100] for label in labels]
         true_predictions = [
-            [str(p[0]) for (p, l) in zip(prediction, label) if l[0] != -100]
+            [str(round(p[0])) for (p, l) in zip(prediction, label) if l[0] != -100]
             for prediction, label in zip(preds, labels)
         ]
         all_true_labels = [l for label in true_labels for l in label]
@@ -90,15 +91,38 @@ def compute_metrics_f1(p: EvalPrediction):
             avrge = "macro"
             f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
         else:
-            avrge = "binary"
+            avrge = "binary"    
+
     else:
-        all_true_labels = [str(label) for label in labels]
-        all_true_preds = [str(pred) for pred in preds]
-        if type_of_premise:
-            avrge = "macro"
-            f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
+        preds = p.predictions.argmax(-1)
+        labels = p.label_ids
+
+        print("========================================================================")
+        print("EVALUATION")
+        print(preds)
+        print(labels)
+
+        if not type_of_premise and component != "Argumentative":
+            true_labels = [[str(l) for l in label if l != -100] for label in labels]
+            true_predictions = [
+                [str(p) for (p, l) in zip(prediction, label) if l != -100]
+                for prediction, label in zip(preds, labels)
+            ]
+            all_true_labels = [l for label in true_labels for l in label]
+            all_true_preds = [p for preed in true_predictions for p in preed]
+            if simultaneous_components:
+                avrge = "macro"
+                f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
+            else:
+                avrge = "binary"
         else:
-            avrge = "binary"
+            all_true_labels = [str(label) for label in labels]
+            all_true_preds = [str(pred) for pred in preds]
+            if type_of_premise:
+                avrge = "macro"
+                f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
+            else:
+                avrge = "binary"
 
 
     f1 = metrics.f1_score(all_true_labels, all_true_preds, average=avrge, pos_label='1')

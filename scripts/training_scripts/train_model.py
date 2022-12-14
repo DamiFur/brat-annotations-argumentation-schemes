@@ -75,7 +75,7 @@ def compute_metrics_f1(p: EvalPrediction):
 
     print("========================================================================")
     print("EVALUATION")
-    print(preds)
+    print(p.predictions)
     print(labels)
 
     if not type_of_premise and component != "Argumentative":

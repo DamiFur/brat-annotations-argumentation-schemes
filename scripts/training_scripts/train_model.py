@@ -76,13 +76,15 @@ def compute_metrics_f1(p: EvalPrediction):
         preds = p.predictions
         labels = p.label_ids
 
+        print(preds.size())
+        print(labels.size())
         print("========================================================================")
         print("EVALUATION")
 
 
         true_labels = [[str(l[0]) for l in label if l[0] != -100] for label in labels]
         true_predictions = [
-            [str(round(p[0])) for (p, l) in zip(prediction, label) if l[0] != -100]
+            [str(float(round(p[0]))) for (p, l) in zip(prediction, label) if l[0] != -100]
             for prediction, label in zip(preds, labels)
         ]
         print(len(true_labels))

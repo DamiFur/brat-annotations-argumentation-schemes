@@ -60,7 +60,8 @@ class MultiLabelTrainer(Trainer):
         """
         labels = inputs.pop("labels")
         outputs = model(**inputs)
-        outputs = F.sigmoid(outputs.logits)
+        logits = outputs[1:]
+        outputs = F.sigmoid(logits)
         try:
             loss = self.loss_fct(outputs.view(-1), labels.view(-1))
         except AttributeError:  # DataParallel
@@ -84,12 +85,12 @@ def compute_metrics_f1(p: EvalPrediction):
             [str(round(p[0])) for (p, l) in zip(prediction, label) if l[0] != -100]
             for prediction, label in zip(preds, labels)
         ]
-        print(true_labels)
-        print(true_predictions)
         print(len(true_labels))
         print(len(true_predictions))
         print(len(preds))
         print(len(labels))
+        print(p.predictions.shape)
+        print(p.label_ids.shape)
         all_true_labels = [l for label in true_labels for l in label]
         all_true_preds = [p for preed in true_predictions for p in preed]
         if simultaneous_components:
@@ -293,6 +294,7 @@ def labelComponentsFromAllExamples(filePatterns, component, multidataset = False
     if multidataset:
         return datasets
 
+    assert(len(all_tweets) == len(all_labels))
     ans = {"tokens": all_tweets, "labels": all_labels}
     return Dataset.from_dict(ans)
 

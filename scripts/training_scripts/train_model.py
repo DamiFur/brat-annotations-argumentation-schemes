@@ -59,6 +59,8 @@ def compute_metrics_f1(p: EvalPrediction):
         if simultaneous_components:
             avrge = "macro"
             f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
+            precision_all = metrics.precision_score(all_true_labels, all_true_preds, average=None)
+            recall_all = metrics.recall_score(all_true_labels, all_true_preds, average=None)
         else:
             avrge = "binary"
     else:
@@ -103,6 +105,9 @@ def compute_metrics_f1(p: EvalPrediction):
 
     if type_of_premise or simultaneous_components:
         ans['f1_all'] = str(f1_all)
+        if simultaneous_components:
+            ans['precision_all'] = precision_all
+            ans['recall_all'] = recall_all
 
     return ans
 
@@ -161,11 +166,8 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
                 if not isTypeOfPremise:
                     tweet.append(word)
                 else:
-                    print("CHECK")
-                    print(componentt)
                     if componentt == "Premise2Justification":
                         if line_splitted[2] != "O":
-                            print("HEREERERE")
                             tweet.append(word)
                     elif componentt == "Premise1Conclusion":
                         if line_splitted[3] != "O":
@@ -216,9 +218,6 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
             if not is_argumentative and componentt != "Argumentative" and componentt != "Premises":
                 continue
             if isTypeOfPremise:
-                print(tweet)
-                print(labels)
-                print(componentt)
                 assert(labels >= 0)
             if add_annotator_info:
                 to_add = []
@@ -373,8 +372,10 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             suffix = "type-of-premise"
         filename = "./results_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
     with open(filename, "w") as writer:
-        if type_of_premise or multiple_components:
+        if type_of_premise:
             writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"]))
+        elif multiple_components:
+            writer.write("{},{},{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"], results.metrics["test_precision_all"], results.metrics["test_recall_all"]))
         else:
             writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))

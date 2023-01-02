@@ -280,10 +280,11 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
         tokenized_input = tokenizer(tkns, truncation=True, is_split_into_words=True)
         label_ids = [-100]
         for word, label in zip(tkns, labels):
-            tokens = tokenizer(word).input_ids
-            label_ids.append(label)
-            for i in range(len(tokens)-3):
-                label_ids.append(-100)
+            if word != "":
+                tokens = tokenizer(word).input_ids
+                label_ids.append(label)
+                for i in range(len(tokens)-3):
+                    label_ids.append(-100)
         label_ids.append(-100)
         assert(len(tokenized_input.input_ids) == len(label_ids))
         assert(len(tokenized_input.input_ids) == len(tokenized_input.attention_mask))

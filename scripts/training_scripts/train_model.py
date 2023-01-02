@@ -106,8 +106,8 @@ def compute_metrics_f1(p: EvalPrediction):
     if type_of_premise or simultaneous_components:
         ans['f1_all'] = str(f1_all)
         if simultaneous_components:
-            ans['precision_all'] = precision_all
-            ans['recall_all'] = recall_all
+            ans['precision_all'] = str(precision_all)
+            ans['recall_all'] = str(recall_all)
 
     return ans
 

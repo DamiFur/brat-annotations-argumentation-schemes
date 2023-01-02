@@ -156,6 +156,8 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
             if add_annotator_info:
                 if componentt == "Collective":
                     property_text = []
+                if component == "Property":
+                    collective_text = []
                 if componentt == "pivot":
                     justification_text = []
                     conclusion_text = []
@@ -204,6 +206,8 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
                             property_text.append(word)
                     elif componentt == "Property":
                         labels.append(getLabel(line_splitted[5]))
+                        if add_annotator_info and getLabel(line_splitted[4]) == 1:
+                            collective_text.append(word)
                     elif componentt == "pivot":
                         labels.append(getLabel(line_splitted[6]))
                         if add_annotator_info and getLabel(line_splitted[2]) == 1:
@@ -222,11 +226,13 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
             if add_annotator_info:
                 to_add = []
                 if componentt == "Collective":
-                    to_add = ["[SEP] Property:"] + property_text
+                    to_add = ["[SEP]" + "Property:"] + property_text
+                if component == "Property":
+                    to_add = ["[SEP]" + "Collective:"] + collective_text
                 if componentt == "pivot":
-                    to_add = ["[SEP] Justification:"] + justification_text + ["[SEP] Conclusion:"] + conclusion_text
+                    to_add = ["[SEP]" + "Justification:"] + justification_text + ["[SEP]" + "Conclusion:"] + conclusion_text
                 tweet += to_add
-                labels += [0] * len(to_add)
+                labels += [-100] * len(to_add)
 
             if multidataset:
                 dicc = {"tokens": [tweet], "labels": [labels]}

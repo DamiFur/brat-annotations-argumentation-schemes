@@ -338,7 +338,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
         output_dir="./results_eval_{}_{}".format(MODEL_NAME.replace("/", "-"), component),
         evaluation_strategy="steps",
         eval_steps=10,
-        save_total_limit=8,
+        save_strategy="no",
         learning_rate=LEARNING_RATE,
         per_device_train_batch_size=BATCH_SIZE,
         per_device_eval_batch_size=BATCH_SIZE,

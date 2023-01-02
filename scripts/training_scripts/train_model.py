@@ -371,7 +371,11 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
 
     results = trainer.predict(test_set)
     if not type_of_premise:
-        filename = "./results_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
+        if add_annotator_info:
+            suffix = "_ADDED-INFO"
+        else:
+            suffix = ""
+        filename = "./results_test_{}_{}_{}_{}_{}{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
     else:
         if joint_premises:
             suffix = "joint-premises"

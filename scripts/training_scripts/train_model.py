@@ -29,7 +29,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cuda:0")
+device = torch.device("cpu")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
@@ -226,11 +226,11 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
             if add_annotator_info:
                 to_add = []
                 if componentt == "Collective":
-                    to_add = ["[SEP]" + "Property:"] + property_text
+                    to_add = ["[SEP]", "Property:"] + property_text
                 if component == "Property":
-                    to_add = ["[SEP]" + "Collective:"] + collective_text
+                    to_add = ["[SEP]", "Collective:"] + collective_text
                 if componentt == "pivot":
-                    to_add = ["[SEP]" + "Justification:"] + justification_text + ["[SEP]" + "Conclusion:"] + conclusion_text
+                    to_add = ["[SEP]", "Justification:"] + justification_text + ["[SEP]", "Conclusion:"] + conclusion_text
                 tweet += to_add
                 labels += [-100] * len(to_add)
 
@@ -283,14 +283,18 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
         labels = example["labels"]
         if len(tkns) == 0 and len(labels) == 0:
             return {"input_ids": [], "labels": [], "attention_mask": []}
-        tokenized_input = tokenizer(tkns, truncation=True, is_split_into_words=True)
+        tokenized_input = tokenizer(tkns, is_split_into_words=True)
         label_ids = [-100]
+        accum = []
         for word, label in zip(tkns, labels):
             if word != "":
                 tokens = tokenizer(word).input_ids
                 label_ids.append(label)
                 for i in range(len(tokens)-3):
                     label_ids.append(-100)
+                accum.append(word)
+                tmp_accum = tokenizer(accum, is_split_into_words=True)
+                assert(len(tmp_accum.input_ids) == len(label_ids) + 1)
         label_ids.append(-100)
         assert(len(tokenized_input.input_ids) == len(label_ids))
         assert(len(tokenized_input.input_ids) == len(tokenized_input.attention_mask))

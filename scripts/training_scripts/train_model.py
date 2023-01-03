@@ -29,12 +29,13 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cuda:0")
+device = torch.device("cpu")
 BATCH_SIZE = args.batch_size
 EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
 REP=0
 FOLDS=3
+SEQ_LENGTH = 127
 components = args.components
 component = components[0]
 add_annotator_info = args.add_annotator_info
@@ -283,7 +284,7 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
         labels = example["labels"]
         if len(tkns) == 0 and len(labels) == 0:
             return {"input_ids": [], "labels": [], "attention_mask": []}
-        tokenized_input = tokenizer(tkns, is_split_into_words=True)
+        tokenized_input = tokenizer(tkns, truncation=True, is_split_into_words=True)
         label_ids = [-100]
         accum = []
         for word, label in zip(tkns, labels):
@@ -295,6 +296,8 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
                 accum.append(word)
                 tmp_accum = tokenizer(accum, is_split_into_words=True)
                 assert(len(tmp_accum.input_ids) == len(label_ids) + 1)
+        if len(label_ids) > SEQ_LENGTH:
+            label_ids = label_ids[:SEQ_LENGTH]
         label_ids.append(-100)
         assert(len(tokenized_input.input_ids) == len(label_ids))
         assert(len(tokenized_input.input_ids) == len(tokenized_input.attention_mask))

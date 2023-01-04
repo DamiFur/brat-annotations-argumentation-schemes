@@ -22,7 +22,7 @@ parser.add_argument('--add_annotator_info', type=bool, default=False, help="For 
 parser.add_argument('--type_of_premise', type=bool, default=False, help="If true, model will be trained to predict the type of premises. If true, only valid components are Justification and Conclusion")
 parser.add_argument('--simultaneous_components', type=bool, default=False, help="Set to true if trying to do joint predictions")
 parser.add_argument('--multilingual', type=bool, default=False, help="Set to true if using both english and spanish datasets. For good results, use a multilingual model")
-parser.add_argument('--joint_premises', type=int, default=False, help="If true, this script will predict type of premise disregarding if the premise is Justification of Conclusion")
+parser.add_argument('--joint_premises', type=int, default=0, help="If true, this script will predict type of premise disregarding if the premise is Justification of Conclusion")
 
 args = parser.parse_args()
 

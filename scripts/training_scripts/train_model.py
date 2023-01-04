@@ -21,8 +21,9 @@ parser.add_argument('--batch_size', type=int, default=16, help="Batch size for t
 parser.add_argument('--add_annotator_info', type=bool, default=False, help="For Pivot and Collective add information about premises and Property respectively that an annotator would have when annotating these components")
 parser.add_argument('--type_of_premise', type=bool, default=False, help="If true, model will be trained to predict the type of premises. If true, only valid components are Justification and Conclusion")
 parser.add_argument('--simultaneous_components', type=bool, default=False, help="Set to true if trying to do joint predictions")
-parser.add_argument('--multilingual', type=bool, default=False, help="Set to true if using both english and spanish datasets. For good results, use a multilingual model")
+parser.add_argument('--multilingual', type=bool, default=False, help="Set to true if using both english and spanish datasets. Both Training and Test datasets will have both languages")
 parser.add_argument('--joint_premises', type=int, default=0, help="If true, this script will predict type of premise disregarding if the premise is Justification of Conclusion")
+parser.add_argument('--crosslingual', type=bool, default=False, help="Set to true if using both english and spanish datasets. English dataset will be used for train and dev and Spanish will be used for testing")
 
 args = parser.parse_args()
 
@@ -41,7 +42,8 @@ component = components[0]
 add_annotator_info = args.add_annotator_info
 type_of_premise = args.type_of_premise or args.joint_premises
 simultaneous_components = args.simultaneous_components
-multilingual = args.multilingual
+crosslingual = args.crosslingual
+multilingual = args.multilingual or crosslingual
 joint_premises = args.joint_premises
 quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
 
@@ -383,13 +385,18 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
 
     trainer.train()
 
+    model_settings = MODEL_NAME.replace("/", "-")
+    if crosslingual:
+        model_settings += "-xl"
+    elif multilingual:
+        model_settings += '-mix'
     results = trainer.predict(test_set)
     if not type_of_premise:
         if add_annotator_info:
             suffix = "_ADDED-INFO"
         else:
             suffix = ""
-        filename = "./results_test_{}_{}_{}_{}_{}{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
+        filename = "./results_test_{}_{}_{}_{}_{}{}".format(LEARNING_RATE, model_settings, BATCH_SIZE, REP, component, suffix)
     else:
         if joint_premises == 1:
             suffix = "joint-premises"
@@ -399,7 +406,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             suffix = "tested-with-conc"
         else:
             suffix = "type-of-premise"
-        filename = "./results_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
+        filename = "./results_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, model_settings, BATCH_SIZE, REP, component, suffix)
     with open(filename, "w") as writer:
         if type_of_premise:
             writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"]))
@@ -433,19 +440,34 @@ if multilingual:
 else:
     filePatterns = ["./datasets_CoNLL/english/hate_tweet_*.conll"]
 
-allFiles = []
-for pattern in filePatterns:
-    for f in glob.glob(pattern):
-        allFiles.append(f)
-
 dataset_combinations = []
-for i in range(FOLDS):
-    allFilesCp = allFiles.copy()
-    random.Random(41 + i).shuffle(allFilesCp)
-    if multilingual:
-        dataset_combinations.append([allFilesCp[:890], allFilesCp[890:1016], allFilesCp[1016:]])
-    else:
-        dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
+if crosslingual:
+    trainFiles = []
+    testFiles = []
+    for f in glob.glob(filePatterns[0]):
+        trainFiles.append(f)
+    for f in glob.glob(filePatterns[1]):
+        testFiles.append(f)
+    
+    for i in range(FOLDS):
+        trainFilesCp = trainFiles.copy()
+        testFilesCp = testFiles.copy()
+        random.Random(41 + i).shuffle(trainFilesCp)
+        dataset_combinations.append([trainFilesCp[:850], trainFilesCp[850:], testFilesCp])
+
+else:
+    allFiles = []
+    for pattern in filePatterns:
+        for f in glob.glob(pattern):
+            allFiles.append(f)
+
+    for i in range(FOLDS):
+        allFilesCp = allFiles.copy()
+        random.Random(41 + i).shuffle(allFilesCp)
+        if multilingual:
+            dataset_combinations.append([allFilesCp[:890], allFilesCp[890:1016], allFilesCp[1016:]])
+        else:
+            dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
 
 for combination in dataset_combinations:
     REP = REP + 1

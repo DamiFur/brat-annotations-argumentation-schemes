@@ -22,7 +22,7 @@ parser.add_argument('--add_annotator_info', type=bool, default=False, help="For 
 parser.add_argument('--type_of_premise', type=bool, default=False, help="If true, model will be trained to predict the type of premises. If true, only valid components are Justification and Conclusion")
 parser.add_argument('--simultaneous_components', type=bool, default=False, help="Set to true if trying to do joint predictions")
 parser.add_argument('--multilingual', type=bool, default=False, help="Set to true if using both english and spanish datasets. For good results, use a multilingual model")
-parser.add_argument('--joint_premises', type=bool, default=False, help="If true, this script will predict type of premise disregarding if the premise is Justification of Conclusion")
+parser.add_argument('--joint_premises', type=int, default=False, help="If true, this script will predict type of premise disregarding if the premise is Justification of Conclusion")
 
 args = parser.parse_args()
 
@@ -246,7 +246,7 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
     if multidataset:
         return datasets
 
-    if joint_premises:
+    if joint_premises > 0:
         return all_tweets, all_labels    
 
     ans = {"tokens": all_tweets, "labels": all_labels}
@@ -320,7 +320,7 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
 
 def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False, multiple_components = False, joint_premises = False):
 
-    if joint_premises:
+    if joint_premises > 0:
         just_tweets, just_labels = labelComponentsFromAllExamples(train_partition_patterns, "Premise2Justification", add_annotator_info=add_annotator_info, isTypeOfPremise=joint_premises, multiple_components=multiple_components, joint_premises=joint_premises)
         conc_tweets, conc_labels = labelComponentsFromAllExamples(train_partition_patterns, "Premise1Conclusion", add_annotator_info=add_annotator_info, isTypeOfPremise=joint_premises, multiple_components=multiple_components, joint_premises=joint_premises)
         twts = just_tweets + conc_tweets
@@ -337,8 +337,15 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
 
         just_tweets_test, just_labels_test = labelComponentsFromAllExamples(test_partition_patterns, "Premise2Justification", add_annotator_info=add_annotator_info, isTypeOfPremise=joint_premises, multiple_components=multiple_components, joint_premises=joint_premises)
         conc_tweets_test, conc_labels_test = labelComponentsFromAllExamples(test_partition_patterns, "Premise1Conclusion", add_annotator_info=add_annotator_info, isTypeOfPremise=joint_premises, multiple_components=multiple_components, joint_premises=joint_premises)
-        twts_test = just_tweets_test + conc_tweets_test
-        lbls_test = just_labels_test + conc_labels_test
+        if joint_premises == 1:
+            twts_test = just_tweets_test + conc_tweets_test
+            lbls_test = just_labels_test + conc_labels_test
+        elif joint_premises == 2:
+            twts_test = just_tweets_test
+            lbls_test = just_labels_test
+        elif joint_premises == 3:
+            twts_test = conc_tweets_test
+            lbls_test = conc_labels_test
         dtst_dict_test = {"tokens": twts_test, "labels": lbls_test}
         test_set = tokenize_and_align_labels(Dataset.from_dict(dtst_dict_test), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
 
@@ -384,8 +391,12 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             suffix = ""
         filename = "./results_test_{}_{}_{}_{}_{}{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
     else:
-        if joint_premises:
+        if joint_premises == 1:
             suffix = "joint-premises"
+        elif joint_premises == 2:
+            suffix = "tested-with-just"
+        elif joint_premises == 3:
+            suffix = "tested-with-conc"
         else:
             suffix = "type-of-premise"
         filename = "./results_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)

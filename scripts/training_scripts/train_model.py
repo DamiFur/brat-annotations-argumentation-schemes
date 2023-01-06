@@ -220,7 +220,7 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
 
             if componentt == "Argumentative":
                 labels = 1 if is_argumentative else 0
-            elif componentt == "Premises" and not is_argumentative and simultaneous_components:
+            elif componentt == "Premises" and not is_argumentative and multiple_components:
                 labels = [0.0] * len(tweet)
             if not is_argumentative and componentt != "Argumentative" and componentt != "Premises":
                 continue
@@ -380,7 +380,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
         tokenizer=tokenizer,
         data_collator=data_collator,
         compute_metrics= compute_metrics_f1,
-        callbacks = [EarlyStoppingCallback(early_stopping_patience=4)]
+        callbacks = [EarlyStoppingCallback(early_stopping_patience=10)]
     ) 
 
     trainer.train()

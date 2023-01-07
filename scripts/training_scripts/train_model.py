@@ -61,9 +61,9 @@ def compute_metrics_f1(p: EvalPrediction):
         all_true_preds = [p for preed in true_predictions for p in preed]
         if simultaneous_components:
             avrge = "macro"
-            f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
-            precision_all = metrics.precision_score(all_true_labels, all_true_preds, average=None)
-            recall_all = metrics.recall_score(all_true_labels, all_true_preds, average=None)
+            f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None, labels=['0', '1', '2'])
+            precision_all = metrics.precision_score(all_true_labels, all_true_preds, average=None, labels=['0', '1', '2'])
+            recall_all = metrics.recall_score(all_true_labels, all_true_preds, average=None, labels=['0', '1', '2'])
         else:
             avrge = "binary"
     else:
@@ -71,7 +71,7 @@ def compute_metrics_f1(p: EvalPrediction):
         all_true_preds = [str(pred) for pred in preds]
         if type_of_premise:
             avrge = "macro"
-            f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None)
+            f1_all = metrics.f1_score(all_true_labels, all_true_preds, average=None, labels=['0','1','2'])
         else:
             avrge = "binary"
 
@@ -190,6 +190,10 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
                         if line_splitted[3] != "O":
                             labels = quadrant_types_to_label[line_splitted[8].replace("\n", "")]
                 elif multiple_components:
+                    # getLabel returns 0 or 1 depending on if the current word belongs to the correspondent component.
+                    # If were the unlikley case of a word belonging to both Collective and Property,
+                    # the max function will return the label for Property. If it happened to belong to both Justification
+                    # and Conclusion, it will be labeled as Conclusion.
                     if componentt == "Collective-Property":
                         col = getLabel(line_splitted[4])
                         prop = getLabel(line_splitted[5]) * 2
@@ -220,9 +224,7 @@ def labelComponentsFromAllExamples(filePatterns, componentt, multidataset = Fals
 
             if componentt == "Argumentative":
                 labels = 1 if is_argumentative else 0
-            elif componentt == "Premises" and not is_argumentative and multiple_components:
-                labels = [0.0] * len(tweet)
-            if not is_argumentative and componentt != "Argumentative" and componentt != "Premises":
+            if not is_argumentative and componentt != "Argumentative":
                 continue
             if isTypeOfPremise:
                 assert(labels >= 0)

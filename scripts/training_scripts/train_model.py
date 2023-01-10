@@ -497,7 +497,7 @@ for combination in dataset_combinations:
     for cmpnent in components:
         component = cmpnent
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, add_prefix_space=True)
-        if not type_of_premise and component != "Argumentative":
+        if not type_of_premise and component != "Argumentative" and not predict_if_present:
             data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
             if not simultaneous_components:
                 output_num = 2

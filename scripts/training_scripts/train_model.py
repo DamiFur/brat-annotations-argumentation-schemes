@@ -55,7 +55,7 @@ def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
     labels = p.label_ids
 
-    if not type_of_premise and component != "Argumentative":
+    if not type_of_premise and component != "Argumentative" and not predict_if_present:
         true_labels = [[str(l) for l in label if l != -100] for label in labels]
         true_predictions = [
             [str(p) for (p, l) in zip(prediction, label) if l != -100]

@@ -409,6 +409,8 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     if not type_of_premise:
         if add_annotator_info:
             suffix = "_ADDED-INFO"
+        elif only_if_present:
+            suffix = "_ONLY-PRESENTS"
         else:
             suffix = ""
         filename = "./results_test_{}_{}_{}_{}_{}{}".format(LEARNING_RATE, model_settings, BATCH_SIZE, REP, component, suffix)

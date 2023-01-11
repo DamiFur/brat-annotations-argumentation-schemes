@@ -369,12 +369,13 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             lbls_test = conc_labels_test
         dtst_dict_test = {"tokens": twts_test, "labels": lbls_test}
         test_set = tokenize_and_align_labels(Dataset.from_dict(dtst_dict_test), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative" or predict_if_present))
+        test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
 
     else:
         training_set = tokenize_and_align_labels(labelComponentsFromAllExamples(train_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, only_if_present=only_if_present, predict_if_present=predict_if_present), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative" or predict_if_present))
         dev_set = tokenize_and_align_labels(labelComponentsFromAllExamples(dev_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, only_if_present=only_if_present, predict_if_present=predict_if_present), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative" or predict_if_present))
         test_set = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components, only_if_present=only_if_present, predict_if_present=predict_if_present), tokenizer, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative" or predict_if_present))
-    # test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
+        test_set_one_example = tokenize_and_align_labels(labelComponentsFromAllExamples(test_partition_patterns, component, multidataset = True, add_annotator_info=add_annotator_info, isTypeOfPremise=is_type_of_premise, multiple_components=multiple_components), tokenizer, is_multi = True, is_bertweet = is_bertweet, one_label_per_example=(is_type_of_premise or component == "Argumentative"))
     
     training_args = TrainingArguments(
         output_dir="./results_eval_{}_{}".format(MODEL_NAME.replace("/", "-"), component),
@@ -439,23 +440,23 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))
 
-    # examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
-    # with open(examples_filename, "w") as writer:
-    #     for dtset in test_set_one_example:
-    #         result = trainer.predict(dtset["dataset"])
-    #         preds = result.predictions.argmax(-1)[0]
-    #         if component == "Argumentative":
-    #             preds = [preds]
-    #         assert (len(preds) == len(result.label_ids))
-    #         comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
-    #         writer.write("Tweet:\n")
-    #         writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
-    #         if component == "Argumentative":
-    #             writer.write("{} - {}".format(comparison[0][0], comparison[0][1]))
-    #         else:
-    #             for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
-    #                 writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
-    #         writer.write("-------------------------------------------------------------------------------\n")
+    examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
+    with open(examples_filename, "w") as writer:
+        for dtset in test_set_one_example:
+            result = trainer.predict(dtset["dataset"])
+            preds = result.predictions.argmax(-1)[0]
+            if component == "Argumentative":
+                preds = [preds]
+            assert (len(preds) == len(result.label_ids))
+            comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
+            writer.write("Tweet:\n")
+            writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
+            if component == "Argumentative":
+                writer.write("{} - {}".format(comparison[0][0], comparison[0][1]))
+            else:
+                for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
+                    writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
+            writer.write("-------------------------------------------------------------------------------\n")
 
 
 if multilingual:

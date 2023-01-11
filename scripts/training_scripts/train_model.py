@@ -445,14 +445,25 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
         for dtset in test_set_one_example:
             result = trainer.predict(dtset["dataset"])
             preds = result.predictions.argmax(-1)
-            if component == "Argumentative":
-                preds = [preds]
-            if not len(preds) == len(result.label_ids):
-                print(preds)
-                print(result.label_ids)
+            labels = result.label_ids
+
+            if not type_of_premise and component != "Argumentative" and not predict_if_present:
+                true_labels = [[str(l) for l in label if l != -100] for label in labels]
+                true_predictions = [
+                    [str(p) for (p, l) in zip(prediction, label) if l != -100]
+                    for prediction, label in zip(preds, labels)
+                ]
+                all_true_labels = [l for label in true_labels for l in label]
+                all_true_preds = [p for preed in true_predictions for p in preed]
+            else:
+                all_true_labels = [str(label) for label in labels]
+                all_true_preds = [str(pred) for pred in preds]
+            if not len(all_true_preds) == len(all_true_labels):
+                print(all_true_preds)
+                print(all_true_labels)
                 print(dtset["dataset"]["tokens"][0])
-                assert (len(preds) == len(result.label_ids))
-            comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
+                assert (len(all_true_preds) == len(all_true_labels))
+            comparison = [(truth, pred) for truth, pred in zip(all_true_labels, all_true_preds) if truth != -100]
             writer.write("Tweet:\n")
             writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
             if component == "Argumentative":

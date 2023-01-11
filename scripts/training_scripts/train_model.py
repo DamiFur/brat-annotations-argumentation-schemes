@@ -444,10 +444,14 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
     with open(examples_filename, "w") as writer:
         for dtset in test_set_one_example:
             result = trainer.predict(dtset["dataset"])
-            preds = result.predictions.argmax(-1)[0]
+            preds = result.predictions.argmax(-1)
             if component == "Argumentative":
                 preds = [preds]
-            assert (len(preds) == len(result.label_ids))
+            if not len(preds) == len(result.label_ids):
+                print(preds)
+                print(result.label_ids)
+                print(dtset["dataset"]["tokens"][0])
+                assert (len(preds) == len(result.label_ids))
             comparison = [(truth, pred) for truth, pred in zip(result.label_ids, preds) if truth != -100]
             writer.write("Tweet:\n")
             writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))

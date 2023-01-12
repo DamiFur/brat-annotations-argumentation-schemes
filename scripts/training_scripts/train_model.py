@@ -440,38 +440,38 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))
 
-    examples_filename = "./examples_test_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component)
-    with open(examples_filename, "w") as writer:
-        for dtset in test_set_one_example:
-            result = trainer.predict(dtset["dataset"])
-            preds = result.predictions.argmax(-1)
-            labels = result.label_ids
+    # examples_filename = "./examples_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
+    # with open(examples_filename, "w") as writer:
+    #     for dtset in test_set_one_example:
+    #         result = trainer.predict(dtset["dataset"])
+    #         preds = result.predictions.argmax(-1)
+    #         labels = result.label_ids
 
-            if not type_of_premise and component != "Argumentative" and not predict_if_present:
-                true_labels = [[str(l) for l in label if l != -100] for label in labels]
-                true_predictions = [
-                    [str(p) for (p, l) in zip(prediction, label) if l != -100]
-                    for prediction, label in zip(preds, labels)
-                ]
-                all_true_labels = [l for label in true_labels for l in label]
-                all_true_preds = [p for preed in true_predictions for p in preed]
-            else:
-                all_true_labels = [str(label) for label in labels]
-                all_true_preds = [str(pred) for pred in preds]
-            if not len(all_true_preds) == len(all_true_labels):
-                print(all_true_preds)
-                print(all_true_labels)
-                print(dtset["dataset"]["tokens"][0])
-                assert (len(all_true_preds) == len(all_true_labels))
-            comparison = [(truth, pred) for truth, pred in zip(all_true_labels, all_true_preds) if truth != -100]
-            writer.write("Tweet:\n")
-            writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
-            if component == "Argumentative":
-                writer.write("{} - {}".format(comparison[0][0], comparison[0][1]))
-            else:
-                for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
-                    writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
-            writer.write("-------------------------------------------------------------------------------\n")
+    #         if not type_of_premise and component != "Argumentative" and not predict_if_present:
+    #             true_labels = [[str(l) for l in label if l != -100] for label in labels]
+    #             true_predictions = [
+    #                 [str(p) for (p, l) in zip(prediction, label) if l != -100]
+    #                 for prediction, label in zip(preds, labels)
+    #             ]
+    #             all_true_labels = [l for label in true_labels for l in label]
+    #             all_true_preds = [p for preed in true_predictions for p in preed]
+    #         else:
+    #             all_true_labels = [str(label) for label in labels]
+    #             all_true_preds = [str(pred) for pred in preds]
+    #         if not len(all_true_preds) == len(all_true_labels):
+    #             print(all_true_preds)
+    #             print(all_true_labels)
+    #             print(dtset["dataset"]["tokens"][0])
+    #             assert (len(all_true_preds) == len(all_true_labels))
+    #         comparison = [(truth, pred) for truth, pred in zip(all_true_labels, all_true_preds) if truth != -100]
+    #         writer.write("Tweet:\n")
+    #         writer.write("{}\n".format(dtset["dataset"]["tokens"][0]))
+    #         if component == "Argumentative":
+    #             writer.write("{} - {}".format(comparison[0][0], comparison[0][1]))
+    #         else:
+    #             for word, pair in zip(dtset["dataset"]["tokens"][0], comparison):
+    #                 writer.write("{}\t\t\t{}\t{}\n".format(word, pair[0], pair[1]))
+    #         writer.write("-------------------------------------------------------------------------------\n")
 
 
 if multilingual:

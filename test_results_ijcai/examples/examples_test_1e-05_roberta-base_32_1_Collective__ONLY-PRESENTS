@@ -6,7 +6,7 @@ with			0	0
 @user			0	0
 on			0	0
 hashtag			0	0
-immigration			1	0
+immigration			0	0
 we			0	0
 can			0	0
 not			0	0
@@ -15,13 +15,13 @@ to			0	0
 give			0	0
 welfare			0	0
 to			0	0
-illegals			1	1
+illegals			0	1
 while			0	0
 u			0	0
 s			0	0
 citizens			0	0
 are			0	0
-homeless			0	1
+homeless			0	0
 hashtag			0	0
 votedemsout			0	0
 hashtag			0	0
@@ -31,7 +31,7 @@ co/f3dteejp34			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['chain', 'migration', 'imported', '120k', 'foreign', 'nationals', 'from', 'terrorist', '-funding', 'countries', 'since', '2005', '-', 'breitbart', '@user', '@user', 'hashtag', 'end', 'chain', 'migration', 'hashtag', 'enddaca', 'hashtag', 'noamnesty', 'hashtag', 'endbirthrightcitizenshipforillegalaliens', 'hashtag', 'buildthewall', 'hashtag', 'keepamericasafe']
-chain			1	1
+chain			0	1
 migration			1	1
 imported			0	0
 120k			0	0
@@ -47,9 +47,9 @@ since			0	0
 breitbart			0	0
 @user			0	0
 @user			0	0
-hashtag			1	0
-end			1	0
-chain			1	1
+hashtag			0	0
+end			0	0
+chain			0	0
 migration			1	1
 hashtag			0	0
 enddaca			0	0
@@ -66,7 +66,7 @@ Tweet:
 ['pressure', 'on', 'spains', 'maritime', 'border:', 'boatloads', 'of', 'hashtag', 'illegal', 'hashtag', 'migrants', 'storm', 'spanish', 'tourist', 'beaches', '&amp', 'scatter', 'hashtag', 'stoptheinvasion', 'hashtag', 'unregistered', 'hashtag', 'unvetted', 'https://t', 'co/bzujnfewq8']
 pressure			0	0
 on			0	0
-spains			0	1
+spains			0	0
 maritime			0	0
 border:			0	0
 boatloads			0	0
@@ -74,9 +74,9 @@ of			0	0
 hashtag			0	0
 illegal			0	1
 hashtag			0	1
-migrants			0	1
+migrants			1	1
 storm			0	0
-spanish			0	1
+spanish			0	0
 tourist			0	0
 beaches			0	0
 &amp			0	0
@@ -114,7 +114,7 @@ ignore			0	0
 international			0	0
 social			0	0
 engineers/cultural			0	0
-marxists			0	0
+marxists			0	1
 hashtag			0	0
 v4			0	0
 italy			0	0
@@ -126,7 +126,7 @@ empty			0	0
 threats			0	0
 from			0	0
 un-eu			0	0
-migration			0	1
+migration			1	1
 pimps			0	0
 what			0	0
 can			0	0
@@ -153,40 +153,40 @@ via			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['salvini', 'prosecuted', 'for', 'defending', 'italian', 'sovereignty', 'and', 'finally', 'preventing', 'hundreds', 'of', 'migrants', 'to', 'invade', 'italy', 'grande', 'salvini', 'help', 'us', 'preserve', 'the', 'european', 'culture', 'against', 'the', 'invasion', 'hashtag', 'stop_islamization', 'hashtag', 'complicedi', 'salvini', 'hashtag', 'stop', 'invasion', 'hashtag', 'refugeesnotwelcome']
-salvini			1	0
+salvini			0	0
 prosecuted			0	0
 for			0	0
 defending			0	0
-italian			0	1
+italian			0	0
 sovereignty			0	0
 and			0	0
 finally			0	0
 preventing			0	0
 hundreds			0	0
 of			0	0
-migrants			0	0
+migrants			1	1
 to			0	0
-invade			0	1
-italy			0	1
+invade			0	0
+italy			0	0
 grande			0	0
-salvini			1	0
+salvini			0	0
 help			0	0
 us			0	0
 preserve			0	0
 the			0	0
-european			0	1
+european			0	0
 culture			0	0
 against			0	0
 the			0	0
-invasion			0	1
+invasion			0	0
 hashtag			0	0
 stop_islamization			0	0
 hashtag			0	0
 complicedi			0	0
-salvini			1	0
+salvini			0	0
 hashtag			0	0
 stop			0	0
-invasion			0	1
+invasion			0	0
 hashtag			0	0
 refugeesnotwelcome			0	0
 -------------------------------------------------------------------------------
@@ -238,7 +238,7 @@ the			0	0
 united			0	0
 states			0	0
 undetected			0	0
-undocumented			0	1
+undocumented			0	0
 unchecked			0	0
 and			0	0
 circumventing			0	0
@@ -258,7 +258,7 @@ become			0	0
 immigrants			0	1
 in			0	0
 this			0	0
-country			0	1
+country			0	0
 barack			0	0
 obama			0	0
 -			0	0
@@ -277,20 +277,20 @@ co/4nvteewpxsrussia-usa			0	0
 eyeing			0	0
 plan			0	0
 for			0	0
-return			0	1
+return			0	0
 of			0	0
-syrian			1	1
-s			0	1
+syrian			0	0
+s			0	0
 big			0	0
 difference			0	0
 between			0	0
-syrian			1	1
+syrian			0	0
 hashtag			0	0
 refugee			0	0
 in			0	0
 lebanon			0	0
 &amp			0	0
-syrian			1	1
+syrian			0	0
 migrant			0	0
 in			0	0
 eu			0	0
@@ -311,9 +311,9 @@ by			0	0
 us			0	0
 bt			0	0
 helping			0	0
-syrian			1	1
-s			0	1
-return			0	1
+syrian			0	1
+s			0	0
+return			0	0
 desirable			0	0
 for			0	0
 all			0	0
@@ -335,14 +335,14 @@ putting			0	0
 up			0	0
 all			0	0
 those			0	0
-refugees			1	1
+refugees			0	1
 in			0	0
 your			0	0
 home			0	0
 jk???			0	0
 you			0	0
 know			0	0
-diversity			1	0
+diversity			0	0
 for			0	0
 thee			0	0
 but			0	0
@@ -367,19 +367,19 @@ its			0	0
 job			0	0
 and			0	0
 checks			0	0
-lebanon			1	1
+lebanon			0	0
 isnt			0	0
 coercing			0	0
-syrian			0	0
-refugees			0	0
+syrian			0	1
+refugees			0	1
 into			0	0
 returning			0	0
 home			0	0
-lebanon			1	1
+lebanon			0	0
 will			0	0
 stop			0	0
 giving			0	0
-residence			0	1
+residence			0	0
 permits			0	0
 to			0	0
 the			0	0
@@ -432,7 +432,7 @@ them			0	0
 we			0	0
 dont			0	0
 want			0	0
-them			0	1
+them			0	0
 we			0	0
 cant			0	0
 afford			0	0
@@ -440,7 +440,7 @@ sustaining			0	0
 all			0	0
 the			0	0
 riff-raff			0	0
-africa			1	1
+africa			0	1
 sends			0	0
 us			0	0
 hashtag			0	0
@@ -455,7 +455,7 @@ Tweet:
 @user			0	0
 amen:			0	0
 see			0	0
-canada			0	1
+canada			0	0
 in			0	0
 decay			0	0
 by			0	0
@@ -466,13 +466,13 @@ the			0	0
 similar			0	0
 reality			0	0
 of			0	0
-canada			0	1
+canada			0	0
 we			0	0
 are			0	0
 not			0	0
 nations			0	0
 of			0	0
-immigrants			0	0
+immigrants			0	1
 -------------------------------------------------------------------------------
 Tweet:
 ['good', 'news', 'we', 'are', 'against', 'illegal', 'immigrants', 'bangladeshi', 'must', 'go', 'https://t', 'co/yhy6heotlm', 'your', 'evidence', 'and', 'stay', 'at', 'assam', 'https://t', 'co/34sqqhpm5z']
@@ -481,8 +481,8 @@ news			0	0
 we			0	0
 are			0	0
 against			0	0
-illegal			1	1
-immigrants			1	1
+illegal			0	1
+immigrants			0	1
 bangladeshi			1	0
 must			0	0
 go			0	0
@@ -500,21 +500,21 @@ co/34sqqhpm5z			0	0
 Tweet:
 ['rich', 'african', 'countries', 'dont', 'take', 'in', 'african', 'migrants', 'rich', 'muslim', 'countries', 'dont', 'take', 'in', 'muslim', 'migrants', 'rich', 'latin', 'american', 'countries', 'dont', 'take', 'it', 'latin', 'migrants', 'but', 'white', 'countries', 'are', 'suppose', 'to', 'accept', 'them', '??']
 rich			0	0
-african			0	0
+african			0	1
 countries			0	0
 dont			0	0
 take			0	0
 in			0	0
 african			0	1
-migrants			1	1
+migrants			0	1
 rich			0	0
-muslim			0	0
+muslim			0	1
 countries			0	0
 dont			0	0
 take			0	0
 in			0	0
 muslim			0	1
-migrants			1	1
+migrants			0	1
 rich			0	0
 latin			0	0
 american			0	0
@@ -523,7 +523,7 @@ dont			0	0
 take			0	0
 it			0	0
 latin			0	0
-migrants			1	1
+migrants			0	0
 but			0	0
 white			0	0
 countries			0	0
@@ -531,7 +531,7 @@ are			0	0
 suppose			0	0
 to			0	0
 accept			0	0
-them			1	1
+them			0	0
 ??			0	0
 -------------------------------------------------------------------------------
 Tweet:
@@ -555,7 +555,7 @@ dont			0	0
 mean			0	0
 to			0	0
 protect			0	0
-them			0	1
+them			0	0
 https://t			0	0
 co/qhzdqtjcf5			0	0
 -------------------------------------------------------------------------------
@@ -567,7 +567,7 @@ are			0	0
 native			0	0
 americans			0	0
 the			0	0
-land			0	1
+land			0	0
 you			0	0
 claim			0	0
 is			0	0
@@ -576,7 +576,7 @@ was			0	0
 theres			0	0
 until			0	0
 our			0	0
-immigrant			0	0
+immigrant			1	1
 ancestors			0	0
 stole			0	0
 it			0	0
@@ -611,7 +611,7 @@ of			0	0
 people			0	0
 crisscrossed			0	0
 entire			0	0
-delhi			0	1
+delhi			0	0
 in			0	0
 one			0	0
 month			0	0
@@ -620,7 +620,7 @@ to			0	0
 see			0	0
 80%encroachments			0	0
 by			0	0
-muslims/immigrants			0	1
+muslims/immigrants			1	1
 most			0	0
 dirty			0	0
 areas			0	0
@@ -631,9 +631,9 @@ Tweet:
 ['why', 'should', 'people', 'here', 'illegally', 'be', 'counted', 'and', 'represented', '?', 'send', 'them', 'home', 'and', 'build', 'the', 'wall', 'hashtag', 'ncpol', 'hashtag', 'buildthatwall']
 why			0	0
 should			0	0
-people			0	0
-here			0	0
-illegally			0	0
+people			1	1
+here			1	1
+illegally			1	1
 be			0	0
 counted			0	0
 and			0	0
@@ -644,8 +644,8 @@ them			0	0
 home			0	0
 and			0	0
 build			0	0
-the			0	1
-wall			0	1
+the			0	0
+wall			0	0
 hashtag			0	0
 ncpol			0	0
 hashtag			0	0
@@ -657,15 +657,15 @@ Tweet:
 is			0	0
 becoming			0	0
 the			0	0
-third			1	0
-world			1	0
+third			0	0
+world			0	0
 "			0	0
 american			0	0
 tourist			0	0
 almost			0	0
 killed			0	0
 by			0	0
-migrants			1	0
+migrants			1	1
 speaks			0	0
 up			0	0
 https://t			0	0
@@ -683,8 +683,8 @@ make			0	0
 it			0	0
 harder			0	0
 for			0	0
-legal			0	0
-migrants			0	1
+legal			1	0
+migrants			1	1
 to			0	0
 be			0	0
 citizens			0	0
@@ -696,7 +696,7 @@ good			0	0
 only			0	0
 the			0	0
 best			0	0
-welfare			0	1
+welfare			0	0
 leeches			0	0
 go			0	0
 back			0	0
@@ -704,11 +704,11 @@ home			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['austrias', 'new', 'right', 'wing', 'government', 'is', 'also', 'making', 'good', 'on', 'its', 'promise', 'to', 'stop', 'muslim', 'migration', 'while', 'deporting', 'thousands', 'who', 'are', 'already', 'there', 'illegally', 'https://t', 'co/hqzfant9bg', 'via', '@user', 'austria', 'awakens']
-austrias			0	1
+austrias			0	0
 new			0	0
 right			0	0
 wing			0	0
-government			0	1
+government			0	0
 is			0	0
 also			0	0
 making			0	0
@@ -719,7 +719,7 @@ promise			0	0
 to			0	0
 stop			0	0
 muslim			0	1
-migration			0	1
+migration			0	0
 while			0	0
 deporting			0	0
 thousands			0	0
@@ -732,7 +732,7 @@ https://t			0	0
 co/hqzfant9bg			0	0
 via			0	0
 @user			0	0
-austria			0	1
+austria			0	0
 awakens			0	0
 -------------------------------------------------------------------------------
 Tweet:
@@ -742,17 +742,17 @@ insane			0	0
 re			0	0
 truly			0	0
 in			0	0
-charge			1	0
+charge			0	0
 the			0	0
 german			0	0
-government			1	1
+government			0	0
 pays			0	0
 for			0	0
 3			0	0
 week			0	0
 vacation			0	0
 for			0	0
-refugees			0	0
+refugees			0	1
 to			0	0
 go			0	0
 home			0	0
@@ -771,10 +771,10 @@ supposed			0	0
 to			0	0
 make			0	0
 the			0	0
-world			0	1
+world			0	0
 a			0	0
-better			0	1
-place			0	1
+better			0	0
+place			0	0
 it			0	0
 is			0	0
 supposed			0	0
@@ -794,21 +794,21 @@ not			0	0
 supposed			0	0
 to			0	0
 play			0	0
-world			0	1
+world			0	0
 cop			0	0
 either			0	0
 nor			0	0
 are			0	0
 we			0	0
 a			0	0
-rapefugee			0	0
+rapefugee			1	0
 hostel			0	0
 dumping			0	0
 ground			0	0
 for			0	0
 toxic			0	0
 cultures			0	0
-illegals			0	0
+illegals			0	1
 and			0	0
 the			0	0
 death			0	0
@@ -836,18 +836,18 @@ benefitseekers"""			0	0
 Tweet:
 ['another', 'german', 'killed', 'and', 'injuries', 'now', 'will', 'german', 'y', 'act', 'and', 'stop', 'immigration']
 another			0	0
-german			1	1
+german			0	0
 killed			0	0
 and			0	0
 injuries			0	0
 now			0	0
 will			0	0
-german			1	1
+german			0	0
 y			0	0
 act			0	0
 and			0	0
 stop			0	0
-immigration			0	1
+immigration			1	1
 -------------------------------------------------------------------------------
 Tweet:
 ['if', 'you', 'care', 'more', 'about', '"refugees"', 'than', 'your', 'own', 'sons', 'and', 'daughters', 'youve', 'got', 'some', 'self-evaluation', 'to', 'do', 'https://t', 'co/yhubqufyff']
@@ -875,10 +875,10 @@ co/yhubqufyff			0	0
 Tweet:
 ['@user', 'hashtag', 'illegalaliens', 'are', 'lawbreakers', 'hashtag', 'sendthemhome']
 @user			0	0
-hashtag			0	0
-illegalaliens			0	1
+hashtag			1	0
+illegalaliens			1	1
 are			0	0
-lawbreakers			0	1
+lawbreakers			0	0
 hashtag			0	0
 sendthemhome			0	0
 -------------------------------------------------------------------------------
@@ -920,16 +920,16 @@ dumping			0	0
 ground			0	0
 for			0	0
 their			0	0
-kids			0	1
+kids			0	0
 we			0	0
 have			0	0
 s			0	0
 homeless			0	0
-kids			0	1
+kids			0	0
 we			0	0
 need			0	0
 to			0	0
-help			0	1
+help			0	0
 f			0	0
 -------------------------------------------------------------------------------
 Tweet:
@@ -948,10 +948,10 @@ actively			0	0
 covering			0	0
 up			0	0
 epidemic			0	0
-rape			0	1
+rape			0	0
 by			0	0
-muslim			0	1
-immigrants			0	0
+muslim			1	1
+immigrants			1	1
 they			0	0
 literally			0	0
 refuse			0	0
@@ -963,7 +963,7 @@ to			0	0
 mention			0	0
 that			0	0
 the			0	0
-rapes			0	1
+rapes			0	0
 are			0	0
 being			0	0
 conducted			0	0
@@ -979,20 +979,20 @@ fucking			0	0
 kidding			0	0
 me			0	0
 the			0	0
-eu			1	1
+eu			0	0
 has			0	0
 forced			0	0
 us			0	0
 to			0	0
 treat			0	0
 non			0	0
-eu			1	1
-migrants			0	0
+eu			0	1
+migrants			0	1
 like			0	0
 shit			0	0
 for			0	0
 years			0	0
-brexit			1	0
+brexit			0	0
 will			0	0
 allow			0	0
 us			0	0
@@ -1022,10 +1022,10 @@ their			0	0
 borders			0	0
 for			0	0
 illegal			0	0
-migration			0	0
+migration			1	0
 of			0	0
 fake			0	0
-refugees			0	0
+refugees			0	1
 the			0	0
 migrants			0	1
 have			0	0
@@ -1068,7 +1068,7 @@ as			0	0
 obama			0	0
 an			0	0
 give			0	0
-them			0	1
+them			0	0
 to			0	0
 child			0	0
 trafficers			0	0
@@ -1083,7 +1083,7 @@ status			0	0
 check			0	0
 just			0	0
 give			0	0
-them			0	1
+them			0	0
 to			0	0
 criminals			0	0
 is			0	0
@@ -1100,12 +1100,12 @@ the			0	0
 disgrace			0	0
 is			0	0
 the			0	0
-illegal			0	0
-parent			0	0
+illegal			1	1
+parent			1	0
 who			0	0
 brought			0	0
 their			0	0
-kids			0	1
+kids			0	0
 on			0	0
 their			0	0
 cirme			0	0
@@ -1117,11 +1117,11 @@ the			0	0
 u			0	0
 s			0	0
 so			0	0
-taxpayers			1	0
+taxpayers			0	0
 pay			0	0
 for			0	0
 their			0	0
-kids			0	1
+kids			0	0
 education			0	0
 wic			0	0
 and			0	0
@@ -1131,8 +1131,8 @@ dont			0	0
 owe			0	0
 illegals			0	1
 our			0	0
-tax			1	1
-dollars			1	0
+tax			0	0
+dollars			0	0
 hashtag			0	0
 sendthemback			0	0
 hashtag			0	0
@@ -1147,34 +1147,34 @@ rednationrising"			0	0
 Tweet:
 ['ðÿ‡"ðÿ‡', 'france', ':', 'french', 'restaurants', 'turn', 'to', 'undocumented', 'migrants', 'to', 'fill', '130', '000', 'vacant', 'jobs', 'instead', 'of', 'employing', 'native', 'european', 'french', 'citizens', 'ðÿ˜¡', 'france', 'has', 'even', 'surrendered', 'their', 'jobs', 'to', 'invaders']
 ðÿ‡"ðÿ‡			0	0
-france			1	0
+france			0	0
 :			0	0
-french			0	1
+french			0	0
 restaurants			0	0
 turn			0	0
 to			0	0
 undocumented			0	0
-migrants			1	0
+migrants			1	1
 to			0	0
 fill			0	0
 130			0	0
 000			0	0
 vacant			0	0
-jobs			0	1
+jobs			0	0
 instead			0	0
 of			0	0
 employing			0	0
 native			0	0
 european			0	0
-french			0	1
+french			0	0
 citizens			0	0
 ðÿ˜¡			0	0
-france			1	0
+france			0	0
 has			0	0
 even			0	0
 surrendered			0	0
 their			0	0
-jobs			0	1
+jobs			0	0
 to			0	0
 invaders			0	0
 -------------------------------------------------------------------------------
@@ -1182,7 +1182,7 @@ Tweet:
 ['@user', 'this', 'country', 'is', 'being', 'led', 'by', 'crawlers', 'to', 'other', 'religions', 'from', 'immigration', 'to', 'education', 'vote', 'no', 'to', 'europe', 'and', 'save', 'our', 'nation', 'now']
 @user			0	0
 this			0	0
-country			1	1
+country			0	0
 is			0	0
 being			0	0
 led			0	0
@@ -1192,7 +1192,7 @@ to			0	0
 other			0	0
 religions			0	0
 from			0	0
-immigration			0	0
+immigration			1	1
 to			0	0
 education			0	0
 vote			0	0
@@ -1202,7 +1202,7 @@ europe			0	0
 and			0	0
 save			0	0
 our			0	0
-nation			1	1
+nation			0	0
 now			0	0
 -------------------------------------------------------------------------------
 Tweet:
@@ -1221,7 +1221,7 @@ will			0	0
 never			0	0
 be			0	0
 a			0	0
-christian-jewish			0	1
+christian-jewish			0	0
 nation			0	0
 in			0	0
 future			0	0
@@ -1231,8 +1231,8 @@ Tweet:
 crimes			0	0
 committed			0	0
 by			0	0
-illegal			0	0
-immigrants			0	0
+illegal			0	1
+immigrants			0	1
 should			0	0
 be			0	0
 public			0	0
@@ -1243,7 +1243,7 @@ in			0	0
 texas			0	0
 more			0	0
 illegal			0	1
-aliens			0	0
+aliens			0	1
 were			0	0
 arrested			0	0
 for			0	0
@@ -1281,18 +1281,18 @@ being			0	0
 proud			0	0
 of			0	0
 how			0	0
-many			0	1
+many			0	0
 refugees			0	1
 we			0	0
 have			0	0
-taken			0	1
-in			0	1
+taken			0	0
+in			0	0
 do			0	0
 not			0	0
 leave			0	0
 our			0	0
 own			0	0
-people			0	1
+people			0	0
 b			0	0
 hind			0	0
 there			0	0
@@ -1306,7 +1306,7 @@ Tweet:
 ['@user', 'all', 'illigal', 'refugees', 'in', 'usa', 'must', 'be', 'deported', 'quick', 'by', 'homeland', 'security']
 @user			0	0
 all			0	0
-illigal			0	0
+illigal			0	1
 refugees			0	1
 in			0	0
 usa			0	0
@@ -1323,14 +1323,14 @@ Tweet:
 "			0	0
 hashtag			0	0
 sendthem			0	0
-home			1	1
+home			0	0
 hashtag			0	0
 nodaca			0	0
 hashtag			0	0
-theyarereturning			0	1
+theyarereturning			0	0
 to			0	0
-their			0	1
-home			1	0
+their			0	0
+home			0	0
 countries			0	0
 educated			0	0
 healthy			0	0
@@ -1341,10 +1341,10 @@ multilingual			0	0
 Tweet:
 ['how', 'important', 'is', 'border', 'security', 'to', 'you?', 'vote', 'on', 'a', 'scale', 'of', '10', 'to', '1', 'here', 'and', 'make', 'your', 'wishes', 'known', '(10', 'is', 'extremely', 'important', '1', 'is', 'not', 'important', 'at', 'all', ')', 'hashtag', 'border', 'hashtag', 'security', 'hashtag', 'usa', 'hashtag', 'mexico', 'hashtag', 'buildthewall', 'hashtag', 'nodaca', 'hashtag', 'deportthemall', 'hashtag', 'immigration', 'hashtag', 'immigrationreform', 'hashtag', 'sovereignty', 'hashtag', 'vote']
 how			0	0
-important			1	0
+important			0	0
 is			0	0
-border			0	1
-security			0	1
+border			0	0
+security			0	0
 to			0	0
 you?			0	0
 vote			0	0
@@ -1364,18 +1364,18 @@ known			0	0
 (10			0	0
 is			0	0
 extremely			0	0
-important			1	0
+important			0	0
 1			0	0
 is			0	0
 not			0	0
-important			1	0
+important			0	0
 at			0	0
 all			0	0
 )			0	0
 hashtag			0	0
-border			0	1
+border			0	0
 hashtag			0	0
-security			0	1
+security			0	0
 hashtag			0	0
 usa			0	0
 hashtag			0	0
@@ -1400,7 +1400,7 @@ Tweet:
 @user			0	0
 total			0	0
 lie			0	0
-cong			0	0
+cong			1	0
 is			0	0
 the			0	0
 main			0	0
@@ -1409,7 +1409,7 @@ for			0	0
 influx			0	0
 of			0	0
 illegal			0	1
-migrants			1	1
+migrants			0	1
 both			0	0
 bangladeshis&amp			0	0
 rhongyias			0	0
@@ -1426,12 +1426,12 @@ they			0	0
 encouraged			0	0
 muslim			0	0
 illegal			0	1
-migrants			1	1
+migrants			0	1
 &amp			0	0
 shooed			0	0
 away			0	0
 hindu			0	0
-migrants			1	1
+migrants			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['@user', '@user', '@user', '@user', '@user', 'american', 'citizens', 'need', '@user', 'illegal', 's', 'can', 'reunite', 'back', 'across', 'the', 'border', 'in', 'mexico', 'we', 'dont', 'need', 'the', 'extra', 'crime', 'that', 'the', 'illegal', 'or', 'refugees', 'invaders', 'bring', 'to', 'america', 'hashtag', 'nodaca', 'hashtag', 'novisalotte']
@@ -1444,8 +1444,8 @@ american			0	0
 citizens			0	0
 need			0	0
 @user			0	0
-illegal			1	1
-s			1	1
+illegal			0	1
+s			0	1
 can			0	0
 reunite			0	0
 back			0	0
@@ -1462,9 +1462,9 @@ extra			0	0
 crime			0	0
 that			0	0
 the			0	0
-illegal			1	1
-or			0	0
-refugees			0	0
+illegal			0	1
+or			0	1
+refugees			1	1
 invaders			0	0
 bring			0	0
 to			0	0
@@ -1494,7 +1494,7 @@ your			0	0
 crimes			0	0
 in			0	0
 a			0	0
-country			1	1
+country			0	0
 where			0	0
 you			0	0
 are			0	0
@@ -1510,7 +1510,7 @@ are			0	0
 losing			0	0
 our			0	0
 legal			0	0
-citizens			1	1
+citizens			0	0
 to			0	0
 those			0	0
 who			0	0
@@ -1534,7 +1534,7 @@ is			0	0
 past			0	0
 today			0	0
 each			0	0
-refugee			0	1
+refugee			1	1
 isnt			0	0
 need			0	0
 in			0	0
@@ -1547,8 +1547,8 @@ is			0	0
 fed			0	0
 up			0	0
 with			0	0
-muslim			0	1
-immigration			0	1
+muslim			1	1
+immigration			1	0
 -			0	0
 new			0	0
 eu			0	0
@@ -1568,7 +1568,7 @@ co/blr3iqoxdl			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['why', 'do', 'you', 'lock', 'your', 'door?', 'its', 'the', 'same', 'reason', 'why', 'we', 'need', 'to', 'hashtag', 'buildthewall', 'we', 'love', '&', 'want', 'to', 'protect', 'those', 'inside', 'our', 'homes', '&', 'country', 'we', 'welcome', 'those', 'who', 'enter', 'america', 'legally', 'hashtag', 'noamnesty', 'hashtag', 'nodaca', 'hashtag', 'endchainmigration', 'hashtag', 'endvisalottery', 'hashtag', 'mandatoryeverify', 'hashtag', 'noanchorbabies']
-why			1	0
+why			0	0
 do			0	0
 you			0	0
 lock			0	0
@@ -1578,7 +1578,7 @@ its			0	0
 the			0	0
 same			0	0
 reason			0	0
-why			1	0
+why			0	0
 we			0	0
 need			0	0
 to			0	0
@@ -1590,7 +1590,7 @@ love			0	0
 want			0	0
 to			0	0
 protect			0	0
-those			0	1
+those			0	0
 inside			0	0
 our			0	0
 homes			0	0
@@ -1600,9 +1600,9 @@ we			0	0
 welcome			0	0
 those			0	1
 who			0	0
-enter			0	1
+enter			0	0
 america			0	0
-legally			0	1
+legally			0	0
 hashtag			0	0
 noamnesty			0	0
 hashtag			0	0
@@ -1633,7 +1633,7 @@ immigration			0	0
 ðÿ˜numbers			0	0
 2018			0	0
 refugee			1	1
-s			1	1
+s			0	0
 to			0	0
 get			0	0
 more			0	0
@@ -1651,7 +1651,7 @@ goes			0	0
 soaring			0	0
 young			0	0
 refugee			1	1
-s			1	0
+s			0	0
 on			0	0
 the			0	0
 rampage			0	0
@@ -1667,7 +1667,7 @@ take			0	0
 in			0	0
 more			0	0
 refugee			1	1
-s			1	1
+s			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['the', 'world', 'divided', 'over', 'trumped', 'up', 'charges', 'and', 'more', 'refugees', 'drowning', 'l', 'blame', 'the', 'refugees', 'who', 'burnt', 'and', 'murdered', 'christians', 'their', 'religion']
@@ -1692,7 +1692,7 @@ and			0	0
 murdered			0	0
 christians			0	0
 their			0	0
-religion			0	1
+religion			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['where', 'europe', 'will', 'go', '?', 'the', 'people', 'will', 'vote', 'different', 'because', 'they', 'have', 'to', 'decide:', 'more', 'refugees', 'more', 'weapons', 'for', 'nato', 'means', 'less', 'welfare', 'and', 'fine', 'life', '-', 'or:', 'no', 'refugees', 'no', 'weapons', 'means', 'happy', 'life', 'i', 'think', 'they', 'will', 'decide', 'the', 'last', 'option', 'https://t', 'co/0g0jynz1me']
@@ -1712,7 +1712,7 @@ have			0	0
 to			0	0
 decide:			0	0
 more			0	0
-refugees			0	1
+refugees			1	1
 more			0	0
 weapons			0	0
 for			0	0
@@ -1726,9 +1726,9 @@ life			0	0
 -			0	0
 or:			0	0
 no			0	0
-refugees			0	1
+refugees			1	1
 no			0	0
-weapons			0	1
+weapons			0	0
 means			0	0
 happy			0	0
 life			0	0
@@ -1763,7 +1763,7 @@ to			0	0
 stop			0	0
 the			0	0
 illegal			0	0
-migrants			0	1
+migrants			1	1
 from			0	0
 entering			0	0
 in			0	0
@@ -1786,22 +1786,22 @@ co/4hcnobau3q			0	0
 -------------------------------------------------------------------------------
 Tweet:
 ['alabama:', 'illegals', 'force', '13-year-old', 'girl', 'to', 'watch', 'murder', 'of', 'her', 'grandmother', 'then', 'behead', 'girl', 'hashtag', 'illegalaliens', 'hashtag', 'alabama', 'hashtag', 'animals', 'hashtag', 'kag', 'hashtag', 'rolltide', 'hashtag', 'walkaway', 'hashtag', 'lockthemallup', 'hashtag', 'sendthemback', 'hashtag', 'buildthewall', 'hashtag', 'maga', 'hashtag', 'trump', 'hashtag', 'trump2020', 'hashtag', 'qresearch', 'hashtag', 'patriotsfight', 'hashtag', 'redpill']
-alabama:			0	1
-illegals			0	0
+alabama:			0	0
+illegals			1	1
 force			0	0
 13-year-old			0	0
-girl			0	1
+girl			0	0
 to			0	0
 watch			0	0
 murder			0	0
 of			0	0
-her			0	1
+her			0	0
 grandmother			0	0
 then			0	0
 behead			0	0
 girl			0	0
 hashtag			0	0
-illegalaliens			0	0
+illegalaliens			0	1
 hashtag			0	0
 alabama			0	0
 hashtag			0	0
@@ -1834,14 +1834,14 @@ redpill			0	0
 Tweet:
 ['more', 'migrants', 'from', 'terrorist', 'nation', 'enter', 'texas', 'via', 'mexico', 'this', 'week', 'how', 'many', 'terrorists', 'have', 'already', 'successfully', 'crossed', 'n2', 'the', 'usa', 'from', 'mexico?', 'we', 'will', 'never', 'know', 'hashtag', 'buildthewall', 'hashtag', 'buildthatwall', '#', 'hashtag', 'walkawaymovement', 'hashtag', 'maga', 'hashtag', 'kag', 'hashtag', 'trump2020']
 more			0	0
-migrants			0	0
+migrants			1	1
 from			0	0
 terrorist			0	0
 nation			0	0
 enter			0	0
 texas			0	0
 via			0	0
-mexico			0	1
+mexico			0	0
 this			0	0
 week			0	0
 how			0	0
@@ -1855,7 +1855,7 @@ n2			0	0
 the			0	0
 usa			0	0
 from			0	0
-mexico?			0	1
+mexico?			0	0
 we			0	0
 will			0	0
 never			0	0
@@ -1887,21 +1887,21 @@ of			0	0
 pedophile			0	0
 dreamers			0	0
 have			0	0
-rape			1	0
-d			1	0
-another			1	0
-little			1	0
-girl			1	1
+rape			0	0
+d			0	0
+another			0	0
+little			0	0
+girl			0	0
 polk			0	0
 sheriff:			0	0
-illegal			0	0
-alien			0	0
+illegal			1	1
+alien			1	1
 arrested			0	0
 for			0	0
-rape			1	1
-of			1	0
-8-year-old			1	1
-girl			1	1
+rape			0	0
+of			0	0
+8-year-old			0	0
+girl			0	0
 in			0	0
 florida			0	0
 hashtag			0	0
@@ -1936,7 +1936,7 @@ the			0	0
 world			0	0
 while			0	0
 western			0	0
-europe			0	1
+europe			0	0
 opened			0	0
 its			0	0
 borders			0	0
@@ -1948,10 +1948,10 @@ islamisation			0	0
 during			0	0
 the			0	0
 hashtag			0	0
-migrant			0	1
-crisis			0	1
+migrant			1	1
+crisis			0	0
 eastern			0	0
-europe			0	1
+europe			0	0
 did			0	0
 the			0	0
 opposite			0	0
@@ -1982,7 +1982,7 @@ free			0	0
 book			0	0
 hashtag			0	0
 migrant			1	1
-s			1	1
+s			0	0
 hashtag			0	0
 immigration			0	0
 hashtag			0	0
@@ -1992,7 +1992,7 @@ stopimmigration			0	0
 hashtag			0	0
 stop			0	0
 migrant			1	1
-s			1	1
+s			0	1
 hashtag			0	0
 saveeurop			0	0
 e			0	0
@@ -2013,7 +2013,7 @@ know			0	0
 his			0	0
 familys			0	0
 predecessors			0	0
-name			0	1
+name			0	0
 &amp			0	0
 roots			0	0
 of			0	0
@@ -2029,8 +2029,8 @@ play			0	0
 around			0	0
 with			0	0
 his			0	0
-forefathers			0	1
-name			0	1
+forefathers			0	0
+name			0	0
 should			0	0
 dig			0	0
 his			0	0
@@ -2045,8 +2045,8 @@ on			0	0
 unlawful			0	0
 activities			0	0
 of			0	0
-illegal			0	0
-immigrants			0	0
+illegal			1	1
+immigrants			1	1
 https://t			0	0
 co/xebwretjen			0	0
 -------------------------------------------------------------------------------
@@ -2074,7 +2074,7 @@ but			0	0
 dont			0	0
 call			0	0
 a			0	0
-refugee			0	1
+refugee			1	1
 a			0	0
 rapefugee			0	0
 or			0	0
@@ -2105,7 +2105,7 @@ a			0	0
 woman			0	0
 under			0	0
 sharia			0	1
-law			0	1
+law			0	0
 be			0	0
 a			0	0
 feminist?			0	0
@@ -2146,7 +2146,7 @@ Tweet:
 bishop			0	0
 schneider:			0	0
 mass			0	1
-migration			0	1
+migration			1	1
 a			0	0
 plan			0	0
 to			0	0
@@ -2170,13 +2170,13 @@ did			0	0
 not			0	0
 accept			0	0
 illegal			0	1
-immigrants			0	1
+immigrants			1	1
 https://t			0	0
 co/lgn8jaahft			0	0
 access			0	0
 to			0	0
-white			0	1
-people			0	1
+white			0	0
+people			0	0
 is			0	0
 not			0	0
 a			0	0
@@ -2197,8 +2197,8 @@ to			0	0
 country			0	0
 by			0	0
 facilitating			0	0
-muslims			0	1
-migration			0	0
+muslims			1	1
+migration			1	0
 from			0	0
 bangladesh			0	0
 nepal			0	0
@@ -2238,7 +2238,7 @@ brexit			0	0
 hashtag			0	0
 immigration			0	0
 hashtag			0	0
-immigrationban			0	1
+immigrationban			0	0
 hashtag			0	0
 london			0	0
 hashtag			0	0
@@ -2265,7 +2265,7 @@ are			0	0
 against			0	0
 their			0	0
 pope			0	0
-franciscus			0	1
+franciscus			0	0
 they			0	0
 dont			0	0
 want			0	0
@@ -2285,7 +2285,7 @@ in			0	0
 the			0	0
 meantime			0	0
 hypocrises			0	0
-franciscus			0	1
+franciscus			0	0
 pray			0	0
 and			0	0
 dont			0	0
@@ -2309,8 +2309,8 @@ taking			0	0
 steps			0	0
 to			0	0
 prevent			0	0
-illegal			0	0
-immigration			1	0
+illegal			1	1
+immigration			1	1
 india			0	0
 too			0	0
 shd			0	0
@@ -2320,8 +2320,8 @@ rohingyas			0	0
 and			0	0
 bangladeshis			0	0
 their			0	0
-home			1	0
-country			1	1
+home			0	0
+country			0	0
 problems			0	0
 are			0	0
 theirs			0	0
@@ -2339,7 +2339,7 @@ a			0	0
 nobel			0	0
 peace			0	0
 prizewinning			0	0
-country			0	1
+country			0	0
 if			0	0
 it			0	0
 cant			0	0
@@ -2382,10 +2382,10 @@ Tweet:
 @user			0	0
 hashtag			0	0
 no			0	0
-daca			1	0
+daca			0	0
 ever			0	0
 hashtag			0	0
-daca			1	0
+daca			0	0
 hurts			0	0
 hashtag			0	0
 utah			0	0
@@ -2404,7 +2404,7 @@ americandreamers			0	0
 -			0	0
 my			0	0
 children			0	0
-american			0	1
+american			0	0
 children			0	0
 @user			0	0
 has			0	0
@@ -2413,7 +2413,7 @@ power			0	0
 to			0	0
 hashtag			0	0
 end			0	0
-daca			1	0
+daca			0	0
 use			0	0
 it			0	0
 dont			0	0
@@ -2421,7 +2421,7 @@ be			0	0
 afraid			0	0
 of			0	0
 hashtag			0	0
-illegalaliens"			0	0
+illegalaliens"			0	1
 -------------------------------------------------------------------------------
 Tweet:
 ['@user', 'the', 'eu', 'is', 'on', 'his', 'end', 'if', 'they', 'arnt', 'able', 'to', 'stop', 'the', 'immigration', 'a', 'country', 'which', 'isnt', 'able', 'to', 'protect', 'his', 'borders', 'isnt', 'a', 'country', 'of', 'souveranity', 'and', 'this', 'also', 'will', 'make', 'problems', 'in', 'economic', 'include', 'the', 'overpopulation', 'protectionism', 'will', 'be']
@@ -2439,9 +2439,9 @@ able			0	0
 to			0	0
 stop			0	0
 the			0	0
-immigration			0	1
+immigration			1	1
 a			0	0
-country			0	1
+country			0	0
 which			0	0
 isnt			0	0
 able			0	0
@@ -2478,7 +2478,7 @@ they			0	0
 will			0	0
 not			0	0
 find			0	0
-them			0	1
+them			0	0
 -			0	0
 futurerefugees			0	0
 will			0	0
@@ -2493,22 +2493,22 @@ usa			0	0
 Tweet:
 ['@user', 'american', 'taxpayers', 'are', 'subsidizing', 'labor', 'costs', 'of', 'american', 'employers', 'who', 'hire', 'immigrants', 'particularly', 'if', 'the', 'employers', 'are', 'not', 'paying', 'a', 'living', 'wage', 'or', 'providing', 'health', 'benefits', 'if', 'hiring', 'immigrants', 'puts', 'americans', 'out', 'of', 'work', 'were', 'paying', 'th']
 @user			0	0
-american			0	1
+american			0	0
 taxpayers			0	0
 are			0	0
 subsidizing			0	0
-labor			0	1
+labor			0	0
 costs			0	0
 of			0	0
-american			0	1
-employers			0	1
+american			0	0
+employers			0	0
 who			0	0
-hire			0	1
+hire			0	0
 immigrants			1	1
 particularly			0	0
 if			0	0
 the			0	0
-employers			0	1
+employers			0	0
 are			0	0
 not			0	0
 paying			0	0
@@ -2520,10 +2520,10 @@ providing			0	0
 health			0	0
 benefits			0	0
 if			0	0
-hiring			0	1
+hiring			0	0
 immigrants			1	1
 puts			0	0
-americans			0	1
+americans			0	0
 out			0	0
 of			0	0
 work			0	0
@@ -2536,9 +2536,9 @@ Tweet:
 stephen			0	0
 miller			0	0
 the			0	0
-public			1	1
-charge			1	1
-law			1	0
+public			0	0
+charge			0	0
+law			0	0
 has			0	0
 been			0	0
 on			0	0
@@ -2549,23 +2549,23 @@ for			0	0
 years			0	0
 it			0	0
 prevents			0	0
-immigrants			0	0
+immigrants			1	1
 from			0	0
 burdening			0	0
 the			0	0
 u			0	0
 s			0	0
-taxpayer			1	1
+taxpayer			0	0
 if			0	0
 they			0	0
 cant			0	0
 take			0	0
-care			0	1
+care			0	0
 of			0	0
 themselvers			0	0
 or			0	0
-their			0	1
-kids			0	1
+their			0	0
+kids			0	0
 hashtag			0	0
 sendthemback			0	0
 hashtag			0	0

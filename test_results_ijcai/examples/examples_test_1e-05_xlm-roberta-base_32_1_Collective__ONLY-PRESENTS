@@ -31,7 +31,7 @@ Tweet:
 ['hashtag', 'agresión', 'mantero', 'sbcnpdv', 'soy', 'partidario', 'de', 'ayudar', 'a', 'la', 'gente', 'sin', 'papeles', 'pero', 'se', 'están', 'aprovechando', 'de', 'nuestra', 'solidaridad', 'lo', 'que', 'faltaba', 'por', 'ver', 'agredir', 'a', 'turistas', 'y', 'policias', 'la', 'única', 'manera', 'que', 'nos', 'obligan', 'hacer', 'es', 'mantero', 'sin', 'papeles', 'mantero', 'a', 'su', 'país']
 hashtag			0	0
 agresión			0	0
-mantero			1	1
+mantero			1	0
 sbcnpdv			0	0
 soy			0	0
 partidario			0	0
@@ -67,7 +67,7 @@ nos			0	0
 obligan			0	0
 hacer			0	0
 es			0	0
-mantero			1	1
+mantero			1	0
 sin			0	0
 papeles			0	0
 mantero			1	0
@@ -128,7 +128,7 @@ casi			0	0
 fue			0	0
 muerto			0	0
 por			0	0
-inmigrantes			0	1
+inmigrantes			0	0
 sin			0	0
 papeles			0	0
 al			0	0
@@ -292,7 +292,7 @@ hashtag			0	0
 impromilf			0	0
 yaz			0	0
 cultura			0	0
-árabe			1	1
+árabe			1	0
 =			0	0
 cultura			0	0
 machista			0	0
@@ -308,7 +308,7 @@ mismo			0	0
 @user			0	0
 @user			0	0
 descendencia			0	0
-árabe			1	1
+árabe			1	0
 siguen			0	0
 inculcando			0	0
 el			0	0
@@ -460,7 +460,7 @@ al			0	0
 ándalus			0	0
 de			0	0
 lengua			0	0
-árabe			1	0
+árabe			1	1
 religión			0	0
 musulmana			0	1
 poligamia			0	0
@@ -512,7 +512,7 @@ Tweet:
 que			0	0
 sabrán			0	0
 esos			0	0
-yankis			0	1
+yankis			0	0
 si			0	0
 hashtag			0	0
 grandemarlaska			0	0
@@ -584,7 +584,7 @@ que			0	0
 debe			0	0
 votar			0	0
 una			0	0
-mujer			0	1
+mujer			0	0
 son			0	0
 sus			0	0
 tetas			0	0
@@ -718,7 +718,7 @@ cientos			0	0
 de			0	0
 miles			0	0
 de			0	0
-indocumentados			1	0
+indocumentados			1	1
 violentos			0	0
 ignorantes			0	0
 y			0	0
@@ -837,7 +837,7 @@ Tweet:
 que			0	0
 nacionalidad			0	0
 o			0	0
-etnia			0	1
+etnia			0	0
 crees			0	0
 que			0	0
 se			0	0
@@ -851,7 +851,7 @@ europea			0	0
 (tema			0	0
 derechos			0	0
 y			0	0
-libertades			0	1
+libertades			0	0
 mujer			0	0
 lgtb			0	0
 convi			0	0
@@ -919,7 +919,7 @@ co/acv9hihxmd			0	0
 Tweet:
 ['la', 'izquierdona', 'ha', 'encontrado', 'su', 'mina', 'de', 'oro', 'votará', 'a', 'su', 'favor', 'todo', 'inmigrante', 'que', 'esté', 'aquí', 'unas', 'cuantas', 'semanas', 'y', 'votará', 'a', 'quienes', 'les', 'han', 'traído', 'aquí', 'les', 'mantienen', 'aquí', 'les', 'adoctrinan', 'y', 'les', 'dan', 'beneficios', 'a', 'costa', 'de', 'tu', 'dinero', 'y', 'el', 'mío', 'pedro', 'el', 'grande', 'es', 'un', 'genio', 'https://t', 'co/r6bnau7nn0']
 la			0	0
-izquierdona			0	0
+izquierdona			0	1
 ha			0	0
 encontrado			0	0
 su			0	0
@@ -1315,7 +1315,7 @@ denuncias			0	0
 por			0	0
 violencia			0	0
 de			0	0
-género			0	1
+género			0	0
 y			0	0
 órdenes			0	0
 de			0	0
@@ -1418,8 +1418,8 @@ mando			0	0
 policial			0	0
 para			0	0
 combatir			0	0
-inmigración			0	1
-ilegal			0	1
+inmigración			0	0
+ilegal			0	0
 https://t			0	0
 co/uxyyemh8t3			0	0
 vía			0	0
@@ -1431,7 +1431,7 @@ esta			0	0
 invasión			0	0
 continuada			0	0
 de			0	0
-subsaharianos			1	0
+subsaharianos			1	1
 no			0	0
 se			0	0
 cuanto			0	0
@@ -1554,7 +1554,7 @@ metro			0	0
 de			0	0
 barcelona			0	0
 -			0	0
-árabes			1	1
+árabes			1	0
 agreden			0	0
 a			0	0
 turistas			0	0
@@ -1585,7 +1585,7 @@ Tweet:
 ['80', '000', 'menores', 'han', 'entrado', 'en', 'españa', 'solos', 'desde', 'marruecos', 'luego', 'llegará', 'la', 'reunificación', 'familiar', 'padres', 'hermanos', 'primos', 'abuelos', 'etc', '¿para', 'que', 'los', 'envía', 'marruecos', '?', '¿alguien', 'pide', 'explicaciones', 'a', 'las', 'autoridades', 'marroquís?', '¿son', 'inmigrantes', 'o', 'enviados', 'para', 'invadir', 'españa', '?', 'https://t', 'co/ii7nkh5xii']
 80			0	0
 000			0	0
-menores			0	1
+menores			0	0
 han			0	0
 entrado			0	0
 en			0	0
@@ -1617,7 +1617,7 @@ las			0	0
 autoridades			0	0
 marroquís?			0	0
 ¿son			0	0
-inmigrantes			1	0
+inmigrantes			1	1
 o			0	0
 enviados			0	0
 para			0	0
@@ -1640,9 +1640,9 @@ no			0	0
 a			0	0
 los			0	0
 llamados			0	0
-palestinos			1	1
+palestinos			1	0
 los			0	0
-palestinos			1	1
+palestinos			1	0
 nunca			0	0
 existieron			0	0
 en			0	0
@@ -1650,10 +1650,10 @@ la			0	0
 historia			0	0
 los			0	0
 llamados			0	0
-palestinos			1	1
+palestinos			1	0
 son			0	0
 arabes			0	0
-musulmanes			0	0
+musulmanes			0	1
 modernos			0	0
 ellos			0	0
 andan			0	0
@@ -1668,9 +1668,9 @@ Tweet:
 ['¿por', 'que', 'las', 'mujeres', 'se', 'casan', 'de', 'blanco?', 'para', 'hacer', 'juego', 'con', 'el', 'refrigerador', 'la', 'cocina', 'y', 'la', 'lavadora', 'hashtag', 'humor']
 ¿por			0	0
 que			0	0
-las			0	0
+las			0	1
 mujeres			0	1
-se			0	0
+se			0	1
 casan			0	0
 de			0	0
 blanco?			0	0
@@ -1846,7 +1846,7 @@ lo			0	0
 paguen			0	0
 los			0	0
 propios			0	0
-subsaharianos			0	1
+subsaharianos			0	0
 hashtag			0	0
 donaldcasado			0	0
 hashtag			0	0
@@ -1858,7 +1858,7 @@ Tweet:
 ['de', 'los', 'moros', 'no', 'se', 'puede', 'esperar', 'nada', 'bueno', 'y', 'esto', 'te', 'lo', 'dicen', 'los', 'propios', 'árabes', 'que', 'también', 'han', 'luchado', 'contra', 'ellos', 'hashtag', 'stopinvasion', 'hashtag', 'stopislam', 'hashtag', 'closeborders', 'hashtag', 'openborders', 'https://t', 'co/mfmblbk55i']
 de			0	0
 los			0	0
-moros			1	0
+moros			1	1
 no			0	0
 se			0	0
 puede			0	0
@@ -2033,7 +2033,7 @@ vienen			0	0
 cabreros			0	0
 sino			0	0
 gente			0	0
-emprendedora			0	1
+emprendedora			0	0
 valiente			0	0
 y			0	0
 con			0	0
@@ -2290,7 +2290,7 @@ Tweet:
 ""cacahuates""			0	0
 dichos			0	0
 sobre			0	0
-inmigrantes:			0	1
+inmigrantes:			0	0
 @user			0	0
 dijo			0	0
 que			0	0
@@ -2311,7 +2311,7 @@ Tweet:
 ['refugiados', 'si', 'inmigrantes', 'los', 'necesarios', 'y', 'los', 'que', 'realmente', 'podamos', 'atender', 'pienso', 'que', 'españa', 'sólo', 'debería', 'acoger', 'y', 'de', 'una', 'forma', 'ordenada', 'a', 'inmigrantes', 'latinoamericanos', 'de', 'habla', 'española', 'cristianos', 'que', 'https://t', 'co/mo1pm2or2l']
 refugiados			0	1
 si			0	0
-inmigrantes			0	0
+inmigrantes			0	1
 los			0	0
 necesarios			0	0
 y			0	0
@@ -2333,7 +2333,7 @@ forma			0	0
 ordenada			0	0
 a			0	0
 inmigrantes			0	0
-latinoamericanos			0	0
+latinoamericanos			0	1
 de			0	0
 habla			0	0
 española			0	0
@@ -2417,7 +2417,7 @@ de			0	0
 argentinos			0	0
 y			0	0
 demás			0	0
-emigrantes			0	1
+emigrantes			0	0
 mas			0	0
 los			0	0
 españoles			0	0
@@ -2467,9 +2467,9 @@ muchas			0	0
 mujeres			0	0
 posan			0	0
 de			0	0
-victimas			0	1
+victimas			0	0
 de			0	0
-acoso			0	1
+acoso			0	0
 solo			0	0
 con			0	0
 una			0	0
@@ -2512,7 +2512,7 @@ tenemos			0	0
 xq			0	0
 ya			0	0
 los			0	0
-venezolanos			0	1
+venezolanos			0	0
 parecemos			0	0
 extranjeros			0	0
 en			0	0
@@ -2553,7 +2553,7 @@ nuevo			0	0
 dueño			0	0
 solo			0	0
 contrata			0	0
-inmigrantes			1	1
+inmigrantes			1	0
 tenemos			0	0
 mas			0	0
 del			0	0
@@ -2593,7 +2593,7 @@ los			0	0
 últimos			0	0
 episodios			0	0
 de			0	0
-violencia			0	0
+violencia			0	1
 ejercida			0	0
 por			0	0
 subsaharianos			1	1
@@ -2656,7 +2656,7 @@ en			0	0
 los			0	0
 vuelos			0	0
 desde			0	0
-venezuela			1	0
+venezuela			1	1
 pongan			0	0
 un			0	0
 billete			0	0
@@ -2795,13 +2795,13 @@ Tweet:
 ['con', 'estas', 'emigraciones', 'hacia', 'europa', 'un', 'día', 'los', 'alemanes', 'españoles', 'no', 'será', 'de', 'alemania', 'y', 'los', 'árabes', 'impondrán', 'sus', 'religiones', 'y', 'su', 'cultura', 'y', 'los', 'africanos', 'harán', 'lo', 'mismo', 'periodistas', 'q', 'defienden', 'que', 'les', 'den', 'sus', 'casa', 'y', 'comida']
 con			0	0
 estas			0	0
-emigraciones			0	0
+emigraciones			0	1
 hacia			0	0
 europa			0	0
 un			0	0
 día			0	0
 los			0	0
-alemanes			0	0
+alemanes			0	1
 españoles			0	0
 no			0	0
 será			0	0
@@ -2847,7 +2847,7 @@ inminente			0	0
 de			0	0
 100			0	0
 000			0	0
-subsaharianos			1	1
+subsaharianos			1	0
 hashtag			0	0
 defiendeespaña			0	0
 elecciones			0	0
@@ -2864,7 +2864,7 @@ Tweet:
 la			0	0
 ropa			0	0
 de			0	0
-los			0	0
+los			0	1
 indocumentados			1	1
 es			0	0
 cada			0	0
@@ -2930,7 +2930,7 @@ cuando			0	0
 veais			0	0
 a			0	0
 los			0	0
-pobres			0	0
+pobres			0	1
 muslims			1	1
 acordaron			0	0
 que			0	0
@@ -2969,7 +2969,7 @@ las			0	0
 modelos			1	1
 tienen			0	0
 una			0	0
-neurona			0	0
+neurona			0	1
 más			0	0
 que			0	0
 los			0	0
@@ -3046,7 +3046,7 @@ de			0	0
 un			0	0
 inmigrante			0	1
 ilegal			0	1
-nigeriano			1	0
+nigeriano			1	1
 en			0	0
 la			0	0
 estación			0	0
@@ -3061,7 +3061,7 @@ realidad			0	0
 de			0	0
 la			0	0
 inmigración			0	0
-ilegal			0	1
+ilegal			0	0
 https://t			0	0
 co/yybriltirk			0	0
 -------------------------------------------------------------------------------
@@ -3186,7 +3186,7 @@ de			0	0
 africa			0	0
 y			0	0
 países			0	0
-árebes			0	1
+árebes			0	0
 es			0	0
 una			0	0
 estrategia			0	0
@@ -3226,7 +3226,7 @@ tiene			0	0
 razón			0	0
 nada			0	0
 d			0	0
-inmigrantes			0	1
+inmigrantes			0	0
 https://t			0	0
 co/nzduyei7x5			0	0
 -------------------------------------------------------------------------------
@@ -3376,7 +3376,7 @@ en			0	0
 cuanto			0	0
 al			0	0
 sistema			0	0
-alimentario			0	0
+alimentario			0	1
 y			0	0
 contra			0	0
 la			0	0
@@ -3515,7 +3515,7 @@ plataforma			0	0
 europea			0	0
 ""ideal""			0	0
 para			0	0
-refugiados			0	1
+refugiados			0	0
 e			0	0
 in			0	0
 migrantes			0	1
@@ -3565,7 +3565,7 @@ el			0	0
 cerebro			0	0
 de			0	0
 la			0	0
-mujer			1	0
+mujer			1	1
 esta			0	0
 conectado			0	0
 al			0	0
@@ -3613,7 +3613,7 @@ van			0	0
 hacer			0	0
 con			0	0
 tanto			0	0
-inmigrante			0	1
+inmigrante			0	0
 chamo			0	0
 zolano			0	0
 -------------------------------------------------------------------------------
@@ -3774,7 +3774,7 @@ inmigración			1	1
 en			0	0
 las			0	0
 zonas			0	0
-fronterizas			0	0
+fronterizas			0	1
 con			0	0
 colombia			0	0
 por			0	0
@@ -3809,7 +3809,7 @@ sexual			0	0
 y			0	0
 provocación			0	0
 femi			0	0
-nazis			0	0
+nazis			0	1
 al			0	0
 ataque			0	0
 en			0	0
@@ -3885,7 +3885,7 @@ presidente			0	0
 el			0	0
 xq			0	0
 ni			0	0
-arabes			0	1
+arabes			0	0
 ni			0	0
 chinos			0	0
 -------------------------------------------------------------------------------
@@ -3933,7 +3933,7 @@ ingreso			0	0
 al			0	0
 pais			0	0
 de			0	0
-tantos			0	0
+tantos			0	1
 inmigrantes			1	1
 deben			0	0
 hacerse			0	0
@@ -4006,7 +4006,7 @@ las			0	0
 24h			0	0
 varias			0	0
 peleas			0	0
-callejeras			0	0
+callejeras			0	1
 en			0	0
 ceuta			0	0
 por			0	0
@@ -4092,7 +4092,7 @@ orden			0	0
 con			0	0
 comerciantes			0	0
 informales			0	1
-y			0	0
+y			0	1
 indocumentados			0	1
 venezolanos			1	1
 que			0	0
@@ -4196,7 +4196,7 @@ Tweet:
 ['los', 'árabes', 'inteligentes', 'y', 'creadores', 'de', 'civilización', 'brillaron', 'desde', 'los', 'inicios', 'de', 'la', 'humanidad', 'hasta', 'la', 'época', 'en', 'que', 'el', 'islamismo', 'poseyó', 'totalmente', 'a', 'ese', 'pueblo', 'y', 'lo', 'relegó', 'al', 'oscurantismo', 'y', 'el', 'atraso']
 los			0	0
 árabes			0	1
-inteligentes			0	0
+inteligentes			0	1
 y			0	0
 creadores			0	0
 de			0	0
@@ -4214,7 +4214,7 @@ la			0	0
 en			0	0
 que			0	0
 el			0	0
-islamismo			1	0
+islamismo			1	1
 poseyó			0	0
 totalmente			0	0
 a			0	0
@@ -4275,7 +4275,7 @@ campaña			0	0
 para			0	0
 que			0	0
 ley			0	0
-rapa			0	0
+rapa			0	1
 nui			0	0
 se			0	0
 extienda			0	0
@@ -4468,7 +4468,7 @@ a			0	0
 tantos			0	0
 marroquíes			0	1
 como			0	0
-subsaharianos			0	0
+subsaharianos			0	1
 entren			0	0
 desde			0	0
 marruecos			0	0
@@ -4820,7 +4820,7 @@ junto			0	0
 a			0	0
 los			0	0
 malditos			0	0
-israelitas			1	1
+israelitas			1	0
 con			0	0
 mayor			0	0
 razón			0	0
@@ -4965,7 +4965,7 @@ Tweet:
 ['por', 'las', 'mujeres', 'tienen', 'cuatro', 'neuronas', '???', 'una', 'para', 'cada', 'fogon']
 por			0	0
 las			0	0
-mujeres			1	0
+mujeres			1	1
 tienen			0	0
 cuatro			0	0
 neuronas			0	0
@@ -5027,7 +5027,7 @@ Tweet:
 ['enseñan', 'al', 'pueblo', 'español', 'a', 'amedrentarse', 'frente', 'a', 'un', 'enemigo', 'yo', 'enseño', 'a', 'mis', 'hijos', 'a', 'saber', 'defenderse', 'sea', 'mantero', 'presidente', 'del', 'gobierno', 'o', 'saltador', 'negro', 'de', 'la', 'valla', 'de', 'melilla']
 enseñan			0	0
 al			0	0
-pueblo			0	0
+pueblo			0	1
 español			0	1
 a			0	0
 amedrentarse			0	0
@@ -5286,7 +5286,7 @@ que			0	0
 van			0	0
 a			0	0
 por			0	0
-inmigrantes			0	0
+inmigrantes			0	1
 a			0	0
 aguas			0	0
 marroquíes			0	0
@@ -5299,7 +5299,7 @@ Tweet:
 ['los', 'traficantes', 'de', 'inmigrantes', 'proactiva', 'open', 'arms', 'están', 'dando', 'vueltas', 'entre', 'cerdeña', 'y', 'túnez', 'con', '87', 'inmigrantes', 'malta', 'e', 'italia', 'no', 'les', 'dan', 'permiso', 'para', 'desembarcar', 'y', 'otra', 'vez', 'quiere', 'venir', 'a', 'españa', 'que', 'los', 'desembarque', 'en', 'túnez', 'libia', 'egipto', 'que', 'europa', 'está', 'llena', 'sobran', 'la', 'mayoría']
 los			0	0
 traficantes			0	0
-de			0	1
+de			0	0
 inmigrantes			1	1
 proactiva			0	0
 open			0	0

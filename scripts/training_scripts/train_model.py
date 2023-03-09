@@ -26,6 +26,7 @@ parser.add_argument('--joint_premises', type=int, default=0, help="If true, this
 parser.add_argument('--crosslingual', type=bool, default=False, help="Set to true if using both english and spanish datasets. English dataset will be used for train and dev and Spanish will be used for testing")
 parser.add_argument('--only_if_present', type=bool, default=False, help="Only train and test with examples that have the component they are trying to predict. Changes the construction of the datasets for Collective, Property and pivot")
 parser.add_argument('--predict_if_present', type=bool, default=False, help="For each tweet, predict if component is present. Only works for Collective/Property or Pivot")
+parser.add_argument('--quarters_of_dataset', type=int, default=4, help="Use if you want to train the model using just a portion of the dataset. Set to the amount of quarters of dataset that are going to be used. 4 means using the complete dataset")
 
 args = parser.parse_args()
 
@@ -34,7 +35,6 @@ LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
 device = torch.device("cpu")
 BATCH_SIZE = args.batch_size
-EPOCHS = 20 * (BATCH_SIZE / 16)
 MODEL_NAME = args.modelname
 REP=0
 FOLDS=3
@@ -50,6 +50,9 @@ joint_premises = args.joint_premises
 quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
 only_if_present = args.only_if_present
 predict_if_present = args.predict_if_present
+quarters = args.quarters_of_dataset
+EPOCHS = int(10 * (BATCH_SIZE / 16) * 4/quarters)
+
 
 def compute_metrics_f1(p: EvalPrediction):
     preds = p.predictions.argmax(-1)
@@ -339,7 +342,7 @@ def tokenize_and_align_labels(dataset, tokenizer, is_multi = False, is_bertweet=
 
 
 
-def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False, multiple_components = False, joint_premises = False, only_if_present = False, predict_if_present = False):
+def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, test_partition_patterns, component, is_bertweet=False, add_annotator_info=False, is_type_of_premise=False, multiple_components = False, joint_premises = False, only_if_present = False, predict_if_present = False, quarters = 4):
 
     if joint_premises > 0:
         just_tweets, just_labels = labelComponentsFromAllExamples(train_partition_patterns, "Premise2Justification", add_annotator_info=add_annotator_info, isTypeOfPremise=joint_premises, multiple_components=multiple_components, joint_premises=joint_premises, only_if_present=only_if_present, predict_if_present=predict_if_present)
@@ -503,8 +506,15 @@ else:
     for i in range(FOLDS):
         allFilesCp = allFiles.copy()
         random.Random(41 + i).shuffle(allFilesCp)
+        training_size = 890 if multilingual else 770
+        dev_size = 126 if multilingual else 100
+        if quarters < 4:
+            percentage = quarters/4
+            training_size = int(training_size * percentage)
+            print(training_size)
+            assert(False)
         if multilingual:
-            dataset_combinations.append([allFilesCp[:890], allFilesCp[890:1016], allFilesCp[1016:]])
+            dataset_combinations.append([allFilesCp[:training_size], allFilesCp[training_size:training_size + dev_size], allFilesCp[training_size + dev_size:]])
         else:
             dataset_combinations.append([allFilesCp[:770], allFilesCp[770:870], allFilesCp[870:]])
 
@@ -530,6 +540,6 @@ for combination in dataset_combinations:
             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=output_num)
 
         model.to(device)
-        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "vinai/bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise, multiple_components=simultaneous_components, joint_premises=joint_premises, only_if_present=only_if_present, predict_if_present=predict_if_present)
+        train(model, tokenizer, combination[0], combination[1], combination[2], cmpnent, is_bertweet = MODEL_NAME == "vinai/bertweet-base", add_annotator_info=add_annotator_info, is_type_of_premise = type_of_premise, multiple_components=simultaneous_components, joint_premises=joint_premises, only_if_present=only_if_present, predict_if_present=predict_if_present, quarters=quarters)
 
 

@@ -423,7 +423,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             suffix = "_PREDICT-IF_PRESENT"
         else:
             suffix = ""
-        filename = "./results_test_{}_{}_{}_{}_{}{}".format(LEARNING_RATE, model_settings, BATCH_SIZE, REP, component, suffix)
+        filename = "./results_test_{}_{}_{}_{}_{}_{}{}".format(LEARNING_RATE, model_settings, BATCH_SIZE, REP, component, quarters, suffix)
     else:
         if joint_premises == 1:
             suffix = "joint-premises"
@@ -433,7 +433,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             suffix = "tested-with-conc"
         else:
             suffix = "type-of-premise"
-        filename = "./results_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, model_settings, BATCH_SIZE, REP, component, suffix)
+        filename = "./results_test_{}_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, model_settings, BATCH_SIZE, REP, component, quarters, suffix)
     with open(filename, "w") as writer:
         if type_of_premise:
             writer.write("{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"]))

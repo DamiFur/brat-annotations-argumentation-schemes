@@ -511,8 +511,6 @@ else:
         if quarters < 4:
             percentage = quarters/4
             training_size = int(training_size * percentage)
-            print(training_size)
-            assert(False)
         if multilingual:
             dataset_combinations.append([allFilesCp[:training_size], allFilesCp[training_size:training_size + dev_size], allFilesCp[training_size + dev_size:]])
         else:

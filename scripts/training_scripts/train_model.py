@@ -486,6 +486,10 @@ dataset_combinations = []
 if crosslingual:
     trainFiles = []
     testFiles = []
+    training_size_original = 850
+    if quarters < 4:
+            percentage = quarters/4
+            training_size = int(training_size_original * percentage)
     for f in glob.glob(filePatterns[0]):
         trainFiles.append(f)
     for f in glob.glob(filePatterns[1]):
@@ -495,7 +499,7 @@ if crosslingual:
         trainFilesCp = trainFiles.copy()
         testFilesCp = testFiles.copy()
         random.Random(41 + i).shuffle(trainFilesCp)
-        dataset_combinations.append([trainFilesCp[:850], trainFilesCp[850:], testFilesCp])
+        dataset_combinations.append([trainFilesCp[:training_size], trainFilesCp[training_size_original:], testFilesCp])
 
 else:
     allFiles = []

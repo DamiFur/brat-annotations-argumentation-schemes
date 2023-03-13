@@ -521,6 +521,7 @@ else:
         print(training_size)
         dataset_combinations.append([allFilesCp[:training_size], allFilesCp[training_size:training_size + dev_size], allFilesCp[training_size + dev_size:]])
 
+#torch.cuda.set_device(0)        
 for combination in dataset_combinations:
     REP = REP + 1
     for cmpnent in components:

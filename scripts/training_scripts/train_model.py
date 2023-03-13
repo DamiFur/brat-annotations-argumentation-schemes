@@ -442,7 +442,7 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
         else:
             writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
         writer.write("{}\n".format(str(results.metrics["test_confusion_matrix"])))
-        writer.write("Size of training dataset: {}\n", len(train_partition_patterns))
+        writer.write("Size of training dataset: {}\n".format(len(train_partition_patterns)))
 
     examples_filename = "./examples_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
     with open(examples_filename, "w") as writer:

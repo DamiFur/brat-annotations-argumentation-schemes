@@ -33,7 +33,7 @@ args = parser.parse_args()
 
 LEARNING_RATE = args.lr
 NUMBER_OF_PARTITIONS = 10
-device = torch.device("cpu")
+device = torch.device("cuda:0")
 BATCH_SIZE = args.batch_size
 MODEL_NAME = args.modelname
 REP=0
@@ -51,7 +51,7 @@ quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
 only_if_present = args.only_if_present
 predict_if_present = args.predict_if_present
 quarters = args.quarters_of_dataset
-EPOCHS = int(10 * (BATCH_SIZE / 16) * 4/quarters)
+EPOCHS = int(10 * (BATCH_SIZE / 16))
 
 
 def compute_metrics_f1(p: EvalPrediction):
@@ -441,7 +441,8 @@ def train(model, tokenizer, train_partition_patterns, dev_partition_patterns, te
             writer.write("{},{},{},{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"], results.metrics["test_f1_all"], results.metrics["test_precision_all"], results.metrics["test_recall_all"]))
         else:
             writer.write("{},{},{},{}\n".format(results.metrics["test_accuracy"], results.metrics["test_f1"], results.metrics["test_precision"], results.metrics["test_recall"]))
-        writer.write("{}".format(str(results.metrics["test_confusion_matrix"])))
+        writer.write("{}\n".format(str(results.metrics["test_confusion_matrix"])))
+        writer.write("Size of training dataset: {}\n", len(train_partition_patterns))
 
     examples_filename = "./examples_test_{}_{}_{}_{}_{}_{}".format(LEARNING_RATE, MODEL_NAME.replace("/", "-"), BATCH_SIZE, REP, component, suffix)
     with open(examples_filename, "w") as writer:
@@ -502,6 +503,12 @@ if crosslingual:
         dataset_combinations.append([trainFilesCp[:training_size], trainFilesCp[training_size_original:], testFilesCp])
 
 else:
+    training_size = 890 if multilingual else 770
+    dev_size = 126 if multilingual else 100
+    if quarters < 4:
+        percentage = quarters/4
+        training_size = int(training_size * percentage)
+        
     allFiles = []
     for pattern in filePatterns:
         for f in glob.glob(pattern):
@@ -510,11 +517,7 @@ else:
     for i in range(FOLDS):
         allFilesCp = allFiles.copy()
         random.Random(41 + i).shuffle(allFilesCp)
-        training_size = 890 if multilingual else 770
-        dev_size = 126 if multilingual else 100
-        if quarters < 4:
-            percentage = quarters/4
-            training_size = int(training_size * percentage)
+
         print(training_size)
         dataset_combinations.append([allFilesCp[:training_size], allFilesCp[training_size:training_size + dev_size], allFilesCp[training_size + dev_size:]])
 

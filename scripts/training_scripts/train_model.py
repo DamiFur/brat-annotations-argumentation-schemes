@@ -51,7 +51,7 @@ quadrant_types_to_label = {"fact": 0, "value": 1, "policy": 2}
 only_if_present = args.only_if_present
 predict_if_present = args.predict_if_present
 quarters = args.quarters_of_dataset
-EPOCHS = int(10 * (BATCH_SIZE / 16))
+EPOCHS = int(10 * (BATCH_SIZE / 16)) * (4/quarters)
 
 
 def compute_metrics_f1(p: EvalPrediction):
